@@ -80,7 +80,7 @@
 
 <br/>
 
-## Introduction
+## &#9885; Introduction
 
 JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
 
@@ -90,7 +90,7 @@ ECMAScript is the standard that JavaScript programming language uses. ECMAScript
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Variable Scoping
+## &#9885; Variable Scoping
 
 The variable scoping determines the visibility or accessibility of a variable within the certain part of the program or region.
 In ES6, both `const` and `let` keywords allow developers to declare variables in the block scope.
