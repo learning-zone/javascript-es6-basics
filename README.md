@@ -14,6 +14,7 @@
 
 ## Table of Contents
 
+* [Introduction](#introduction)
 * ES6 New Features
     * [let](#variable-scoping)
     * [let vs. var](#variable-scoping)
@@ -78,6 +79,16 @@
     * [Proper Tail calls](#proper-tail-calls)
 
 <br/>
+
+## # Introduction
+
+JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
+
+ECMAScript is the standard that JavaScript programming language uses. ECMAScript provides the specification on how JavaScript programming language should work.
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
 
 ## # Variable Scoping
 
