@@ -80,7 +80,7 @@
 
 <br/>
 
-## Introduction
+## # Introduction
 
 JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
 
