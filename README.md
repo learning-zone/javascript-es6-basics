@@ -79,7 +79,7 @@
 
 <br/>
 
-## Variable Scoping
+## # Variable Scoping
 
 The variable scoping determines the visibility or accessibility of a variable within the certain part of the program or region.
 In ES6, both `const` and `let` keywords allow developers to declare variables in the block scope.
@@ -111,7 +111,7 @@ console.log(x); //1
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Arrow function
+## # Arrow function
 
 The Arrow function provides a more concise syntax for writing function expressions by opting out the function and return keywords using fat arrow(`=>`) notation.
 
@@ -168,7 +168,7 @@ greet(); // Hello World!
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Classes
+## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
 
@@ -232,7 +232,7 @@ console.log(car.start()); // BMW car started
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Enhanced object literals
+## # Enhanced object literals
 
 Object literals are extended to support setting the prototype at construction, shorthand for foo: foo assignments, defining methods, making super calls, and computing property names with expressions.
 
@@ -320,7 +320,7 @@ const
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Template literals
+## # Template literals
 
 Prior to ES6, JavaScript developers would need to do ugly string concatenation to creat dynamic strings.
 
@@ -351,7 +351,7 @@ const Button = styled.a`
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Destructuring
+## # Destructuring
 
 Destructuring is a javascript expression for extracting multiple values from data stored in objects(properties of an object) and Arrays.
 
@@ -386,7 +386,7 @@ You can use destructing in below places,
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Default parameters
+## # Default parameters
 
 Default parameters allow named parameters of a function to be initialized with default values if no value or undefined is passed.
 
@@ -416,7 +416,7 @@ add(); // 30
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Rest parameter
+## # Rest parameter
 
 The rest parameter is used to represent an indefinite number of arguments as an array. The important point here is only the function\'s last parameter can be a "rest parameter". This feature has been introduced to reduce the boilerplate code that was induced by the arguments.
 
@@ -435,7 +435,7 @@ console.log(sum(1, 2, 3, 4, 5)); // 15
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Spread Operator
+## # Spread Operator
 
 Spread Operator allows iterables( arrays / objects / strings ) to be expanded into single arguments/elements.
 
@@ -458,7 +458,7 @@ console.log([1, ...[2,3], 4, ...[5, 6, 7]]); // 1, 2, 3, 4, 5, 6, 7
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Iterators & For..of
+## # Iterators & For..of
 
 String, Array, TypedArray, Map, and Set are all built-in iterables but objects are not iterables by default.
 Iterators are a new way to loop over any collection in JavaScript. These are objects which defines a sequence and potentially a return value upon its termination.
@@ -506,7 +506,7 @@ The for...of statement creates a loop iterating over user defined collection obj
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Generators
+## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
 
@@ -531,7 +531,7 @@ console.log(myGenObj.next().value); // 40
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Modules
+## # Modules
 
 Modules are small units of independent, reusable code to be used as the building blocks in a Javascript application.
 
@@ -609,7 +609,7 @@ import { export1 as alias1 } from "my-module";
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Set
+## # Set
 
 Set is a built-in object to store collections of unique values of any type.
 
@@ -631,7 +631,7 @@ console.log(mySet.has(2)); // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Weakset
+## # Weakset
 
 The Set is used to store any type of data such as primitives and object types. Whereas WeakSet is an object to store weakly held objects in a collection. (i.e, WeakSet is the collections of objects only). Here weak means,  If no other references to an object stored in the WeakSet exist, those objects can be garbage collected.
 
@@ -659,7 +659,7 @@ john = null;
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Map
+## # Map
 
 Map is a collection of elements where each element is stored as a Key, value pair. It can hold both objects and primitive values as either key or value and iterates its elements in insertion order.
 
@@ -692,7 +692,7 @@ Let\'s take a map with different types of primitives and objects as key-value pa
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Weakmap
+## # Weakmap
 
 WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. For this object, the keys must be objects and the values can be arbitrary values.
 
@@ -721,7 +721,7 @@ console.log(weakMap.get(obj1)); //undefined
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Unicode
+## # Unicode
 
 Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit. Since the character set is been expanded by Unicode, you will get unexpected results from UTF-16 encoded strings containing surrogate pairs(i.e, Since it is not sufficient to represent certain characters in just 16-bits, you need two 16-bit code units).
 
@@ -762,7 +762,7 @@ console.log(String.fromCodePoint(134071));  // "𠮷"
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Symbols
+## # Symbols
 
 Symbol is a new peculiar primitive data type of JavaScript, along with other primitive types such as string, number, boolean, null and undefined. The new symbol is created just by calling the Symbol function. i.e, Every time you call the Symbol function, you’ll get a new and completely unique value. You can also pass a parameter to Symbol(), which is useful for debugging purpose only.
 
@@ -807,7 +807,7 @@ console.log(Symbol.for('foo') === Symbol.for('foo'));  // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Proxies
+## # Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
 
@@ -872,7 +872,7 @@ person.age = 200;        // Throws an exception
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Promises
+## # Promises
 
 A promise is an object which represent the eventual completion or failure of an asynchronous operation.
 
@@ -908,7 +908,7 @@ promise.then(function(result) {
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Reflect
+## # Reflect
 
 Reflection is the ability of a code to inspect and manipulate variables, properties, and methods of objects at runtime. JavaScript already provides `Object.keys(), Object.getOwnPropertyDescriptor(), and Array.isArray()` methods as classic refection features. In ES6, it has been officially provided through Reflect object. Reflect is a new global object which is used to call methods, construct objects, get and set properties, manipulate and extend properties.
 
@@ -1032,7 +1032,7 @@ console.log(Reflect.get(user, 'age')); // 33
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Binary and Octal
+## # Binary and Octal
 
 ES5 provided numeric literals in octal (prefix 0), decimal (no prefix), and hexadecimal ( 0x) representation. ES6 added support for binary literals and improvements on octal literals.
 
@@ -1083,7 +1083,7 @@ console.log(invalidNum); // SyntaxError
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Proper Tail Calls
+## # Proper Tail Calls
 
 **Proper tail call(PTC)** is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.
 
@@ -1126,7 +1126,7 @@ The browsers which supports PTC do not generate stack overflow instead shows Inf
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Array find methods
+## # Array find methods
 
 ES6 introduced few array methods and two of them are `Array.find()` and `Array.findIndex()`.
 
