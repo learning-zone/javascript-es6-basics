@@ -18,7 +18,7 @@
 * ES6 New Features
     * [let](#-21-let)
     * [let vs var](#-22-let-vs-var)
-    * [const](#-variable-scoping)
+    * [const](#-23-const)
     * [Arrow function](#-arrow-function)
     * [Default function parameters](#-default-parameters)
     * [Rest parameter](#-rest-parameter)
@@ -180,33 +180,49 @@ Here, the variable **i** is blocked scope. It means that the variable **i** only
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Variable Scoping
+## # 2.3. const
 
-The variable scoping determines the visibility or accessibility of a variable within the certain part of the program or region.
-In ES6, both `const` and `let` keywords allow developers to declare variables in the block scope.
-The `let` statement declares a block-scoped local variable which can be reassigned. i.e, `let` declaration creates a mutable variable.
+ES6 provides a new way of declaring a constant by using the `const` keyword. The `const` keyword creates a **read-only** reference to a value.
 
 ```js
-let a = 1;
-if (a === 1) {
-  let a = 2;
-  console.log(a); //2
-}
-console.log(a); //1
+const CONSTANT_NAME = value;
 ```
 
-**const** variables are similar to **let** variables but they can't be changed through reassignment. i.e, The const declaration creates a read-only reference to a value.
+Like the `let` keyword, the `const` keyword declares **blocked-scope** variables. However, the **block-scoped** variables declared by the `const` keyword can\'t be **reassigned**.
 
 ```js
-const x = 1;
-
-if (x === 1) {
-    const y = 2; // You cannot re-assign the value similar to let variable
-    console.log(y); //2
-}
-
-console.log(x); //1
+const RATE = 0.1;
+RATE = 0.2; // TypeError
 ```
+
+The const keyword ensures that the variable it creates is read-only. However, it doesn’t mean that the actual value to which the const variable reference is immutable. For example:
+
+```js
+const person = { age: 20 };
+console.log(person.age); // 20
+
+person.age = 30; // OK
+console.log(person.age); // 30
+```
+
+Even though the person variable is a constant, you can change the value of its property.
+
+However, you cannot reassign a different value to the person constant like this:
+
+```js
+person = { age: 40 }; // TypeError
+```
+
+If you want the value of the person object to be immutable, you have to freeze it by using the Object.freeze() method:
+
+```js
+const person = Object.freeze({age: 20});
+person.age = 30; // TypeError
+```
+
+*Note: `Object.freeze()` is shallow, meaning that it can freeze the properties of the object, not the objects referenced by the properties.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-const-prej6w)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
