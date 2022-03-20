@@ -257,7 +257,7 @@ message("World"); // Hello, World!
 
 // Multiple parameters and single statement
 let add = (x, y) => x + y;
-console.log(add(10, 20)); // 10
+console.log(add(10, 20)); // 30
 
 // Single parameter and multiple statements
 let even = (number) => {
