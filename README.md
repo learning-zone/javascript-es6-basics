@@ -16,7 +16,7 @@
 
 * [Introduction](#-introduction)
 * ES6 New Features
-    * [let](#-variable-scoping)
+    * [let](#-let)
     * [let vs. var](#-variable-scoping)
     * [const](#-variable-scoping)
     * [Arrow function](#-arrow-function)
@@ -84,6 +84,41 @@
 JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
 
 ECMAScript is the standard that JavaScript programming language uses. ECMAScript provides the specification on how JavaScript programming language should work.
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # Let
+
+ES6 provides a new way of declaring a variable by using the `let` keyword. The `let` keyword is similar to the `var` keyword, except that these variables are **blocked-scope**.
+
+**Syntax:**
+
+```js
+let variable_name;
+```
+
+In JavaScript, blocks are denoted by curly braces `{}` , for example, the `if else`, `for`, `do while`, `while`, `try catch` and so on.
+
+**Example:**
+
+```js
+let x = 10;
+if (x === 10) {
+  let x = 20;
+  console.log(x); // 20:  reference x inside the block
+}
+console.log(x); // 10: reference at the begining of the script
+
+// Output:
+20
+10
+```
+
+Because the `let` keyword declares a block-scoped variable, the `x` variable inside the `if` block is a **new variable** and it shadows the `x` variable declared at the top of the script. Therefore, the value of `x` in the console is 20.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-let-zikqqb?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
