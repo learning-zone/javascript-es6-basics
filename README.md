@@ -235,14 +235,15 @@ The Arrow function provides a more concise syntax for writing function expressio
 Let\'s see how this arrow function looks like,
 
 ```js
-// Function Expression
-var multiplyFunc = function(a, b) {
-    return a * b;
-}
-console.log(multiplyFunc(2, 5)); // 10
-// Arrow function
-var multiplyArrowFunc = (a, b) => a * b;
-console.log(multiplyArrowFunc(2, 5)); // 10
+// Using Function Expression 
+let add = function (x, y) {
+  return x + y;
+};
+console.log(add(10, 20)); // 30
+
+// Using Arrow function
+let add = (x, y) => x + y;
+console.log(add(10, 20)); // 30;
 ```
 
 You can also skip parenthesis(()) if the function has exactly one parameter(either zero or more than one parameter). Apart from this, you can wrap braces({}) if the function has more than one expression in the body.
@@ -250,36 +251,38 @@ You can also skip parenthesis(()) if the function has exactly one parameter(eith
 Let\'s list down all the variations of Arrow function,
 
 ```js
-//1. Single parameter and single statement
-var message = name => console.log("Hello, " + name + "!");
+// Single parameter and single statement
+let message = (name) => console.log("Hello, " + name + "!");
 message("World"); // Hello, World!
-//2. Multiple parameters and single statement
-var multiply = (x, y) => x * y;
-console.log(multiply(2, 5)); // 10
 
+// Multiple parameters and single statement
+let add = (x, y) => x + y;
+console.log(add(10, 20)); // 10
 
-//3. Single parameter and multiple statements
-var even = number => {
-    if(number%2) {
-        console.log("Even");
-    } else {
-        console.log("Odd");
-    }
-}
-even(5); // odd
+// Single parameter and multiple statements
+let even = (number) => {
+  if (number % 2) {
+    console.log("Even");
+  } else {
+    console.log("Odd");
+  }
+};
+even(10); // Even
 
-//4. Multiple parameters and multiple statements
-var divide = (x, y) => {
-    if(y != 0) {
-        return x / y;
-    }
-}
-console.log(divide(100, 5)); // 20
+// Multiple parameters and multiple statements
+let divide = (x, y) => {
+  if (y !== 0) {
+    return x / y;
+  }
+};
+console.log(divide(20, 10)); // 2
 
-//5. No parameter and single statement
-var greet = () => console.log('Hello World!');
+// No parameter and single statement
+let greet = () => console.log("Hello World!");
 greet(); // Hello World!
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
