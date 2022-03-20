@@ -79,7 +79,7 @@
 
 <br/>
 
-## # Introduction
+## # 1. Introduction
 
 JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
 
@@ -89,7 +89,7 @@ ECMAScript is the standard that JavaScript programming language uses. ECMAScript
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # let
+## # 2.1. let
 
 ES6 provides a new way of declaring a variable by using the `let` keyword. The `let` keyword is similar to the `var` keyword, except that these variables are **blocked-scope**.
 
@@ -124,7 +124,7 @@ Because the `let` keyword declares a block-scoped variable, the `x` variable ins
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # let vs var
+## # 2.2. let vs var
 
 The `var` variables belong to the global scope when you define them outside a function. When you declare a variable inside a function using the `var` keyword, the scope of the variable is local. For example:
 
