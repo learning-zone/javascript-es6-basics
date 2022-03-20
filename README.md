@@ -25,7 +25,7 @@
     * [Spread operator](#-spread-operator)
     * [Object literal syntax extensions]() 
     * [for…of](#-iterators-&-for..of)
-    * [Octal and binary literals]()
+    * [Binary and Octal literals](#-binary-and-octal)
     * [Template literals](#-template-literals)
     * [Enhanced object literals](#-Enhanced-object-literals)
 * Destructuring
@@ -75,7 +75,6 @@
     * [Reflection](#-reflect)
 * Miscellaneous Features
     * [Unicode](#-unicode)
-    * [Binary and Octal](#-binary-and-octal)
     * [Proper Tail calls](#-proper-tail-calls)
 
 <br/>
