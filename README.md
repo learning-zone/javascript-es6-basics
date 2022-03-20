@@ -14,10 +14,10 @@
 
 ## Table of Contents
 
-* [Introduction](#-introduction)
+* [Introduction](#-1-introduction)
 * ES6 New Features
-    * [let](#-let)
-    * [let vs var](#-let-vs-var)
+    * [let](#-21-let)
+    * [let vs var](#-22-let-vs-var)
     * [const](#-variable-scoping)
     * [Arrow function](#-arrow-function)
     * [Default function parameters](#-default-parameters)
