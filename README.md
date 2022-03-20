@@ -19,7 +19,7 @@
     * [let](#-21-let)
     * [let vs var](#-22-let-vs-var)
     * [const](#-23-const)
-    * [Arrow function](#-arrow-function)
+    * [Arrow function](#-24-arrow-function)
     * [Default function parameters](#-default-parameters)
     * [Rest parameter](#-rest-parameter)
     * [Spread operator](#-spread-operator)
@@ -228,7 +228,7 @@ person.age = 30; // TypeError
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Arrow function
+## # 2.4. Arrow function
 
 The Arrow function provides a more concise syntax for writing function expressions by opting out the function and return keywords using fat arrow(`=>`) notation.
 
