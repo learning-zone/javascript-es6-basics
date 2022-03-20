@@ -17,7 +17,7 @@
 * [Introduction](#-introduction)
 * ES6 New Features
     * [let](#-let)
-    * [let vs. var](#-variable-scoping)
+    * [let vs var](#-let-vs-var)
     * [const](#-variable-scoping)
     * [Arrow function](#-arrow-function)
     * [Default function parameters](#-default-parameters)
@@ -89,7 +89,7 @@ ECMAScript is the standard that JavaScript programming language uses. ECMAScript
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Let
+## # let
 
 ES6 provides a new way of declaring a variable by using the `let` keyword. The `let` keyword is similar to the `var` keyword, except that these variables are **blocked-scope**.
 
@@ -119,6 +119,62 @@ console.log(x); // 10: reference at the begining of the script
 Because the `let` keyword declares a block-scoped variable, the `x` variable inside the `if` block is a **new variable** and it shadows the `x` variable declared at the top of the script. Therefore, the value of `x` in the console is 20.
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-let-zikqqb?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # let vs var
+
+The `var` variables belong to the global scope when you define them outside a function. When you declare a variable inside a function using the `var` keyword, the scope of the variable is local. For example:
+
+```js
+function increase() {
+    var counter = 10;
+}
+// cannot access the counter variable here
+```
+
+Here, the counter variable is local to the increase() function. It cannot be accessible outside of the function.
+
+The following example displays four numbers from 0 to 4 inside the loop and the number 5 outside the loop.
+
+```js
+for (var i = 0; i < 3; i++) {
+  console.log("Inside the loop:", i);
+}
+
+console.log("Outside the loop:", i);
+
+// Output:
+Inside the loop: 0 
+Inside the loop: 1 
+Inside the loop: 2 
+Outside the loop: 3
+```
+
+Here, the i variable is a global variable. Therefore, it can be accessed from both inside and after the for loop.
+
+The following example uses the `let` keyword instead of the `var` keyword:
+
+```js
+for (let i = 0; i < 3; i++) {
+  console.log("Inside the loop:", i);
+}
+
+console.log("Outside the loop:", i);
+
+// Output
+Inside the loop: 0
+Inside the loop: 1
+Inside the loop: 2
+
+Uncaught ReferenceError: i is not defined
+```
+
+Here, the variable **i** is blocked scope. It means that the variable **i** only exists and can be accessible inside the for loop block.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-let-vs-var-yvu11z)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
