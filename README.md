@@ -246,7 +246,7 @@ let add = (x, y) => x + y;
 console.log(add(10, 20)); // 30;
 ```
 
-You can also skip parenthesis(()) if the function has exactly one parameter(either zero or more than one parameter). Apart from this, you can wrap braces({}) if the function has more than one expression in the body.
+Unlike regular functions, arrow functions do not have their own `this`. The value of `this` inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of `this` in the closest non-arrow parent function.
 
 Let\'s list down all the variations of Arrow function,
 
