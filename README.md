@@ -19,8 +19,8 @@
     * [let](#-21-let)
     * [let vs var](#-22-let-vs-var)
     * [const](#-23-const)
-    * [Arrow function](#-24-arrow-function)
-    * [Default function parameters](#-default-parameters)
+    * [Arrow Function](#-24-arrow-function)
+    * [Default Function Parameters](#-25-default-function-parameters)
     * [Rest parameter](#-rest-parameter)
     * [Spread operator](#-spread-operator)
     * [Object literal syntax extensions]() 
@@ -228,7 +228,7 @@ person.age = 30; // TypeError
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 2.4. Arrow function
+## # 2.4. Arrow Function
 
 The Arrow function provides a more concise syntax for writing function expressions by opting out the function and return keywords using fat arrow(`=>`) notation.
 
@@ -301,6 +301,38 @@ console.log(result); // 314
 ```
 
 *Note: Unlike regular functions, arrow functions do not have their own `this`. The value of `this` inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of `this` in the closest non-arrow parent function.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 2.5. Default Function Parameters
+
+Default parameters allow named parameters of a function to be initialized with default values if no value or undefined is passed.
+
+Prior to ES6, you need check for undefined values and provide the default value for undefined values using if/else or ternary operator
+
+```js
+function add(a, b) {
+  a = (typeof a !== 'undefined') ? a : 10;
+  b = (typeof b !== 'undefined') ? b : 20;
+  return a + b;
+}
+add(20); // 40
+add(); // 30
+```
+
+In ES6, these checks can be avoided using default parameters
+
+```js
+function add(a = 10, b = 20) {
+  return a + b;
+}
+add(20); // 40
+add(); // 30
+```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
 
@@ -521,36 +553,6 @@ You can use destructing in below places,
 2. Assignments
 3. Parameter definitions
 4. for-of loop
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Default parameters
-
-Default parameters allow named parameters of a function to be initialized with default values if no value or undefined is passed.
-
-Prior to ES6, you need check for undefined values and provide the default value for undefined values using if/else or ternary operator
-
-```js
-function add(a, b) {
-  a = (typeof a !== 'undefined') ? a : 10;
-  b = (typeof b !== 'undefined') ? b : 20;
-  return a + b;
-}
-add(20); // 40
-add(); // 30
-```
-
-In ES6, these checks can be avoided using default parameters
-
-```js
-function add(a = 10, b = 20) {
-  return a + b;
-}
-add(20); // 40
-add(); // 30
-```
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
