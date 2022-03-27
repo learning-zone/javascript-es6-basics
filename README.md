@@ -312,29 +312,40 @@ console.log(result); // 314
 
 Default parameters allow named parameters of a function to be initialized with default values if no value or undefined is passed.
 
+**Syntax:**
+
+```js
+function fn(param1=default1, param2=default2,..) {
+  // ...
+}
+```
+
 Prior to ES6, you need check for undefined values and provide the default value for undefined values using if/else or ternary operator
 
 ```js
-function add(a, b) {
+function sum(a, b) {
   a = (typeof a !== 'undefined') ? a : 10;
   b = (typeof b !== 'undefined') ? b : 20;
   return a + b;
 }
-add(20); // 40
-add(); // 30
+
+console.log(sum()); // 30
+console.log(sum(20)); // 40
 ```
 
 In ES6, these checks can be avoided using default parameters
 
 ```js
-function add(a = 10, b = 20) {
+function sum(a = 10, b = 20) {
   return a + b;
 }
-add(20); // 40
-add(); // 30
+
+console.log(sum()); // 30
+console.log(sum(20)); // 40
+console.log(sum(20, 30)); // 50
 ```
 
-**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-default-parameters-8uu0m8?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
