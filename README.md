@@ -232,55 +232,75 @@ person.age = 30; // TypeError
 
 The Arrow function provides a more concise syntax for writing function expressions by opting out the function and return keywords using fat arrow(`=>`) notation.
 
-Let\'s see how this arrow function looks like,
+**Syntax:**
 
 ```js
-// Using Function Expression 
+let myFunction = (arg1, arg2, ...argN) => expression
+```
+
+```js
+// Function Expression 
 let add = function (x, y) {
   return x + y;
 };
 console.log(add(10, 20)); // 30
-
-// Using Arrow function
-let add = (x, y) => x + y;
-console.log(add(10, 20)); // 30;
 ```
 
-Unlike regular functions, arrow functions do not have their own `this`. The value of `this` inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of `this` in the closest non-arrow parent function.
-
-Let\'s list down all the variations of Arrow function,
+The above function can be written as
 
 ```js
-// Single parameter and single statement
-let message = (name) => console.log("Hello, " + name + "!");
-message("World"); // Hello, World!
-
-// Multiple parameters and single statement
+// Arrow functions
 let add = (x, y) => x + y;
 console.log(add(10, 20)); // 30
-
-// Single parameter and multiple statements
-let even = (number) => {
-  if (number % 2) {
-    console.log("Even");
-  } else {
-    console.log("Odd");
-  }
-};
-even(10); // Even
-
-// Multiple parameters and multiple statements
-let divide = (x, y) => {
-  if (y !== 0) {
-    return x / y;
-  }
-};
-console.log(divide(20, 10)); // 2
-
-// No parameter and single statement
-let greet = () => console.log("Hello World!");
-greet(); // Hello World!
 ```
+
+**Example 01:** Arrow Function with No Argument
+
+If a function doesn\'t take any argument, then you should use empty parentheses.
+
+```js
+let greet = () => console.log('Hello');
+greet(); // Hello
+```
+
+**Example 02:** Arrow Function with One Argument
+
+If a function has only one argument, you can omit the parentheses.
+
+```js
+let greet = x => console.log(x);
+greet('Hello'); // Hello 
+```
+
+**Example 03:** Arrow Function as an Expression
+
+You can also dynamically create a function and use it as an expression.
+
+```js
+let age = 25;
+
+let welcome = (age < 18) ?
+  () => console.log('Baby') :
+  () => console.log('Adult');
+
+welcome(); // Adult
+```
+
+**Example 04:** Multiline Arrow Functions
+
+If a function body has multiple statements, you need to put them inside curly brackets `{}`.
+
+```js
+let area = (r) => {
+  const pi = 3.14;
+  return pi * r * r;
+}
+
+let result = area(10);
+console.log(result); // 314
+```
+
+*Note: Unlike regular functions, arrow functions do not have their own `this`. The value of `this` inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of `this` in the closest non-arrow parent function.*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
 
