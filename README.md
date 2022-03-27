@@ -21,7 +21,7 @@
     * [const](#-23-const)
     * [Arrow Function](#-24-arrow-function)
     * [Default Function Parameters](#-25-default-function-parameters)
-    * [Rest parameter](#-rest-parameter)
+    * [Rest Parameter](#-26-rest-parameter)
     * [Spread operator](#-spread-operator)
     * [Object literal syntax extensions]() 
     * [for…of](#-iterators-&-for..of)
@@ -351,6 +351,30 @@ console.log(sum(20, 30)); // 50
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 2.6. Rest Parameter
+
+The rest parameter is used to represent an indefinite number of arguments as an array. The important point here is only the function\'s last parameter can be a "rest parameter".
+
+This feature has been introduced to reduce the boilerplate code that was induced by the arguments.
+
+```js
+function sum(...args) {
+  return args.reduce((previous, current) => {
+    return previous + current;
+  });
+}
+
+console.log(sum(10)); // 10
+console.log(sum(10, 20)); // 30
+console.log(sum(10, 20, 30)); // 60
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-rest-parameters-w8zy28?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -564,25 +588,6 @@ You can use destructing in below places,
 2. Assignments
 3. Parameter definitions
 4. for-of loop
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Rest parameter
-
-The rest parameter is used to represent an indefinite number of arguments as an array. The important point here is only the function\'s last parameter can be a "rest parameter". This feature has been introduced to reduce the boilerplate code that was induced by the arguments.
-
-```js
-function sum(...args) {
-  return args.reduce((previous, current) => {
-    return previous + current;
-  });
-}
-console.log(sum(1, 2, 3)); // 6
-console.log(sum(1, 2, 3, 4)); // 10
-console.log(sum(1, 2, 3, 4, 5)); // 15
-```
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
