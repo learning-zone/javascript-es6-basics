@@ -23,7 +23,7 @@
     * [Default Function Parameters](#-25-default-function-parameters)
     * [Rest Parameter](#-26-rest-parameter)
     * [Spread Operator](#-27-spread-operator)
-    * [for…of](#-28-for..of)
+    * [for…of](#-28-forof)
     * [Binary and Octal literals](#-binary-and-octal)
     * [Template literals](#-template-literals)
     * [Enhanced object literals](#-Enhanced-object-literals)
