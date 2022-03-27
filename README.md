@@ -23,7 +23,7 @@
     * [Default Function Parameters](#-25-default-function-parameters)
     * [Rest Parameter](#-26-rest-parameter)
     * [Spread Operator](#-27-spread-operator)
-    * [for…of](#-iterators-&-for..of)
+    * [for…of](#-28-for..of)
     * [Binary and Octal literals](#-binary-and-octal)
     * [Template literals](#-template-literals)
     * [Enhanced object literals](#-Enhanced-object-literals)
@@ -374,7 +374,7 @@ console.log(sum(10, 20, 30)); // 60
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 2.7 Spread Operator
+## # 2.7. Spread Operator
 
 The spread operator allows you to spread out elements of an iterable object such as an **array**, **map**, or **set**.
 
@@ -420,6 +420,54 @@ console.log(copiedScores); // [80, 70, 90]
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-spread-operator-0jh98u)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 2.8. For..of
+
+String, Array, TypedArray, Map, and Set are all built-in iterables but objects are not iterables by default.
+Iterators are a new way to loop over any collection in JavaScript. These are objects which defines a sequence and potentially a return value upon its termination.
+An iterator implements the Iterator protocol by having a next() method that returns an object with two properties:
+
+1. **value:** The next value in the iteration sequence.
+2. **done:** returns rue if the last value in the sequence has already been consumed.
+
+You can make the object iterable by defining a `Symbol.iterator` property on it.
+
+```js
+const collection = {
+  one: 1,
+  two: 2,
+  three: 3,
+  [Symbol.iterator]() {
+    const values = Object.keys(this);
+    let i = 0;
+    return {
+      next: () => {
+        return {
+          value: this[values[i++]],
+          done: i > values.length
+        }
+      }
+    };
+  }
+};
+const iterator = collection[Symbol.iterator]();
+console.log(iterator.next());    // → {value: 1, done: false}
+console.log(iterator.next());    // → {value: 2, done: false}
+console.log(iterator.next());    // → {value: 3, done: false}
+console.log(iterator.next());    // → {value: undefined, done: true}
+
+for (const value of collection) {
+  console.log(value);
+}
+```
+
+The for...of statement creates a loop iterating over user defined collection object. But this loop can be used for built-in objects too.
+
+**Note:** The abrupt iteration termination can be caused by break, throw or return.
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
@@ -638,54 +686,6 @@ You can use destructing in below places,
 2. Assignments
 3. Parameter definitions
 4. for-of loop
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Iterators & For..of
-
-String, Array, TypedArray, Map, and Set are all built-in iterables but objects are not iterables by default.
-Iterators are a new way to loop over any collection in JavaScript. These are objects which defines a sequence and potentially a return value upon its termination.
-An iterator implements the Iterator protocol by having a next() method that returns an object with two properties:
-
-1. **value:** The next value in the iteration sequence.
-2. **done:** returns rue if the last value in the sequence has already been consumed.
-
-You can make the object iterable by defining a `Symbol.iterator` property on it.
-
-```js
-const collection = {
-  one: 1,
-  two: 2,
-  three: 3,
-  [Symbol.iterator]() {
-    const values = Object.keys(this);
-    let i = 0;
-    return {
-      next: () => {
-        return {
-          value: this[values[i++]],
-          done: i > values.length
-        }
-      }
-    };
-  }
-};
-const iterator = collection[Symbol.iterator]();
-console.log(iterator.next());    // → {value: 1, done: false}
-console.log(iterator.next());    // → {value: 2, done: false}
-console.log(iterator.next());    // → {value: 3, done: false}
-console.log(iterator.next());    // → {value: undefined, done: true}
-
-for (const value of collection) {
-  console.log(value);
-}
-```
-
-The for...of statement creates a loop iterating over user defined collection object. But this loop can be used for built-in objects too.
-
-**Note:** The abrupt iteration termination can be caused by break, throw or return.
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
