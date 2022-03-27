@@ -22,7 +22,7 @@
     * [Arrow Function](#-24-arrow-function)
     * [Default Function Parameters](#-25-default-function-parameters)
     * [Rest Parameter](#-26-rest-parameter)
-    * [Spread operator](#-spread-operator)
+    * [Spread Operator](#-27-spread-operator)
     * [Object literal syntax extensions]() 
     * [for…of](#-iterators-&-for..of)
     * [Binary and Octal literals](#-binary-and-octal)
@@ -375,6 +375,57 @@ console.log(sum(10, 20, 30)); // 60
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 2.7 Spread Operator
+
+The spread operator allows you to spread out elements of an iterable object such as an **array**, **map**, or **set**.
+
+**Example:**
+
+```js
+const odd = [1, 3, 5];
+const combined = [2, 4, 6, ...odd];
+
+console.log(combined); // [ 2, 4, 6, 1, 3, 5 ]
+```
+
+JavaScript spread operator and array manipulation
+
+**1. Constructing array literal:**
+
+The spread operator allows to insert another array into the initialized array when you construct an array using the literal form.
+
+```js
+let initialChars = ['A', 'B'];
+let chars = [...initialChars, 'C', 'D'];
+
+console.log(chars); // ["A", "B", "C", "D"]
+```
+
+**2. Concatenating arrays:**
+
+```js
+let numbers = [10, 20];
+let moreNumbers = [30, 40];
+let allNumbers = [...numbers, ...moreNumbers];
+
+console.log(allNumbers); // [10, 20, 30, 40]
+```
+
+**3. Copying an array:**
+
+```js
+let scores = [80, 70, 90];
+let copiedScores = [...scores];
+
+console.log(copiedScores); // [80, 70, 90]
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-spread-operator-0jh98u)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -588,29 +639,6 @@ You can use destructing in below places,
 2. Assignments
 3. Parameter definitions
 4. for-of loop
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Spread Operator
-
-Spread Operator allows iterables( arrays / objects / strings ) to be expanded into single arguments/elements.
-
-1. In function and constructor calls, the spread operator turns iterable values into arguments
-
-```js
-console.log(Math.max(...[-10, 30, 10, 20])); //30
-console.log(Math.max(-10, ...[-50, 10], 30)); //30
-```
-
-2. In Array literals and strings, the spread operator turns iterable values into Array elements
-
-```js
-console.log([1, ...[2,3], 4, ...[5, 6, 7]]); // 1, 2, 3, 4, 5, 6, 7
-```
-
-**Note:** The spread syntax is opposite of rest parameter.
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
