@@ -796,61 +796,65 @@ let { property1: variable1, property2: variable2 } = object;
 **Simple assignment:**
 
 ```js
-const num = {x: 10, y: 20};  
-const {x, y} = num;  
-  
-console.log(x); // 10  
-console.log(y); // 20  
+const num = { x: 10, y: 20 };
+const { x, y } = num;
+
+console.log(x); // 10
+console.log(y); // 20
 ```
 
 **Basic Object destructuring assignment:**
 
 ```js
-const employee = {name: 'Arun', position: 'First', rollno: '24'};  
-const {name, position, rollno} = student;  
+const employee = {
+  eId: "12345",
+  name: "Dushyant Meena",
+  email: "dushyant.meena@email.com"
+};
+const { eId, name, email } = employee;
 
-console.log(name); // Arun  
-console.log(position); // First  
-console.log(rollno); // 24  
+console.log(eId); // 12345
+console.log(name); // Dushyant Meena
+console.log(email); // dushyant.meena@email.com
 ```
 
 **Object destructuring and default values:**
 
 ```js
-const {x = 100, y = 200} = {x: 500};  
-  
-console.log(x); // 500  
-console.log(y); // 200  
+const { q = 100, w = 200 } = { e: 500 };
+
+console.log(q); // 500
+console.log(w); // 200
 ```
 
 **Assigning new variable names:**
 
 ```js
-const num = {x: 100, y: 200};  
-const {x: val1, y: val2} = num;  
-   
-console.log(val1); //100   
-console.log(val2); //200  
+const number = { x: 100, y: 200 };
+const { x: val1, y: val2 } = number;
+
+console.log(val1); // 100
+console.log(val2); // 200
 ```
 
 **Assignment without declaration:**
 
 ```js
-let name, msg;  
-({name, msg} = {name: 'Gauri Pratima', msg: 'Hi'});  
+let firstName, lastName;
+({ firstName, lastName } = { firstName: "Gauri", lastName: "Pratima" });
 
-console.log(name); // Gauri Pratima  
-console.log(msg); // Hi  
+console.log(firstName); // Gauri
+console.log(lastName); // Pratima
 ```
 
 **Object destructuring and rest operator:**
 
 ```js
-let {a, b, ...args} = {a: 10, b: 20, c: 30, d: 40, e: 50}  
+let { a, b, ...args } = { a: 10, b: 20, c: 30, d: 40, e: 50 };
 
-console.log(a);   
-console.log(b);   
-console.log(args);  
+console.log(a);
+console.log(b);
+console.log(args);
 
 // Output
 100
@@ -861,10 +865,10 @@ console.log(args);
 **Assigning new variable names and providing default values simultaneously:**
 
 ```js
-const {a:num1=100, b:num2=200} = {a:300};  
+const { a: num1 = 100, b: num2 = 200 } = { a: 300 };
 
-console.log(num1); //300  
-console.log(num2); //200  
+console.log(num1); //300
+console.log(num2); //200
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-destructuring-ecncqm?file=/src/index.js)**
