@@ -709,19 +709,73 @@ console.log(computedObj.one);
 
 ## # 3.1 Array Destructuring
 
-This feature is used to extract values from an array.
+ES6 provides a new feature called destructing assignment that allows you to destructure properties of an object or elements of an array into individual variables.
+
+**Basic variable assignment:**
 
 ```js
-const [one, two, three] = ['one', 'two', 'three'];
-console.log(one, two, three); // one, two, three
+const keys = ["one", "two", "three"];
+const [red, yellow, green] = keys;
+
+console.log(red); // one
+console.log(yellow); // two
+console.log(green); // three
 ```
 
-You can use destructing in below places,
+**Assignment separate from declaration:**
 
-1. Variable declarations
-2. Assignments
-3. Parameter definitions
-4. for-of loop
+```js
+let a, b;
+
+[a, b] = [10, 20];
+
+console.log(a); // 10
+console.log(b); // 20
+```
+
+**Default values:**
+
+```js
+let a, b;
+
+[a=10, b=20] = [30];
+
+console.log(a); // 30
+console.log(b); // 20
+```
+
+**Swapping variables:**
+
+```js
+let a = 10, 
+    b = 20;
+
+[a, b] = [b, a];
+
+console.log(a); // 20
+console.log(b); // 10
+```
+
+**Assigning the rest of an array to a variable:**
+
+```js
+const [a, ...b] = [1, 2, 3];
+
+console.log(a); // 1
+console.log(b); // [2, 3]
+```
+
+**Functions that return multiple values:**
+
+```js
+function calculate(a, b) {
+  return [a + b, a - b, a * b];
+}
+
+let [sum, difference, multiplication] = calculate(20, 10);
+
+console.log(sum, difference, multiplication); // 30, 10, 200
+```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-destructuring-0k5c35?file=/src/index.js)**
 
