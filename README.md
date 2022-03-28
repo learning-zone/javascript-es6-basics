@@ -25,7 +25,7 @@
     * [Spread Operator](#-27-spread-operator)
     * [for…of](#-28-forof)
     * [Binary and Octal literals](#-29-binary-and-octal-literals)
-    * [Template literals](#-template-literals)
+    * [Template literals](#-210-template-literals)
     * [Enhanced object literals](#-Enhanced-object-literals)
 * Destructuring
     * [Array Destructuring](#-destructuring)
@@ -551,6 +551,48 @@ console.log(num); // 8
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 2.10. Template literals
+
+Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces (${expression}). These literals are enclosed by the backtick (` `) character instead of double or single quotes.
+
+**Example:**
+
+```js
+let str = "World";
+let message = `Hello ${str}`;
+
+console.log(message); // Hello World
+```
+
+**Multiline Strings:**
+
+```js
+let msg = 'Multiline \n\
+string';
+
+console.log(msg);
+
+// Multiline
+// string
+```
+
+**Tagged Templates:**
+
+A template tag carries the transformation on the template literal and returns the result string.
+
+It can be used in creating components in `CSS-In-JS` styled components to use across the application
+
+```js
+const Button = styled.a`
+  display: inline-block;
+  border-radius: 3px;
+`
+```
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -697,37 +739,6 @@ const
     two: 2,
     [key]: 3
   };
-```
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Template literals
-
-Prior to ES6, JavaScript developers would need to do ugly string concatenation to creat dynamic strings.
-
-Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces (${expression}). Also, these literals are enclosed by the backtick (` `) character instead of double or single quotes.
-
-ES6 has two new kinds of literals:
-
-**Template literals:** string literals which exists across multiple lines and include interpolated expressions(i.e, ${expression})
-
-```js
-const firstName = 'John';
-console.log(`Hello ${firstName}!
-Good morning!`);
-```
-
-**Tagged template literals:** Function calls which are created by mentioning a function before a template literal.
-
-The real world use case is creating components in CSS-In-JS styled components to use across the application
-
-```js
-const Button = styled.a`
-  display: inline-block;
-  border-radius: 3px;
-`
 ```
 
 <div align="right">
