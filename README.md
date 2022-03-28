@@ -601,74 +601,88 @@ Hello World
 
 ## # 2.11. Enhanced Object Literals
 
-Object literals are extended to support setting the prototype at construction, shorthand for foo: foo assignments, defining methods, making super calls, and computing property names with expressions.
+The object literal is one of the most popular patterns for creating objects in JavaScript. Object literals are extended to support setting the prototype at construction, defining methods, making super calls, and computing property names with expressions
 
 The important enhancements of object literals are,
 
 **Property Shorthand:**
 
-Object's properties are often created from variables with the same name.
+Object\'s properties are often created from variables with the same name.
 
 Let\'s see the ES5 representation
 
 ```js
 var a = 1, b = 2, c = 3;
-  obj = {
+var obj = {
     a: a,
     b: b,
     c: c
   };
 console.log(obj);
+
+// Output
+{a: 1, b: 2, c: 3}
 ```
 
 and it can be represented in a shorter syntax as below,
 
 ```js
-var a = 1, b = 2, c = 3;
-  obj = {
+let a = 1, b = 2, c = 3;
+let obj = {
     a,
     b,
     c
   };
 console.log(obj);
+
+// Output
+{a: 1, b: 2, c: 3}
 ```
 
 **Method Shorthand:**
 
-In ES5, Object methods require the function statement as below,
+Prior to ES6, when defining a method for an object literal, you need to specify the name and full function definition
 
 ```js
-var calculation = {
-  sum:  function(a, b) { return a + b; },
-  multiply: function(a, b) { return a * b; }
+let server = {
+  name: "Server",
+  restart: function () {
+    console.log("The" + this.name + " is restarting...");
+  }
 };
-console.log( calculation.add(5, 3) );  // 15
-console.log( calculation.multiply(5, 3) ); // 15
+server.restart();
+
+// Output
+The Server is restarting... 
 ```
 
 This can be avoided in ES6,
 
 ```js
-var calculation = {
-  sum(a, b) { return a + b; },
-  multiply(a, b) { return a * b; }
+let server = {
+  name: "Server",
+  restart() {
+    console.log("The " + this.name + " is restarting...");
+  }
 };
-console.log( calculation.add(5, 3) );  // 15
-console.log( calculation.multiply(5, 3) ); // 15
+server.restart();
+
+// Output
+The Server is restarting... 
 ```
 
 **Computed Property Names:**
 
-In ES5, it wasn’t possible to use a variable for a key name during object creation stage.
+In ES5, it wasn\'t possible to use a variable for a key name during object creation stage.
 
 ```js
 var
   key = 'three',
   obj = {
-    one: 1,
-    two: 2
+    one: 10,
+    two: 20
   };
-obj[key] = 3;
+obj[key] = 30;
 ```
 
 Object keys can be dynamically assigned in ES6 by placing an expression in square brackets([])
@@ -677,11 +691,17 @@ Object keys can be dynamically assigned in ES6 by placing an expression in squar
 const
   key = 'three',
   computedObj = {
-    one: 1,
-    two: 2,
-    [key]: 3
+    one: 10,
+    two: 20,
+    [key]: 30
   };
+console.log(computedObj.one);
+
+// Output
+10
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-literals-byphgz?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
