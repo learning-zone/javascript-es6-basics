@@ -427,47 +427,81 @@ console.log(copiedScores); // [80, 70, 90]
 
 ## # 2.8. For..of
 
-String, Array, TypedArray, Map, and Set are all built-in iterables but objects are not iterables by default.
-Iterators are a new way to loop over any collection in JavaScript. These are objects which defines a sequence and potentially a return value upon its termination.
-An iterator implements the Iterator protocol by having a next() method that returns an object with two properties:
+The `for...of` statement creates a loop iterating over **iterable objects**, including: built-in `String`, `Array`, array-like objects (e.g., `arguments` or `NodeList`), `TypedArray`, `Map`, `Set`, and user-defined iterables.
 
-1. **value:** The next value in the iteration sequence.
-2. **done:** returns rue if the last value in the sequence has already been consumed.
+It invokes a custom iteration hook with statements to be executed for the value of each distinct property of the object.
 
-You can make the object iterable by defining a `Symbol.iterator` property on it.
+**Syntax:**
 
 ```js
-const collection = {
-  one: 1,
-  two: 2,
-  three: 3,
-  [Symbol.iterator]() {
-    const values = Object.keys(this);
-    let i = 0;
-    return {
-      next: () => {
-        return {
-          value: this[values[i++]],
-          done: i > values.length
-        }
-      }
-    };
-  }
-};
-const iterator = collection[Symbol.iterator]();
-console.log(iterator.next());    // → {value: 1, done: false}
-console.log(iterator.next());    // → {value: 2, done: false}
-console.log(iterator.next());    // → {value: 3, done: false}
-console.log(iterator.next());    // → {value: undefined, done: true}
-
-for (const value of collection) {
-  console.log(value);
+for (variable of iterable) {
+   // ...
 }
 ```
 
-The for...of statement creates a loop iterating over user defined collection object. But this loop can be used for built-in objects too.
+**Example 01:** Iterating over an Array
 
-**Note:** The abrupt iteration termination can be caused by break, throw or return.
+```js
+const iterable = [10, 20, 30];
+
+for (const value of iterable) {
+  console.log(value);
+}
+
+// Output
+10
+20
+30
+```
+
+**Example 02:** Iterating over a String
+
+```js
+const iterable = 'Hello';
+
+for (const value of iterable) {
+  console.log(value);
+}
+
+// Output
+"H"
+"e"
+"l"
+"l"
+"o"
+```
+
+**Example 03:** Iterating over a Map
+
+```js
+const iterable = new Map([['A', 10], ['B', 20], ['C', 30]]);
+
+for (const [key, value] of iterable) {
+  console.log(key + " -> " + value);
+}
+
+// Output
+A -> 10
+B -> 20
+C -> 30
+```
+
+**Example 04:** Iterating over a Set
+
+```js
+const iterable = new Set([10, 10, 20, 20, 30, 30]);
+
+for (const value of iterable) {
+  console.log(value);
+}
+
+// Output
+10
+20
+30
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-for-of-ltt89x?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
