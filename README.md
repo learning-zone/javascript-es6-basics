@@ -26,7 +26,7 @@
     * [for…of](#-28-forof)
     * [Binary and Octal literals](#-29-binary-and-octal-literals)
     * [Template literals](#-210-template-literals)
-    * [Enhanced object literals](#-Enhanced-object-literals)
+    * [Enhanced Object Literals](#-211-Enhanced-object-literals)
 * Destructuring
     * [Array Destructuring](#-destructuring)
     * [Object Destructuring](#-destructuring)
@@ -583,81 +583,23 @@ A template tag carries the transformation on the template literal and returns th
 It can be used in creating components in `CSS-In-JS` styled components to use across the application
 
 ```js
-const Button = styled.a`
-  display: inline-block;
-  border-radius: 3px;
-`
+function tag(strings) {
+  console.log(strings.raw[0]); 
+}
+
+tag`Hello World`;
+
+// Output
+Hello World
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-template-literals-d005t4?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Classes
-
-The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
-
-There are two ways to define classes,
-
-**Class declarations:**
-
-```js
-class Square {
-  constructor(length) {
-    this.length = length;
-  }
-  get area() {
-    return this.length * this.length;
-  }
-  set area(value) {
-    this.area = value;
-  }
-}
-```
-
-**Class expressions:**
-
-```js
-const square = class Square {
-  constructor(length) {
-    this.length = length;
-  }
-  get area() {
-    return this.length * this.length;
-  }
-  set area(value) {
-    this.area = value;
-  }
-}
-```
-
-You can use **extend** keyword to use inheritance. This enables the subclass to get all features of a parent class.
-
-```js
-class Vehicle {
-  constructor(name) {
-    this.name = name;
-  }
-  start() {
-    console.log(`${this.name} vehicle started`);
-  }
-}
-class Car extends Vehicle {
-  start() {
-    console.log(`${this.name} car started`);
-  }
-}
-const car = new Car('BMW');
-console.log(car.start()); // BMW car started
-```
-
-**Note:** Even though ES6 classes looks similar to classes in other object oriented languages, such as Java, PHP, etc but they do not work exactly the same way.
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Enhanced object literals
+## # 2.11. Enhanced Object Literals
 
 Object literals are extended to support setting the prototype at construction, shorthand for foo: foo assignments, defining methods, making super calls, and computing property names with expressions.
 
@@ -740,6 +682,70 @@ const
     [key]: 3
   };
 ```
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # Classes
+
+The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
+
+There are two ways to define classes,
+
+**Class declarations:**
+
+```js
+class Square {
+  constructor(length) {
+    this.length = length;
+  }
+  get area() {
+    return this.length * this.length;
+  }
+  set area(value) {
+    this.area = value;
+  }
+}
+```
+
+**Class expressions:**
+
+```js
+const square = class Square {
+  constructor(length) {
+    this.length = length;
+  }
+  get area() {
+    return this.length * this.length;
+  }
+  set area(value) {
+    this.area = value;
+  }
+}
+```
+
+You can use **extend** keyword to use inheritance. This enables the subclass to get all features of a parent class.
+
+```js
+class Vehicle {
+  constructor(name) {
+    this.name = name;
+  }
+  start() {
+    console.log(`${this.name} vehicle started`);
+  }
+}
+class Car extends Vehicle {
+  start() {
+    console.log(`${this.name} car started`);
+  }
+}
+const car = new Car('BMW');
+console.log(car.start()); // BMW car started
+```
+
+**Note:** Even though ES6 classes looks similar to classes in other object oriented languages, such as Java, PHP, etc but they do not work exactly the same way.
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
