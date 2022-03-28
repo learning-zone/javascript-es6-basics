@@ -29,7 +29,7 @@
     * [Enhanced Object literals](#-211-Enhanced-object-literals)
 * Destructuring
     * [Array Destructuring](#-31-array-destructuring)
-    * [Object Destructuring](#-destructuring)
+    * [Object Destructuring](#-32-object-destructuring)
 * ES6 Modules
     * [ES6 modules](#-modules)
 * ES6 Classes
@@ -783,6 +783,96 @@ console.log(sum, difference, multiplication); // 30, 10, 200
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 3.2. Object Destructuring
+
+ES6 introduces the object destructuring syntax that provides an alternative way to assign properties of an object to variables.
+
+**Syntax:**
+
+```js
+let { property1: variable1, property2: variable2 } = object;
+```
+
+**Simple assignment:**
+
+```js
+const num = {x: 10, y: 20};  
+const {x, y} = num;  
+  
+console.log(x); // 10  
+console.log(y); // 20  
+```
+
+**Basic Object destructuring assignment:**
+
+```js
+const employee = {name: 'Arun', position: 'First', rollno: '24'};  
+const {name, position, rollno} = student;  
+
+console.log(name); // Arun  
+console.log(position); // First  
+console.log(rollno); // 24  
+```
+
+**Object destructuring and default values:**
+
+```js
+const {x = 100, y = 200} = {x: 500};  
+  
+console.log(x); // 500  
+console.log(y); // 200  
+```
+
+**Assigning new variable names:**
+
+```js
+const num = {x: 100, y: 200};  
+const {x: val1, y: val2} = num;  
+   
+console.log(val1); //100   
+console.log(val2); //200  
+```
+
+**Assignment without declaration:**
+
+```js
+let name, msg;  
+({name, msg} = {name: 'Gauri Pratima', msg: 'Hi'});  
+
+console.log(name); // Gauri Pratima  
+console.log(msg); // Hi  
+```
+
+**Object destructuring and rest operator:**
+
+```js
+let {a, b, ...args} = {a: 10, b: 20, c: 30, d: 40, e: 50}  
+
+console.log(a);   
+console.log(b);   
+console.log(args);  
+
+// Output
+100
+200
+{ c: 30, d: 40, e: 50 }
+```
+
+**Assigning new variable names and providing default values simultaneously:**
+
+```js
+const {a:num1=100, b:num2=200} = {a:300};  
+
+console.log(num1); //300  
+console.log(num2); //200  
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-destructuring-ecncqm?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -846,21 +936,6 @@ console.log(car.start()); // BMW car started
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
 </div>
-
-## # Destructuring
-
-Destructuring is a javascript expression for extracting multiple values from data stored in objects(properties of an object) and Arrays.
-
-**Object destructuring:**
-
-This feature is used to extract values from an object.
-
-```js
-const user = { firstName: 'John', lastName: 'Kary' };
-const {firstName, lastName} = user;
-
-console.log(firstName, lastName); // John, Kary
-```
 
 ## # Generators
 
