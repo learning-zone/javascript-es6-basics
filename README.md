@@ -26,9 +26,9 @@
     * [for…of](#-28-forof)
     * [Binary and Octal literals](#-29-binary-and-octal-literals)
     * [Template literals](#-210-template-literals)
-    * [Enhanced Object Literals](#-211-Enhanced-object-literals)
+    * [Enhanced Object literals](#-211-Enhanced-object-literals)
 * Destructuring
-    * [Array Destructuring](#-destructuring)
+    * [Array Destructuring](#-31-array-destructuring)
     * [Object Destructuring](#-destructuring)
 * ES6 Modules
     * [ES6 modules](#-modules)
@@ -599,7 +599,7 @@ Hello World
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 2.11. Enhanced Object Literals
+## # 2.11. Enhanced Object literals
 
 The object literal is one of the most popular patterns for creating objects in JavaScript. Object literals are extended to support setting the prototype at construction, defining methods, making super calls, and computing property names with expressions
 
@@ -707,6 +707,28 @@ console.log(computedObj.one);
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 3.1 Array Destructuring
+
+This feature is used to extract values from an array.
+
+```js
+const [one, two, three] = ['one', 'two', 'three'];
+console.log(one, two, three); // one, two, three
+```
+
+You can use destructing in below places,
+
+1. Variable declarations
+2. Assignments
+3. Parameter definitions
+4. for-of loop
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-destructuring-0k5c35?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -785,26 +807,6 @@ const {firstName, lastName} = user;
 
 console.log(firstName, lastName); // John, Kary
 ```
-
-**Array destructuring:**
-
-This feature is used to extract values from an array.
-
-```js
-const [one, two, three] = ['one', 'two', 'three'];
-console.log(one, two, three); // one, two, three
-```
-
-You can use destructing in below places,
-
-1. Variable declarations
-2. Assignments
-3. Parameter definitions
-4. for-of loop
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
 
 ## # Generators
 
