@@ -736,12 +736,12 @@ console.log(b); // 20
 **Default values:**
 
 ```js
-let a, b;
+let x, y;
 
-[a=10, b=20] = [30];
+[x = 10, y = 20] = [30];
 
-console.log(a); // 30
-console.log(b); // 20
+console.log(x); // 30
+console.log(y); // 20
 ```
 
 **Swapping variables:**
