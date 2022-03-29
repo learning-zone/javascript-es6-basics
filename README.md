@@ -33,7 +33,7 @@
 * ES6 Modules
     * [ES6 modules](#-4-es6-modules)
 * ES6 Classes
-    * [Class](#-51-class)
+    * [Classes](#-51-classes)
     * [Getters and Setters]()
     * [Class Expression]()
     * [Static methods ]()
@@ -949,65 +949,52 @@ import { export1 as alias1 } from "my-module";
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 5.1. Class
+## # 5.1. Classes
 
-The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
+ES6 Classes formalize the common JavaScript pattern of simulating class-like inheritance hierarchies using functions and prototypes. It support prototype-based inheritance, constructors, super calls, instance and static methods.
 
-There are two ways to define classes,
+The class syntax has two components:
 
-**Class declarations:**
+**1. Class declarations:**
 
 ```js
-class Square {
-  constructor(length) {
-    this.length = length;
-  }
-  get area() {
-    return this.length * this.length;
-  }
-  set area(value) {
-    this.area = value;
-  }
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    getName() {
+        return this.name;
+    }
 }
+
+let Object = new Person("Prasad Shashi");
+let name = Object.getName();
+
+console.log(name); // "Prasad Shashi"
 ```
 
-**Class expressions:**
+**2. Class expressions:**
+
+A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class\'s body. However, it can be accessed via the name property.
 
 ```js
-const square = class Square {
-  constructor(length) {
-    this.length = length;
-  }
-  get area() {
-    return this.length * this.length;
-  }
-  set area(value) {
-    this.area = value;
-  }
-}
-```
-
-You can use **extend** keyword to use inheritance. This enables the subclass to get all features of a parent class.
-
-```js
-class Vehicle {
+// Unnamed Class
+let Person = class {
   constructor(name) {
     this.name = name;
   }
-  start() {
-    console.log(`${this.name} vehicle started`);
+  getName() {
+    return this.name;
   }
-}
-class Car extends Vehicle {
-  start() {
-    console.log(`${this.name} car started`);
-  }
-}
-const car = new Car('BMW');
-console.log(car.start()); // BMW car started
+};
+
+let Object = new Person("Anjali Durga");
+let name = Object.getName();
+
+console.log(name); // "Anjali Durga"
 ```
 
-**Note:** Even though ES6 classes looks similar to classes in other object oriented languages, such as Java, PHP, etc but they do not work exactly the same way.
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-70hkd7)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
