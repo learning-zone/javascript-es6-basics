@@ -31,7 +31,7 @@
     * [Array Destructuring](#-31-array-destructuring)
     * [Object Destructuring](#-32-object-destructuring)
 * ES6 Modules
-    * [ES6 modules](#-modules)
+    * [ES6 modules](#-4-es6-modules)
 * ES6 Classes
     * [Class](#-classes)
     * [Getters and Setters]()
@@ -733,7 +733,7 @@ console.log(a); // 10
 console.log(b); // 20
 ```
 
-**Default values:**
+**Array destructuring and Default values:**
 
 ```js
 let x, y;
@@ -877,6 +877,78 @@ console.log(num2); //200
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 4. ES6 modules
+
+An ES6 module is a JavaScript file that executes in strict mode only. It means that any variables or functions declared in the module won\'t be added automatically to the global scope.
+
+ES6 has provided the built-in support for modules. Everything inside a module is private by default. Public variables, functions and classes are exposed using `export` statement and import the same using `import` statement.
+
+**Export Statement:**
+
+There are two types of exports:
+
+**1. Named Exports:**
+
+You can export each element or a single export statement to export all the elements at once
+
+```js
+// module "my-module.js"
+const PI = Math.PI;
+
+function add(...args) {
+  return args.reduce((num, tot) => tot + num);
+}
+
+function multiply(...args) {
+  return args.reduce((num, tot) => tot * num);
+}
+
+// private function
+function print(msg) {
+  console.log(msg);
+}
+
+export { PI, add, multiply };
+```
+
+**2. Default Exports:**
+
+If we want to export a single value, you could use a default export
+
+```js
+// module "my-module.js"
+export default function add(...args) {
+                 return args.reduce((num, tot) => tot + num);
+}
+```
+
+**Import Statement:**
+
+The static import statement is used to import read only live bindings which are exported by another module.
+
+There are many variations of import scenarios as below,
+
+```js
+// 1. Import an entire module's contents
+import * as name from "my-module";
+
+//2.Import a single export from a module
+import { export1 } from "my-module";
+
+//3.Import multiple exports from a module
+import { export1 , export2 } from "my-module";
+
+//4.Import default export from a module
+import defaultExport from "my-module";
+
+//5.Import an export with an alias
+import { export1 as alias1 } from "my-module";
+```
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Classes
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
@@ -961,84 +1033,6 @@ console.log(myGenObj.next().value); // 40
 ```
 
 **Note:** We can use `yield*` to delegate to another generator function
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Modules
-
-Modules are small units of independent, reusable code to be used as the building blocks in a Javascript application.
-
-Prior to ES6, there was no native modules support in JavaScript. There were 3 major module standards used,
-
-1. Asynchronous Module Definition (AMD)
-2. RequireJS Modules
-3. CommonJS Modules (module.exports and require syntax used in Node.js)
-
-ES6 has provided the built-in support for modules. Everything inside a module is private by default, and runs in strict mode. Public variables, functions and classes are exposed using `export` statement and import the same using `import` statement.
-
-**Export Statement:**
-
-There are two types of exports:
-
-1. Named Exports (Zero or more exports per module)
-
-You can export each element or a single export statement to export all the elements at once
-
-```js
-// module "my-module.js"
-const PI = Math.PI;
-
-function add(...args) {
-  return args.reduce((num, tot) => tot + num);
-}
-
-function multiply(...args) {
-  return args.reduce((num, tot) => tot * num);
-}
-
-// private function
-function print(msg) {
-  console.log(msg);
-}
-
-export { PI, add, multiply };
-```
-
-2. Default Exports (One per module)
-
-If we want to export a single value, you could use a default export
-
-```js
-// module "my-module.js"
-export default function add(...args) {
-                 return args.reduce((num, tot) => tot + num);
-}
-```
-
-**Import Statement:**
-
-The static import statement is used to import read only live bindings which are exported by another module.
-
-There are many variations of import scenarios as below,
-
-```js
-// 1. Import an entire module's contents
-import * as name from "my-module";
-
-//2.Import a single export from a module
-import { export1 } from "my-module";
-
-//3.Import multiple exports from a module
-import { export1 , export2 } from "my-module";
-
-//4.Import default export from a module
-import defaultExport from "my-module";
-
-//5.Import an export with an alias
-import { export1 as alias1 } from "my-module";
-```
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
