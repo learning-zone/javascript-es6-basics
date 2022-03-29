@@ -33,7 +33,7 @@
 * ES6 Modules
     * [ES6 modules](#-4-es6-modules)
 * ES6 Classes
-    * [Class](#-classes)
+    * [Class](#-51-class)
     * [Getters and Setters]()
     * [Class Expression]()
     * [Static methods ]()
@@ -949,7 +949,7 @@ import { export1 as alias1 } from "my-module";
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Classes
+## # 5.1. Class
 
 The classes are introduced as syntactic sugar over existing prototype based inheritance and constructor functions. So this feature doesn't bring new object-oriented inheritance model to JavaScript.
 
