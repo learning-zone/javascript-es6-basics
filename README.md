@@ -34,7 +34,7 @@
     * [ES6 modules](#-4-es6-modules)
 * ES6 Classes
     * [Classes](#-51-classes)
-    * [Getters and Setters]()
+    * [Getters and Setters](#-52-getters-and-setters)
     * [Class Expression]()
     * [Static methods ]()
     * [Static Properties]()
@@ -995,6 +995,44 @@ console.log(name); // "Anjali Durga"
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-70hkd7)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 5.2. Getters and Setters
+
+The accessor properties are methods that get or set the value of an object. For that, we use these two keywords:
+
+* `get` - to define a getter method to get the property value
+* `set` - to define a setter method to set the property value
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(newName) {
+    newName = newName.trim();
+    if (newName === "") {
+      throw "The name cannot be empty";
+    }
+    this._name = newName;
+  }
+}
+
+let Object = new Person("Mala Amar");
+let name = Object.name;
+
+console.log(name); // "Mala Amar"
+```
+
+*Note: These setter and getter allow you to use the properties directly (without using the parenthesis)*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-getters-and-setters-ugb9jx?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
