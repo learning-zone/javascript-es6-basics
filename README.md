@@ -676,8 +676,7 @@ The Server is restarting...
 In ES5, it wasn\'t possible to use a variable for a key name during object creation stage.
 
 ```js
-var
-  key = 'three',
+var key = "three",
   obj = {
     one: 10,
     two: 20
@@ -688,8 +687,7 @@ obj[key] = 30;
 Object keys can be dynamically assigned in ES6 by placing an expression in square brackets([])
 
 ```js
-const
-  key = 'three',
+const key = "three",
   computedObj = {
     one: 10,
     two: 20,
@@ -918,7 +916,7 @@ If we want to export a single value, you could use a default export
 ```js
 // module "my-module.js"
 export default function add(...args) {
-                 return args.reduce((num, tot) => tot + num);
+  return args.reduce((num, tot) => tot + num);
 }
 ```
 
