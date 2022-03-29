@@ -959,12 +959,12 @@ The class syntax has two components:
 
 ```js
 class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    getName() {
-        return this.name;
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
 }
 
 let Object = new Person("Prasad Shashi");
