@@ -1069,6 +1069,35 @@ Person {name: "Aryan Sarin", constructor: Object}
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 5.5. Static Properties
+
+Like a static method, a static property is shared by all instances of a class. To define static property, you use the static keyword followed by the property name like this:
+
+```js
+class Item {
+  constructor(name, quantity) {
+    this.name = name;
+    this.quantity = quantity;
+    this.constructor.count++;
+  }
+  static count = 0;
+  static getCount() {
+    return Item.count++;
+  }
+}
+
+let pen = new Item("Pen", 5);
+let notebook = new Item("notebook", 10);
+
+console.log(Item.getCount()); // 2
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-static-properties-xc03d4)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
