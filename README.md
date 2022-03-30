@@ -35,28 +35,28 @@
 * ES6 Classes
     * [Classes](#-51-classes)
     * [Getters and Setters](#-52-getters-and-setters)
-    * [Class Expression]()
-    * [Static methods ]()
-    * [Static Properties]()
-    * [Computed property ]()
-    * [Inheritance]()
-    * [new.target ]()
+    * [Class Expression](#-53-class-expression)
+    * [Static methods](#-54-static-methods)
+    * [Static Properties](#-55-static-properties)
+    * [Computed property](#-56-computed-property)
+    * [Inheritance](#-57-inheritance)
+    * [new.target](#-58-newtarget)
 * Symbol
-    * [Symbol](#-symbols)
+    * [Symbol](#-6-symbols)
 * Iterators & Generators
-    * [Iterators]()
-    * [Generators](#-generators)
-    * [yield]()
+    * [Iterators](#-71-iterators)
+    * [Generators](#-72-generators)
+    * [yield](#-73-yield)
 * Promises
-    * [Promises](#-promises)
-    * [Promise chaining]()
-    * [Promise composition]()
-    * [Promise error handling]()
+    * [Promises](#-81-promises)
+    * [Promise chaining](#-82-promise-chaining)
+    * [Promise composition](#-83-promise-composition)
+    * [Promise error handling](#-84-promise-error-handling)
 * ES6 Collections
-    * [Set](#-set)
-    * [Weakset](#-weakset)
-    * [Map](#-map)
-    * [Weakmap](#-weakmap)
+    * [Set](#-91-set)
+    * [Weakset](#-92-weakset)
+    * [Map](#-93-map)
+    * [Weakmap](#-94-weakmap)
 * Array Extensions
     * [Array.of()]()
     * [Array.from()]()
@@ -1033,6 +1033,15 @@ console.log(name); // "Anjali Durga"
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-expressions-ofbg0i)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 5.4. Static methods
+
+
+**&#9885; [Try this example on CodeSandbox]()**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
