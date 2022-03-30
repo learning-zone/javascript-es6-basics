@@ -1040,8 +1040,30 @@ console.log(name); // "Anjali Durga"
 
 ## # 5.4. Static methods
 
+The static keyword defines a static method or property for a class, or a class static initialization block. Neither static methods nor static properties can be called on instances of the class. Instead, they\'re called on the class itself.
 
-**&#9885; [Try this example on CodeSandbox]()**
+Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  static staticMethod(gender) {
+    let name = gender === "male" ? "Aryan Sarin" : "Manju Soni";
+    return new Person(name);
+  }
+}
+
+let anonymous = Person.staticMethod("male");
+console.log(anonymous);
+
+// Output
+Person {name: "Aryan Sarin", constructor: Object}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-static-methods-3tf3li?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
