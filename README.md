@@ -1132,6 +1132,48 @@ Sharma Peri
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 5.7. Inheritance
+
+To create a class inheritance, use the `extends` keyword. A class created with a class inheritance inherits all the methods from another class. The `super()` method in the constructor is used to access all parent’s properties and methods that are used by the derived class.
+
+```js
+// Parent Class
+class Vehicle {
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getType() {
+    return this.type;
+  }
+}
+// Child Class
+class Car extends Vehicle {
+  constructor(name) {
+    super(name, "car");
+  }
+
+  getName() {
+    return "It is a car: " + super.getName();
+  }
+}
+let car = new Car("Tesla");
+
+console.log(car.getName()); // It is a car: Tesla
+console.log(car.getType()); // car
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-inheritance-vposow)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
