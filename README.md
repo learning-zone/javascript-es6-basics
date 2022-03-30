@@ -951,10 +951,6 @@ import { export1 as alias1 } from "my-module";
 
 ES6 Classes formalize the common JavaScript pattern of simulating class-like inheritance hierarchies using functions and prototypes. It support prototype-based inheritance, constructors, super calls, instance and static methods.
 
-The class syntax has two components:
-
-**1. Class declarations:**
-
 ```js
 class Person {
   constructor(name) {
@@ -969,27 +965,6 @@ let Object = new Person("Prasad Shashi");
 let name = Object.getName();
 
 console.log(name); // "Prasad Shashi"
-```
-
-**2. Class expressions:**
-
-A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class\'s body. However, it can be accessed via the name property.
-
-```js
-// Unnamed Class
-let Person = class {
-  constructor(name) {
-    this.name = name;
-  }
-  getName() {
-    return this.name;
-  }
-};
-
-let Object = new Person("Anjali Durga");
-let name = Object.getName();
-
-console.log(name); // "Anjali Durga"
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-70hkd7)**
@@ -1031,6 +1006,33 @@ console.log(name); // "Mala Amar"
 *Note: These setter and getter allow you to use the properties directly (without using the parenthesis)*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-getters-and-setters-ugb9jx?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 5.3. Class expressions
+
+A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class\'s body. However, it can be accessed via the name property.
+
+```js
+// Unnamed Class
+let Person = class {
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+};
+
+let Object = new Person("Anjali Durga");
+let name = Object.getName();
+
+console.log(name); // "Anjali Durga"
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-expressions-ofbg0i)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
