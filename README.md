@@ -1102,6 +1102,36 @@ console.log(Item.getCount()); // 2
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 5.6. Computed property
+
+ES6 "Computed Property" feature allows you to have an expression in brackets `[]` (a piece of code that results in a single value like a variable or function invocation) be computed as a property name on an object.
+
+```js
+let propName = "fullName";
+
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  get [propName]() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+let person = new Person("Sharma", "Peri");
+console.log(person.fullName);
+
+// Output
+Sharma Peri
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-computed-property-ns52qr?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
