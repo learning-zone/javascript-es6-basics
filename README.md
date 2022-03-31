@@ -1203,6 +1203,73 @@ let employee = new Employee("Aditya Kala", "Programmer"); // Employee
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 6. Symbol
+
+The JavaScript ES6 introduced a new primitive data type called Symbol. Symbols are immutable (cannot be changed) and are unique.
+Symbols are often used to add unique property keys to an object that won\'t collide with keys any other code might add to the object
+
+**Creating Symbols:**
+
+**Example 01:**
+
+```js
+// Two symbols with the same description
+
+const sym1 = Symbol("Hi");
+const sym2 = Symbol("Hi");
+
+console.log(sym1 === sym2); // false
+```
+
+**Sharing Symbols:**
+
+ES6 provides you with the global symbol registry that allows you to share symbols globally. If you want to create a symbol that will be shared, you use the `Symbol.for()` method instead of calling the `Symbol()` function.
+
+The `Symbol.for()` method accepts a single parameter that can be used for symbol\'s description
+
+**Example 02:**
+
+```js
+let ssn = Symbol.for("ssn");
+let citizenID = Symbol.for("ssn");
+console.log(ssn === citizenID); // true
+console.log(Symbol.keyFor(ssn)); // ssn
+```
+
+The `Symbol.for()` method first searches for the symbol with the  ssn key in the global symbol registry. It returns the existing symbol if there is one. Otherwise, the `Symbol.for()` method creates a new symbol, registers it to the global symbol registry with the specified key, and returns the symbol.
+
+**Add Symbol as an Object Key:**
+
+You can add symbols as a key in an object using square brackets `[]`.
+
+**Example 03:**
+
+```js
+let id = Symbol("id");
+let person = {
+    name: "Anjali Mistry",
+    // adding symbol as a key
+    [id]: 10 // not "id": 10
+};
+console.log(person); // {name: 'Anjali Mistry', Symbol(id): 10}
+```
+
+**Symbol Methods:**
+
+|Method     |Description
+|-----------|------------------------|
+|for()      |Searches for existing symbols|
+|keyFor()   |Returns a shared symbol key from the global symbol registry.|
+|toSource() |Returns a string containing the source of the Symbol object|
+|toString() |Returns a string containing the description of the Symbol|
+|valueOf()  |Returns the primitive value of the Symbol object.|
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-symbol-xweo3x?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
