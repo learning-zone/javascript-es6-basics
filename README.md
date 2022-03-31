@@ -1174,6 +1174,35 @@ console.log(car.getType()); // car
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 5.8. new.target
+
+The `new.target` pseudo-property lets you detect whether a function or constructor was called using the **new** operator. In constructors and functions invoked using the new operator, `new.target` returns a reference to the constructor or function. In normal function calls, `new.target` is undefined.
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+    console.log(new.target.name);
+  }
+}
+
+class Employee extends Person {
+  constructor(name, title) {
+    super(name);
+    this.title = title;
+  }
+}
+
+let person = new Person("Tara Mishra"); // Person
+let employee = new Employee("Aditya Kala", "Programmer"); // Employee
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-new-target-dzurzb?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
