@@ -58,23 +58,23 @@
     * [Map](#-93-map)
     * [Weakmap](#-94-weakmap)
 * Array Extensions
-    * [Array.of()]()
-    * [Array.from()]()
-    * [Array find()](#-array-find-methods)
-    * [Array findIndex()]()
+    * [Array.of()](#-101-arrayof)
+    * [Array.from()](#-102-arrayfrom)
+    * [Array find()](#-103-array-find-methods)
+    * [Array findIndex()](#-104-array-findIndex)
 * Object Extensions
-    * [Object.assign()]()
-    * [Object.is()]()
+    * [Object.assign()](#-111-objectassign)
+    * [Object.is()](#-112-objectis)
 * String Extensions
-    * [String startsWith()]()
-    * [String endsWith()]()
-    * [String includes()]()
+    * [String startsWith()](#-121-String-startsWith)
+    * [String endsWith()](#-122-string-endsWith)
+    * [String includes()](#-123-string-includes)
 * Proxy & Reflection
-    * [Proxy](#-proxies)
-    * [Reflection](#-reflect)
+    * [Proxy](#-131-proxies)
+    * [Reflection](#-132-reflect)
 * Miscellaneous Features
-    * [Unicode](#-unicode)
-    * [Proper Tail calls](#-proper-tail-calls)
+    * [Unicode](#-141-unicode)
+    * [Proper Tail calls](#-142-proper-tail-calls)
 
 <br/>
 
@@ -1270,7 +1270,67 @@ console.log(person); // {name: 'Anjali Mistry', Symbol(id): 10}
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Generators
+## # 7.1. Iterators
+
+Iterator is an object which allows us to access a collection of objects one at a time. ES6 provides built-in iterators for the collection types `String`, `Array`, `Set`, and `Map`.
+
+In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination.Specifically, an iterator is any object which implements the Iterator protocol by having a `next()` method that returns an object with two properties:
+
+* `value`: The next value in the iteration sequence.
+* `done`: This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator's return value.
+
+**Example:**
+
+The following code creates a Sequence object that returns a list of numbers in the range of ( start, end) with an interval between subsequent numbers.
+
+```js
+class Sequence {
+  constructor(start = 0, end = Infinity, interval = 1) {
+    this.start = start;
+    this.end = end;
+    this.interval = interval;
+  }
+  [Symbol.iterator]() {
+    let counter = 0;
+    let nextIndex = this.start;
+    return {
+      next: () => {
+        if (nextIndex <= this.end) {
+          let result = { value: nextIndex, done: false };
+          nextIndex += this.interval;
+          counter++;
+          return result;
+        }
+        return { value: counter, done: true };
+      }
+    };
+  }
+}
+```
+
+The following code uses the Sequence iterator in a `for...of` loop:
+
+```js
+let evenNumbers = new Sequence(2, 10, 2);
+for (const num of evenNumbers) {
+  console.log(num);
+}
+
+// Output
+2
+4
+6
+8
+10
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-iterators-jx1led?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 7.2. Generators
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk(i.e, function* ()).
 
@@ -1290,6 +1350,14 @@ console.log(myGenObj.next().value); // 40
 ```
 
 **Note:** We can use `yield*` to delegate to another generator function
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 7.3. Yield
+
+**&#9885; [Try this example on CodeSandbox]()**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
