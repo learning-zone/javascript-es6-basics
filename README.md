@@ -42,7 +42,7 @@
     * [Inheritance](#-57-inheritance)
     * [new.target](#-58-newtarget)
 * Symbol
-    * [Symbol](#-6-symbols)
+    * [Symbol](#-6-symbol)
 * Iterators & Generators
     * [Iterators](#-71-iterators)
     * [Generators](#-72-generators)
