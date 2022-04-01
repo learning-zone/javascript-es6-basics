@@ -1486,6 +1486,26 @@ getUsers()
   });
 ```
 
+**Example:**
+
+```js
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Promise started...");
+    resolve("Promise resolved");
+  }, 300);
+})
+  .then((value) => {
+    console.log("OK: " + value);
+  })
+  .catch((value) => {
+    console.log("ERROR: " + value);
+  })
+  .finally(() => {
+    console.log("Final Block");
+  });
+```
+
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-pqn0xf?file=/src/index.js)**
 
 <div align="right">
