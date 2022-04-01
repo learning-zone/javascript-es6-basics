@@ -1379,7 +1379,43 @@ console.log(count.next()); // {value: 1, done: false}
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Set
+## # 8.1. Promises
+
+A promise is an object which represent the eventual completion or failure of an asynchronous operation.
+
+It is in one of these states:
+
+**pending:**  Represents initial state, neither fulfilled nor rejected.
+**fulfilled:** Indicates that the operation is completed successfully.
+**rejected:** Indicates that the operation is failed.
+
+A promise is said to be settled if it is either fulfilled or rejected, but not pending. The instance methods `promise.then()`, `promise.catch()`, and `promise.finally()` are used to associate further action with a promise that becomes settled. And these methods also return a newly generated promise object, which can optionally be used for chaining.
+
+The promise chaining structure would be as below,
+
+```js
+const promise = new Promise(function(resolve, reject) {
+                setTimeout(() => resolve(1), 1000);
+            });
+promise.then(function(result) {
+      console.log(result); // 1
+      return result * 2;
+    }).then(function(result) {
+      console.log(result); // 2
+      return result * 3;
+    }).then(function(result) {
+      console.log(result); // 6
+      return result * 4;
+    }).catch(function(error){
+       console.log(error);
+    });
+```
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 9.1. Set
 
 Set is a built-in object to store collections of unique values of any type.
 
@@ -1401,7 +1437,7 @@ console.log(mySet.has(2)); // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Weakset
+## # 9.2. Weakset
 
 The Set is used to store any type of data such as primitives and object types. Whereas WeakSet is an object to store weakly held objects in a collection. (i.e, WeakSet is the collections of objects only). Here weak means,  If no other references to an object stored in the WeakSet exist, those objects can be garbage collected.
 
@@ -1429,7 +1465,7 @@ john = null;
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Map
+## # 9.3. Map
 
 Map is a collection of elements where each element is stored as a Key, value pair. It can hold both objects and primitive values as either key or value and iterates its elements in insertion order.
 
@@ -1462,7 +1498,7 @@ Let\'s take a map with different types of primitives and objects as key-value pa
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Weakmap
+## # 9.4. Weakmap
 
 WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. For this object, the keys must be objects and the values can be arbitrary values.
 
@@ -1491,93 +1527,40 @@ console.log(weakMap.get(obj1)); //undefined
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Unicode
+## # 10.1. Array find methods
 
-Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit. Since the character set is been expanded by Unicode, you will get unexpected results from UTF-16 encoded strings containing surrogate pairs(i.e, Since it is not sufficient to represent certain characters in just 16-bits, you need two 16-bit code units).
+ES6 introduced few array methods and two of them are `Array.find()` and `Array.findIndex()`.
 
-```js
-let str = '𠮷';
+**Array.find():**
 
-console.log(str.length);             // 2
-console.log(text.charAt(0));        // ""
-console.log(text.charAt(1));        // ""
-console.log(text.charCodeAt(0));    // 55362(1st code unit)
-console.log(text.charCodeAt(1));    // 57271(2nd code unit)
-
-console.log(/^.$/.test(str)); // false, because length is 2
-console.log('\u20BB7'); // 7!(wrong value)
-console.log(str === '\uD842\uDFB7'); // true
-```
-
-ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp u mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
+This method returns the value of the first element in an array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `find` method to find the odd element.
 
 ```js
-let str = '𠮷';
-
-// new string form
-console.log('\u{20BB7}'); // "𠮷"
-
-// new RegExp u mode
-console.log(new RegExp('\u{20BB7}', 'u'));
-console.log(/^.$/u.test(str)); // true
-
-//API methods
-console.log(str.codePointAt(0)); // 134071
-console.log(str.codePointAt(1)); // 57271
-
-console.log(String.fromCodePoint(134071));  // "𠮷"
-```
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Symbols
-
-Symbol is a new peculiar primitive data type of JavaScript, along with other primitive types such as string, number, boolean, null and undefined. The new symbol is created just by calling the Symbol function. i.e, Every time you call the Symbol function, you’ll get a new and completely unique value. You can also pass a parameter to Symbol(), which is useful for debugging purpose only.
-
-Even though equality checks on two symbols is always false, it will be true while comparing symbols with `.for` method due to global registry (i.e, Symbols.for('key') === Symbols.for('key'))
-
-These symbols are useful to uniquely identify properties or unique constants,
-
-```js
-//1. Object properties
-let id = Symbol("id");
-let user = {
-  name: "John",
-  age: 40,
-  [id]: 111
-};
-
-for (let key in user) {
-console.log(key); // name, age without symbols
+let arr = [2, 4, 5, 6, 8, 10];
+function isOdd(i) {
+  return i % 2 !== 0;
 }
+console.log(arr.find(isOdd)); // 5
+```
 
-console.log(JSON.stringify(user)); // {"name":"John", "age": 40}
-console.log(Object.keys(user)); // ["name", "age"]
-console.log( "User Id: " + user[id] ); // Direct access by the symbol works
+**Array.findIndex():**
 
-//2. Unique constants
-const logLevels = {
-  DEBUG: Symbol('debug'),
-  INFO: Symbol('info'),
-  WARN: Symbol('warn'),
-  ERROR: Symbol('error'),
-};
+This method returns the index of the first element in the array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `findIndex` method to find the index of odd element.
 
-console.log(logLevels.DEBUG, 'debug message');
-console.log(logLevels.INFO, 'info message');
+```js
+let arr = [2, 4, 5, 6, 8, 10];
 
-//3. Equality Checks
-console.log(Symbol('foo') === Symbol('foo'));  // false
-console.log(Symbol.for('foo') === Symbol.for('foo'));  // true
+function isOdd(i) {
+  return i % 2 !== 0;
+}
+console.log(arr.findIndex(isOdd)); //2
 ```
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Proxies
+## # 13.1. Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
 
@@ -1642,43 +1625,7 @@ person.age = 200;        // Throws an exception
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Promises
-
-A promise is an object which represent the eventual completion or failure of an asynchronous operation.
-
-It is in one of these states:
-
-**pending:**  Represents initial state, neither fulfilled nor rejected.
-**fulfilled:** Indicates that the operation is completed successfully.
-**rejected:** Indicates that the operation is failed.
-
-A promise is said to be settled if it is either fulfilled or rejected, but not pending. The instance methods `promise.then()`, `promise.catch()`, and `promise.finally()` are used to associate further action with a promise that becomes settled. And these methods also return a newly generated promise object, which can optionally be used for chaining.
-
-The promise chaining structure would be as below,
-
-```js
-const promise = new Promise(function(resolve, reject) {
-                setTimeout(() => resolve(1), 1000);
-            });
-promise.then(function(result) {
-      console.log(result); // 1
-      return result * 2;
-    }).then(function(result) {
-      console.log(result); // 2
-      return result * 3;
-    }).then(function(result) {
-      console.log(result); // 6
-      return result * 4;
-    }).catch(function(error){
-       console.log(error);
-    });
-```
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Reflect
+## # 13.2. Reflect
 
 Reflection is the ability of a code to inspect and manipulate variables, properties, and methods of objects at runtime. JavaScript already provides `Object.keys(), Object.getOwnPropertyDescriptor(), and Array.isArray()` methods as classic refection features. In ES6, it has been officially provided through Reflect object. Reflect is a new global object which is used to call methods, construct objects, get and set properties, manipulate and extend properties.
 
@@ -1701,6 +1648,7 @@ The method has below parameters,
 3. newTarget: The constructor whose prototype should be used. This is an optional parameter. i.e, If newTarget is not present, its value defaults to target.
 
 **Example:**
+
 ```js
 class User {
     constructor(firstName, lastName) {
@@ -1802,7 +1750,48 @@ console.log(Reflect.get(user, 'age')); // 33
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # Proper Tail Calls
+## # 14.1. Unicode
+
+Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit. Since the character set is been expanded by Unicode, you will get unexpected results from UTF-16 encoded strings containing surrogate pairs(i.e, Since it is not sufficient to represent certain characters in just 16-bits, you need two 16-bit code units).
+
+```js
+let str = '𠮷';
+
+console.log(str.length);             // 2
+console.log(text.charAt(0));        // ""
+console.log(text.charAt(1));        // ""
+console.log(text.charCodeAt(0));    // 55362(1st code unit)
+console.log(text.charCodeAt(1));    // 57271(2nd code unit)
+
+console.log(/^.$/.test(str)); // false, because length is 2
+console.log('\u20BB7'); // 7!(wrong value)
+console.log(str === '\uD842\uDFB7'); // true
+```
+
+ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp u mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
+
+```js
+let str = '𠮷';
+
+// new string form
+console.log('\u{20BB7}'); // "𠮷"
+
+// new RegExp u mode
+console.log(new RegExp('\u{20BB7}', 'u'));
+console.log(/^.$/u.test(str)); // true
+
+//API methods
+console.log(str.codePointAt(0)); // 134071
+console.log(str.codePointAt(1)); // 57271
+
+console.log(String.fromCodePoint(134071));  // "𠮷"
+```
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 14.2. Proper Tail Calls
 
 **Proper tail call(PTC)** is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.
 
@@ -1839,39 +1828,6 @@ The browsers which supports PTC do not generate stack overflow instead shows Inf
  console.log(factorial(100));
  console.log(factorial(1000));
  console.log(factorial(10000));
-```
-
-<div align="right">
-  <b><a href="#">↥ back to top</a></b>
-</div>
-
-## # Array find methods
-
-ES6 introduced few array methods and two of them are `Array.find()` and `Array.findIndex()`.
-
-**Array.find():**
-
-This method returns the value of the first element in an array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `find` method to find the odd element.
-
-```js
-let arr = [2, 4, 5, 6, 8, 10];
-function isOdd(i) {
-  return i % 2 !== 0;
-}
-console.log(arr.find(isOdd)); // 5
-```
-
-**Array.findIndex():**
-
-This method returns the index of the first element in the array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `findIndex` method to find the index of odd element.
-
-```js
-let arr = [2, 4, 5, 6, 8, 10];
-
-function isOdd(i) {
-  return i % 2 !== 0;
-}
-console.log(arr.findIndex(isOdd)); //2
 ```
 
 <div align="right">
