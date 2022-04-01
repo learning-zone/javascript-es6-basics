@@ -1381,35 +1381,112 @@ console.log(count.next()); // {value: 1, done: false}
 
 ## # 8.1. Promises
 
-A promise is an object which represent the eventual completion or failure of an asynchronous operation.
+A promise is an object which represent the eventual completion or failure of an **asynchronous** operation.
 
 It is in one of these states:
 
-**pending:**  Represents initial state, neither fulfilled nor rejected.
-**fulfilled:** Indicates that the operation is completed successfully.
-**rejected:** Indicates that the operation is failed.
+* **pending:**  Represents initial state, neither fulfilled nor rejected.
+* **fulfilled:** Indicates that the operation is completed successfully.
+* **rejected:** Indicates that the operation is failed.
 
-A promise is said to be settled if it is either fulfilled or rejected, but not pending. The instance methods `promise.then()`, `promise.catch()`, and `promise.finally()` are used to associate further action with a promise that becomes settled. And these methods also return a newly generated promise object, which can optionally be used for chaining.
+In the beginning, the state of a promise is pending, indicating that the asynchronous operation is in progress. Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
 
-The promise chaining structure would be as below,
+The fulfilled state indicates that the asynchronous operation was completed successfully:
+
+<p align="left">
+  <img src="assets/JavaScript-Promise-Fulfilled.svg" alt="Promise fulfilled" width="400px" />
+</p>
+
+The rejected state indicates that the asynchronous operation failed.
+
+<p align="left">
+  <img src="assets/JavaScript-Promise-Rejected.svg" alt="Promise rejected" width="400px" />
+</p>
+
+**Creating a Promise:**
+
+The promise constructor accepts a callback function that typically performs an asynchronous operation. This function is often referred to as an executor.
+
+In turn, the executor accepts two callback functions with the name `resolve` and `reject`.
 
 ```js
-const promise = new Promise(function(resolve, reject) {
-                setTimeout(() => resolve(1), 1000);
-            });
-promise.then(function(result) {
-      console.log(result); // 1
-      return result * 2;
-    }).then(function(result) {
-      console.log(result); // 2
-      return result * 3;
-    }).then(function(result) {
-      console.log(result); // 6
-      return result * 4;
-    }).catch(function(error){
-       console.log(error);
-    });
+const promise = new Promise((resolve, reject) => {
+  // contain an operation
+  // ...
+
+  // return the state
+  if (success) {
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
 ```
+
+If the asynchronous operation completes successfully, the executor will call the `resolve()` function to change the state of the promise from pending to fulfilled with a value.
+
+In case of an error, the executor will call `reject()` function to change the state of the promise from pending to rejected with the error reason.
+
+**1. The then() method:**
+
+The `then()` method accepts two callback functions: `onFulfilled` and `onRejected`.
+
+The `then()` method calls the `onFulfilled()` with a value, if the promise is fulfilled or the `onRejected()` with an error if the promise is rejected.
+
+```js
+promise.then(onFulfilled,onRejected);
+```
+
+**2. The catch() method:**
+
+If you want to get the error only when the state of the promise is rejected, you can use the `catch()` method of the Promise object. Internally, the `catch()` method invokes the `.then(undefined, onRejected)` method.
+
+```js
+promise.catch(onRejected);
+```
+
+**3. The finally() method:**
+
+The `.finally()` method returns a Promise. When the promise is finally either fulfilled or rejected, the specified callback function is executed. This provides a way for code to be run whether the promise was fulfilled successfully, or instead rejected.
+
+This helps to avoid duplicating code in both the promise's `.then()` and `.catch()` handlers.
+
+```js
+const render = () => {
+  //...
+};
+
+getUsers()
+  .then((users) => {
+    console.log(users);
+    render(); // Duplicate Method
+  })
+  .catch((error) => {
+    console.log(error);
+    render(); // Duplicate Method
+  });
+```
+
+This can be avoided by using `.finally()`
+
+```js
+const render = () => {
+  //...
+};
+
+getUsers()
+  .then((users) => {
+    console.log(users);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  .finally(() => {
+    render();
+  });
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-pqn0xf?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
