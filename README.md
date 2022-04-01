@@ -1339,17 +1339,16 @@ This function returns an iterator object and this iterator\'s **next()** method 
 ```js
 function* myGenerator(i) {
   yield i + 10;
-  yield i + 20;
-  return i + 30;
+  return i + 20;
 }
 const myGenObj = myGenerator(10);
 
 console.log(myGenObj.next().value); // 20
 console.log(myGenObj.next().value); // 30
-console.log(myGenObj.next().value); // 40
+console.log(myGenObj.next().value); // undefined
 ```
 
-**Note:** We can use `yield*` to delegate to another generator function
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/compassionate-lederberg-dxi5kw?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
@@ -1357,7 +1356,24 @@ console.log(myGenObj.next().value); // 40
 
 ## # 7.3. Yield
 
-**&#9885; [Try this example on CodeSandbox]()**
+The `yield` keyword allows you to pause and resume a generator function (`function*`).
+
+The `yield` keyword causes the call to the generator\'s `next()` method to return an `IteratorResult` object with two properties: `value` and `done`. The `value` property is the result of evaluating the `yield` expression, and `done` is `false`, indicating that the generator function has not fully completed.
+
+```js
+function* counter() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+let count = counter();
+
+console.log(count.next()); // {value: 1, done: false}
+console.log(count.next()); // {value: 1, done: false}
+console.log(count.next()); // {value: 1, done: false}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-zo5i9j?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
