@@ -1800,32 +1800,67 @@ console.log(weakSet); // WeakSet {}
 
 ## # 9.3. Map
 
-Map is a collection of elements where each element is stored as a Key, value pair. It can hold both objects and primitive values as either key or value and iterates its elements in insertion order.
+A `Map` object holds **key-value** pairs where values of any type can be used as either `keys` or `values`. In addition, a `Map` object remembers the original insertion order of the `keys`.
 
-Let\'s take a map with different types of primitives and objects as key-value pairs and various methods on it,
+**Syntax:**
 
 ```js
- let typeMap = new Map();
- var keyObj = {'one': 1}
-
- typeMap.set('10', 'string');   // a string key
- typeMap.set(10, 'number');     // a numeric key
- typeMap.set(true, 'boolean'); // a boolean key
- typeMap.set(keyObj, 'object'); // an object key
- console.log(typeMap.get(10)   ); // number
- console.log(typeMap.get('10') ); // string
- console.log(typeMap.get(keyObj)) // object
- console.log(typeMap.get({'one': 1})) // undefined
- console.log(typeMap.size ); // 3
- 
- for(let item of typeMap) {
-    console.log(item);
- }
-
- for(let item in typeMap) {
-    console.log(item);
- }
+let map = new Map([iterable]);
 ```
+
+**Map methods:**
+
+|Sl.No.| Methods    | Description              |
+|------|------------|--------------------------|
+| 01.  |clear()     | removes all elements from the map object.|
+| 02.  |delete(key) | removes an element specified by the key. It returns if the element is in the map, or false if it does not.|
+| 03.  |entries()   |returns a new Iterator object that contains an array of [key, value] for each element in the map object. The order of objects in the map is the same as the insertion order.|
+| 04.  |forEach(callback[, thisArg]) | invokes a callback for each key-value pair in the map in the insertion order. The optional thisArg parameter sets the this value for each callback.|
+| 05.  |get(key) | returns the value associated with the key. If the key does not exist, it returns undefined.|
+| 06.  |has(key) | returns true if a value associated with the key exists, otherwise, return false.|
+| 07.  |keys()   |returns a new Iterator that contains the keys for elements in insertion order.|
+| 08.  |set(key, value) | sets the value for the key in the map object. It returns the map object itself therefore you can chain this method with other methods.|
+| 09.  |values() |returns a new iterator object that contains values for each element in insertion order.|
+
+**Initialize a map with an iterable object:**
+
+```js
+let lalit = { name: 'Lalit Ranganathan' },
+  jayesh = { name: 'Jayesh Ray' },
+  sarvesh = { name: 'Sarvesh Tripathi' };
+
+let userRoles = new Map([
+  [lalit, 'admin'],
+  [jayesh, 'editor'],
+  [sarvesh, 'subscriber'],
+]);
+
+// Get an element from a map by key
+userRoles.get(john); // admin
+
+// Check the existence of an element by key
+userRoles.has(lily); // true
+```
+
+**Iterate over map keys:**
+
+```js
+let lalit = { name: 'Lalit Ranganathan' },
+  jayesh = { name: 'Jayesh Ray' },
+  sarvesh = { name: 'Sarvesh Tripathi' };
+
+let userRoles = new Map([
+  [lalit, 'admin'],
+  [jayesh, 'editor'],
+  [sarvesh, 'subscriber'],
+]);
+
+for (const user of userRoles.keys()) {
+  console.log(user.name);
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-map-w6i921?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
