@@ -1393,13 +1393,13 @@ In the beginning, the state of a promise is pending, indicating that the asynchr
 
 The fulfilled state indicates that the asynchronous operation was completed successfully:
 
-<p align="left">
+<p align="center">
   <img src="assets/JavaScript-Promise-Fulfilled.svg" alt="Promise fulfilled" width="400px" />
 </p>
 
 The rejected state indicates that the asynchronous operation failed.
 
-<p align="left">
+<p align="center">
   <img src="assets/JavaScript-Promise-Rejected.svg" alt="Promise rejected" width="400px" />
 </p>
 
