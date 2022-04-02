@@ -50,9 +50,9 @@
 * Promises
     * [Promises](#-81-promises)
     * [Promise chaining](#-82-promise-chaining)
-    * [Promise.all()](#-83-promise-all)
-    * [Promise.race()](#-83-promise-race)
-    * [Promise.allSettled()](#-83-promise-allSettled)
+    * [Promise.all()](#-83-promiseall)
+    * [Promise.race()](#-83-promiserace)
+    * [Promise.allSettled()](#-83-promiseallSettled)
     * [Promise error handling](#-84-promise-error-handling)
 * ES6 Collections
     * [Set](#-91-set)
