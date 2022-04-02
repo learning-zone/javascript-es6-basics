@@ -52,7 +52,7 @@
     * [Promise chaining](#-82-promise-chaining)
     * [Promise.all()](#-83-promiseall)
     * [Promise.race()](#-84-promiserace)
-    * [Promise error handling](#-85-promise-error-handling)
+    * [Promise Error Handling](#-85-promise-error-handling)
 * ES6 Collections
     * [Set](#-91-set)
     * [Weakset](#-92-weakset)
@@ -1676,21 +1676,88 @@ An Error Occured!
 
 ## # 9.1. Set
 
-Set is a built-in object to store collections of unique values of any type.
+ES6 provides a new type named `Set` that stores a collection of **unique** values of any type.
+
+The `Set` constructor also accepts an optional **iterable object**. If you pass an iterable object to the `Set` constructor, all the elements of the iterable object will be added to the new set:
+
+**Syntax:**
 
 ```js
-let mySet = new Set()
-
-mySet.add(1);
-mySet.add(2);
-mySet.add(2);
-mySet.add('some text here');
-mySet.add({one: 1, two: 2 , three: 3});
-
-console.log(mySet); // Set [ 1, 2, 'some text here', {one: 1, two: 2 , three: 3} ]
-console.log(mySet.size) // 4
-console.log(mySet.has(2)); // true
+let setObject = new Set(iterableObject);
 ```
+
+**Set Methods:**
+
+The Set object provides the following useful methods:
+
+|Sl.No.|  Methods    |Description                              |
+|------|-------------|-----------------------------------------|
+| 01. |add(value)    |appends a new element with a specified value to the set. It returns the Set object, therefore, you can chain this method with another Set method.|
+| 02. |clear()       |removes all elements from the Set object.|
+| 03. |delete(value) | deletes an element specified by the value.|
+| 04. |entries()     | returns a new Iterator that contains an array of  [value, value] .|
+| 05. |forEach(callback [, thisArg]) | invokes a callback on each element of the Set with the this value sets to thisArg in each call.|
+| 06. |has(value)   | returns true if an element with a given value is in the set, or false if it is not.|
+| 07. |keys()       | is the same as values() function.|
+| 08. |[@@iterator] | returns a new Iterator object that contains values of all elements stored in the insertion order.|
+
+**Example 01:** Create a new Set from an Array
+
+```js
+let numbers = new Set([10, 20, 20, 30, 40, 50]);
+
+console.log(numbers); // Set(5) {10, 20, 30, 40, 50}
+console.log(typeof numbers); // Object
+```
+
+**Example 02:** Get the size of a Set
+
+```js
+let size = numbers.size;
+
+console.log(size); // 5
+```
+
+**Example 03:** Add elements to a Set
+
+```js
+numbers.add(60);
+
+console.log(numbers); // Set(6) {10, 20, 30, 40, 50, 60}
+```
+
+**Example 04:** Check if a value is in the Set
+
+```js
+let isTrue = numbers.has(10);
+
+console.log(isTrue); // true
+```
+
+**Example 05:** Remove elements from a set
+
+```js
+numbers.delete(60);
+
+console.log(numbers); // Set(5) {10, 20, 30, 40, 50}
+```
+
+**Example 06:** Looping the elements of a Set
+
+```js
+for (let number of numbers) {
+  console.log(number);
+}
+
+// Output
+10
+20
+30
+40
+50
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-set-dho0q8?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
