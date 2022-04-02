@@ -1868,28 +1868,37 @@ for (const user of userRoles.keys()) {
 
 ## # 9.4. Weakmap
 
-WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. For this object, the keys must be objects and the values can be arbitrary values.
+A `WeakMap` is similar to a `Map` except the `keys` of a `WeakMap` must be **objects**. It means that when a reference to a key (an object) is out of scope, the corresponding value is automatically released from the memory.
 
-Let\'s see various methods of weakmap with below example,
+A `WeakMap` only has subset methods of a `Map` object:
+
+* get(key)
+* set(key, value)
+* has(key)
+* delete(key)
 
 ```js
 var weakMap = new WeakMap();
-var obj1  = {}
-var obj2  = {}
+var obj1 = {};
+var obj2 = {};
 
-weakMap.set(obj1, 1);
-weakMap.set(obj2, 2);
-weakMap.set({}, {"four": 4});
+weakMap.set(obj1, 10);
+weakMap.set(obj2, 20);
+weakMap.set({}, { four: 4 });
 
-console.log(weakMap.get(obj2)); // 2
-console.log(weakMap.has({})); // return false even though empty object exists as key. Because the keys have different references
+console.log(weakMap.get(obj2)); // 20
 
-delete obj2;
-console.log(weakMap.get(obj2)); // 2
+/**
+ * Return false even though empty object exists as key.
+ * Because the keys have different references
+ * */
+console.log(weakMap.has({}));
 
-weakMap.delete(obj1)
+weakMap.delete(obj1);
 console.log(weakMap.get(obj1)); //undefined
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-weakmap-mexzxg?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
