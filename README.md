@@ -1512,6 +1512,56 @@ let promise = new Promise((resolve, reject) => {
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 8.2. Promise Chaining
+
+A common need is to execute two or more asynchronous operations back to back, where each subsequent operation starts when the previous operation succeeds, with the result from the previous step. We accomplish this by creating a **promise chain**.
+
+**Example:**
+
+```js
+new Promise(function(resolve, reject) {
+
+  setTimeout(() => resolve(1), 1000); // (*)
+
+}).then(function(result) { // (**)
+
+  alert(result); // 1
+  return result * 2;
+
+}).then(function(result) { // (***)
+
+  alert(result); // 2
+  return result * 2;
+
+}).then(function(result) {
+
+  alert(result); // 4
+  return result * 2;
+
+});
+```
+
+The idea is that the result is passed through the chain of .then handlers.
+
+Here the flow is:
+
+1. The initial promise resolves in 1 second (*),
+1. Then the .then handler is called (**), which in turn creates a new promise (resolved with 2 value).
+1. The next then (***) gets the result of the previous one, processes it (doubles) and passes it to the next handler.
+1. …and so on.
+
+As the result is passed along the chain of handlers, we can see a sequence of alert calls: `1 → 2 → 4`.
+
+<p align="center">
+  <img src="assets/promise-then-chain.svg" alt="Promise Chaining" width="200px" />
+</p>
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-chaining-zmxbb5?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 9.1. Set
 
 Set is a built-in object to store collections of unique values of any type.
