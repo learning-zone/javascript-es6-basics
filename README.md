@@ -50,7 +50,9 @@
 * Promises
     * [Promises](#-81-promises)
     * [Promise chaining](#-82-promise-chaining)
-    * [Promise composition](#-83-promise-composition)
+    * [Promise.all()](#-83-promise-all)
+    * [Promise.race()](#-83-promise-race)
+    * [Promise.allSettled()](#-83-promise-allSettled)
     * [Promise error handling](#-84-promise-error-handling)
 * ES6 Collections
     * [Set](#-91-set)
@@ -1557,6 +1559,54 @@ As the result is passed along the chain of handlers, we can see a sequence of al
 </p>
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-chaining-zmxbb5?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 8.3. Promise.all()
+
+The `Promise.all()` method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input\'s promises have resolved, or if the input iterable contains no promises.
+
+It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error.
+
+**Syntax:**
+
+```js
+Promise.all(iterable);
+```
+
+**Example:**
+
+```js
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("The first promise has resolved");
+    resolve(10);
+  }, 1 * 1000);
+});
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("The second promise has resolved");
+    resolve(20);
+  }, 2 * 1000);
+});
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("The third promise has resolved");
+    resolve(30);
+  }, 3 * 1000);
+});
+
+Promise.all([p1, p2, p3]).then((results) => {
+  const total = results.reduce((p, c) => p + c);
+
+  console.log(`Results: ${results}`);
+  console.log(`Total: ${total}`);
+});
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
