@@ -51,8 +51,8 @@
     * [Promises](#-81-promises)
     * [Promise chaining](#-82-promise-chaining)
     * [Promise.all()](#-83-promiseall)
-    * [Promise.race()](#-83-promiserace)
-    * [Promise error handling](#-84-promise-error-handling)
+    * [Promise.race()](#-84-promiserace)
+    * [Promise error handling](#-85-promise-error-handling)
 * ES6 Collections
     * [Set](#-91-set)
     * [Weakset](#-92-weakset)
@@ -1611,7 +1611,7 @@ Promise.all([p1, p2, p3]).then((results) => {
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 8.3. Promise.race()
+## # 8.4. Promise.race()
 
 The `Promise.race()` static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise.
 
@@ -1644,6 +1644,29 @@ Promise.race([p1, p2])
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 8.5. Promise Error Handling
+
+The `catch()` method returns a Promise and deals with rejected cases only. It internally calls `obj.then(undefined, onRejected))`. Inside the promise, the `catch()` method will catch the error caused by the `throw` statement and `reject()`. If an error occurs and you don\'t have the `.catch()` method, the JavaScript engine issues a runtime error and stops the program.
+
+**Example:**
+
+```js
+const promise = new Promise((resolve, reject) => {
+  throw "An Error Occured!";
+}).catch((error) => {
+  console.error(error);
+});
+
+// Output: 
+An Error Occured!
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-error-handling-leq6gc?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
