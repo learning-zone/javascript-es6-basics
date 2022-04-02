@@ -52,7 +52,6 @@
     * [Promise chaining](#-82-promise-chaining)
     * [Promise.all()](#-83-promiseall)
     * [Promise.race()](#-83-promiserace)
-    * [Promise.allSettled()](#-83-promiseallSettled)
     * [Promise error handling](#-84-promise-error-handling)
 * ES6 Collections
     * [Set](#-91-set)
@@ -1604,6 +1603,44 @@ Promise.all([p1, p2, p3]).then((results) => {
   console.log(`Results: ${results}`);
   console.log(`Total: ${total}`);
 });
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 8.3. Promise.race()
+
+The `Promise.race()` static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise.
+
+**Syntax:**
+
+```js
+Promise.race(iterable)
+```
+
+**Example:**
+
+```js
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("The first promise has resolved");
+    resolve(10);
+  }, 1 * 1000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("The second promise has resolved");
+    resolve(20);
+  }, 2 * 1000);
+});
+
+Promise.race([p1, p2])
+  .then((value) => console.log(`Resolved: ${value}`))
+  .catch((reason) => console.log(`Rejected: ${reason}`));
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
