@@ -1765,27 +1765,34 @@ for (let number of numbers) {
 
 ## # 9.2. Weakset
 
-The Set is used to store any type of data such as primitives and object types. Whereas WeakSet is an object to store weakly held objects in a collection. (i.e, WeakSet is the collections of objects only). Here weak means,  If no other references to an object stored in the WeakSet exist, those objects can be garbage collected.
+The `WeakSet` store a collection of objects. It adapts the same properties of that of a `set` i.e. does not store duplicates. However, `WeakSet` can only contain **objects** whereas a `Set` can contain any data types such as strings, numbers, objects, etc. Since objects in a `WeakSet` may be automatically **garbage-collected**, a `WeakSet` does not have size property.
+
+**Example:** WeakSet Methods
+
+WeakSets have methods `add()`, `delete()`, and `has()`.
 
 ```js
-let myUserSet = new WeakSet();
+const weakSet = new WeakSet();
 
-let john = { name: "John" };
-let rocky = { name: "Rocky" };
-let alex = { name: "Alex" };
-let nick = { name: "Nick" };
+let obj = {
+    message: 'Hi',
+    sendMessage: true
+}
 
-myUserSet.add(john);
-myUserSet.add(rocky);
-myUserSet.add(john);
-myUserSet.add(nick);
+// adding object (element) to WeakSet
+weakSet.add(obj); 
 
-console.log(myUserSet.has(john)); // true
-console.log(myUserSet.has(alex)); // false
-console.log(myUserSet.delete(nick));
-console.log(myUserSet.has(nick)); // false
-john = null;
+// check if an element is in Set
+console.log(weakSet.has(obj)); // true
+
+console.log(weakSet); // WeakSet {{message: "Hi", sendMessage: true}}
+
+// delete elements
+weakSet.delete(obj);
+console.log(weakSet); // WeakSet {}
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-weakset-cg86e3?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
