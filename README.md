@@ -1651,7 +1651,9 @@ Promise.race([p1, p2])
 
 ## # 8.5. Promise Error Handling
 
-The `catch()` method returns a Promise and deals with rejected cases only. It internally calls `obj.then(undefined, onRejected))`. Inside the promise, the `catch()` method will catch the error caused by the `throw` statement and `reject()`. If an error occurs and you don\'t have the `.catch()` method, the JavaScript engine issues a runtime error and stops the program.
+The `.catch()` method returns a Promise and deals with rejected cases only. It internally calls `obj.then(undefined, onRejected))`.
+
+Inside the promise, the `.catch()` method will catch the error caused by the `throw` statement and `reject()`. If an error occurs and you don\'t have the `.catch()` method, the JavaScript engine issues a runtime error and stops the program.
 
 **Example:**
 
