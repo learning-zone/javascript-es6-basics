@@ -1976,17 +1976,24 @@ console.log(addOne(10, 20, 30));
 
 ## # 10.3. Array.find()
 
-This method returns the value of the first element in an array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `find` method to find the odd element.
+The `find()` method returns the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, `undefined` is returned.
+
+**Syntax:**
 
 ```js
-let arr = [2, 4, 5, 6, 8, 10];
-function isOdd(i) {
-  return i % 2 !== 0;
-}
-console.log(arr.find(isOdd)); // 5
+find(callback(element[, index[, array]])[, thisArg])
 ```
 
-**&#9885; [Try this example on CodeSandbox]()**
+```js
+let arr = [2, 4, 5, 6, 7, 10];
+
+function findFirstOdd(i) {
+  return i % 2 !== 0;
+}
+console.log(arr.find(findFirstOdd)); // 5
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-find-iou6gi?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
