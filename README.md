@@ -1904,11 +1904,48 @@ console.log(weakMap.get(obj1)); //undefined
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 10.1. Array find methods
+## # 10.1. Array.of()
 
-ES6 introduced few array methods and two of them are `Array.find()` and `Array.findIndex()`.
+The `Array.of()` method creates a new Array instance from a variable number of arguments, regardless of number or type of the arguments.
 
-**Array.find():**
+The difference between `Array.of()` and the `Array` constructor is in the handling of integer arguments: Array.of(3) creates an array with a single element, 3, whereas Array(3) creates an empty array with a length property of 3 (Note: this implies an array of 3 empty slots, not slots with actual `undefined` values).
+
+**Syntax:**
+
+```js
+Array.of(element0, element1, /* ... ,*/ elementN)
+```
+
+**Example:**
+
+```js
+// Array Method
+let number = Array(3);
+console.log(number.length); // 3
+console.log(number[0]); // undefined
+console.log("Array of Method");
+
+// Array of() Method
+let numbers = Array.of(3);
+console.log(numbers.length); // 1
+console.log(numbers[0]); // 3
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-of-7xgzm6?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.2. Array.from()
+
+**&#9885; [Try this example on CodeSandbox]()**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.3. Array.find()
 
 This method returns the value of the first element in an array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `find` method to find the odd element.
 
@@ -1920,7 +1957,13 @@ function isOdd(i) {
 console.log(arr.find(isOdd)); // 5
 ```
 
-**Array.findIndex():**
+**&#9885; [Try this example on CodeSandbox]()**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.4. Array.findIndex()
 
 This method returns the index of the first element in the array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `findIndex` method to find the index of odd element.
 
@@ -1932,6 +1975,8 @@ function isOdd(i) {
 }
 console.log(arr.findIndex(isOdd)); //2
 ```
+
+**&#9885; [Try this example on CodeSandbox]()**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
