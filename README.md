@@ -1939,7 +1939,36 @@ console.log(numbers[0]); // 3
 
 ## # 10.2. Array.from()
 
-**&#9885; [Try this example on CodeSandbox]()**
+The `Array.from()` static method creates a new, shallow-copied `Array` instance from an array-like or iterable object.
+
+**Syntax:**
+
+```js
+Array.from(target [, mapFn[, thisArg]])
+```
+
+**Create an array from an array-like object:**
+
+```js
+console.log(Array.from('Hello'));
+
+// Output
+["H", "e", "l", "l", "o"]
+```
+
+**Array.from() with a mapping function:**
+
+```js
+function addOne() {
+  return Array.from(arguments, (x) => x + x);
+}
+console.log(addOne(10, 20, 30));
+
+// Output
+[20, 40, 60]
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-from-qxefm7?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
