@@ -1984,6 +1984,8 @@ The `find()` method returns the first element in the provided array that satisfi
 find(callback(element[, index[, array]])[, thisArg])
 ```
 
+**Example:**
+
 ```js
 let arr = [2, 4, 5, 6, 7, 10];
 
@@ -2001,18 +2003,25 @@ console.log(arr.find(findFirstOdd)); // 5
 
 ## # 10.4. Array.findIndex()
 
-This method returns the index of the first element in the array that satisfies the given test. Let\'s take an example of array with all even elements except one element and use `findIndex` method to find the index of odd element.
+The `findIndex()` method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns `-1`, indicating that no element passed the test.
+
+**Syntax:**
 
 ```js
-let arr = [2, 4, 5, 6, 8, 10];
-
-function isOdd(i) {
-  return i % 2 !== 0;
-}
-console.log(arr.findIndex(isOdd)); //2
+findIndex(testFn(element[, index[, array]])[, thisArg])
 ```
 
-**&#9885; [Try this example on CodeSandbox]()**
+**Example:**
+
+```js
+let ranks = [1, 5, 7, 8, 10, 7];
+
+let index = ranks.findIndex((rank) => rank === 7);
+
+console.log(index); // 2
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-findindex-meiqpf?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
