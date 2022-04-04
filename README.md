@@ -2156,6 +2156,31 @@ console.log(isTrue); // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## 12.2. String.endsWith()
+
+The `endsWith()` method determines whether a string ends with the characters of a specified string, returning `true` or `false` as appropriate.
+
+**Syntax:**
+
+```js
+String.endsWith(searchString [,length])
+```
+
+**Example:**
+
+```js
+let text = "Hello World, Welcome to the JavaScript ES6";
+let isTrue = text.endsWith("ES6");
+
+console.log(isTrue); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-endswith-1huuuu?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 13.1. Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
