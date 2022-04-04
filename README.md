@@ -67,9 +67,9 @@
     * [Object.assign()](#-111-objectassign)
     * [Object.is()](#-112-objectis)
 * String Extensions
-    * [String startsWith()](#-121-String-startsWith)
-    * [String endsWith()](#-122-string-endsWith)
-    * [String includes()](#-123-string-includes)
+    * [String.startsWith()](#-121-String-startsWith)
+    * [String.endsWith()](#-122-string-endsWith)
+    * [String.includes()](#-123-string-includes)
 * Proxy & Reflection
     * [Proxy](#-131-proxies)
     * [Reflection](#-132-reflect)
@@ -2126,6 +2126,31 @@ console.log(Object.is(NaN, Number.NaN)); // true
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-is-ck2h8y?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 12.1. String.startsWith()
+
+The `startsWith()` method determines whether a string begins with the characters of a specified string, returning `true` or `false` as appropriate.
+
+**Syntax:**
+
+```js
+String.startsWith(searchString [,position])
+```
+
+**Example:**
+
+```js
+let text = "Hello World, Welcome to the JavaScript ES6.";
+let isTrue = text.startsWith("Hello"); 
+
+console.log(isTrue); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-startswith-wxbrtw?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
