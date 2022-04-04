@@ -2181,6 +2181,32 @@ console.log(isTrue); // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## 12.3. String.includes()
+
+The `includes()` method determines whether a string contains another string:
+
+**Syntax:**
+
+```js
+string.includes(searchString [,position])
+```
+
+**Example:**
+
+```js
+let email = 'admin@example.com';
+console.log(email.includes('@')); // true
+
+let str = 'JavaScript String';
+console.log(str.includes('Script')); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-includes-ycwhqd?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 13.1. Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
