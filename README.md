@@ -2078,6 +2078,59 @@ console.log(styleBox);
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 11.2. Object.is()
+
+The `Object.is()` method determines whether two values are **the same value**.
+
+The `Object.is()` behaves like the `===` operator with two differences:
+
+* -0 and +0
+* NaN
+
+**Example:** Evaluation result is the same as using `===`
+
+```js
+Object.is(null, null); // true
+Object.is(undefined, undefined); // true
+Object.is(window, window); // true
+Object.is([], []); // false
+
+var obj1 = { a: 1 };
+var obj2 = { a: 1 };
+Object.is(obj1, obj1); // true
+Object.is(obj1, obj2); // false
+```
+
+**Example:** Negative zero
+
+The === operator treats -0 and +0 are the same value:
+
+```js
+let amount = +0,
+    volume = -0;
+console.log(volume === amount); // true
+
+
+let amount = +0,
+    volume = -0;
+console.log(Object.is(amount, volume)); // false
+```
+
+**Example:** NaN
+
+The `===` operator considers `NaN` and `NaN` are different values. The `NaN` is the only number that does not equal itself.
+
+```js
+console.log(Object.is(NaN, 0 / 0)); // true
+console.log(Object.is(NaN, Number.NaN)); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-is-ck2h8y?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 13.1. Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
