@@ -67,9 +67,9 @@
     * [Object.assign()](#-111-objectassign)
     * [Object.is()](#-112-objectis)
 * String Extensions
-    * [String.startsWith()](#-121-String-startsWith)
-    * [String.endsWith()](#-122-string-endsWith)
-    * [String.includes()](#-123-string-includes)
+    * [String.startsWith()](#-121-stringstartswith)
+    * [String.endsWith()](#-122-stringendswith)
+    * [String.includes()](#-123-stringincludes)
 * Proxy & Reflection
     * [Proxy](#-131-proxies)
     * [Reflection](#-132-reflect)
