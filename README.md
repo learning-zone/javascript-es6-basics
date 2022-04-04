@@ -2027,6 +2027,57 @@ console.log(index); // 2
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 11.1. Object.assign()
+
+The `Object.assign()` method copies **all enumerable own properties** from one or more source objects to a target object. It returns the modified target object.
+
+The `Object.assign()` invokes the getters on the source objects and setters on the target. It assigns properties only, not copying or defining new properties.
+
+**Example:** Object.assign() to clone an object
+
+```js
+let widget = {
+  color: "red"
+};
+let clonedWidget = Object.assign({}, widget);
+
+console.log(clonedWidget);
+
+// Output
+{ color: 'red' }
+```
+
+**Example:** Object.assign() to merge objects
+
+```js
+let box = {
+  height: 10,
+  width: 20
+};
+
+let style = {
+  color: "Red",
+  borderStyle: "solid"
+};
+let styleBox = Object.assign({}, box, style);
+
+console.log(styleBox);
+
+// Output
+{
+  height: 10,
+  width: 20,
+  color: "Red",
+  borderStyle: "solid"
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-assign-0ot7bs?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 13.1. Proxies
 
 The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
