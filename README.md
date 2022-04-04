@@ -61,8 +61,8 @@
 * Array Extensions
     * [Array.of()](#-101-arrayof)
     * [Array.from()](#-102-arrayfrom)
-    * [Array find()](#-103-arrayfind)
-    * [Array findIndex()](#-104-arrayfindindex)
+    * [Array.find()](#-103-arrayfind)
+    * [Array.findIndex()](#-104-arrayfindindex)
 * Object Extensions
     * [Object.assign()](#-111-objectassign)
     * [Object.is()](#-112-objectis)
