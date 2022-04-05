@@ -2315,23 +2315,9 @@ console.log(user.age); // undefined
 
 ## # 14.1. Unicode
 
-Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit. Since the character set is been expanded by Unicode, you will get unexpected results from UTF-16 encoded strings containing surrogate pairs(i.e, Since it is not sufficient to represent certain characters in just 16-bits, you need two 16-bit code units).
+Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit.
 
-```js
-let str = '𠮷';
-
-console.log(str.length);             // 2
-console.log(text.charAt(0));        // ""
-console.log(text.charAt(1));        // ""
-console.log(text.charCodeAt(0));    // 55362(1st code unit)
-console.log(text.charCodeAt(1));    // 57271(2nd code unit)
-
-console.log(/^.$/.test(str)); // false, because length is 2
-console.log('\u20BB7'); // 7!(wrong value)
-console.log(str === '\uD842\uDFB7'); // true
-```
-
-ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp u mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
+ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp flag **\u** mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
 
 ```js
 let str = '𠮷';
@@ -2349,6 +2335,8 @@ console.log(str.codePointAt(1)); // 57271
 
 console.log(String.fromCodePoint(134071));  // "𠮷"
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-unicode-ve845j?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
