@@ -2252,124 +2252,62 @@ Property email: rishima.karpe@email.com
 
 ## # 13.2. Reflect
 
-Reflection is the ability of a code to inspect and manipulate variables, properties, and methods of objects at runtime. JavaScript already provides `Object.keys(), Object.getOwnPropertyDescriptor(), and Array.isArray()` methods as classic refection features. In ES6, it has been officially provided through Reflect object. Reflect is a new global object which is used to call methods, construct objects, get and set properties, manipulate and extend properties.
+Reflection is the ability of a code to inspect and manipulate variables, properties, and methods of objects at **runtime**.
 
-Unlike most global objects, Reflect is not a constructor. i.e, You cannot use Reflect with the new operator or invoke the Reflect as a function. It is similar to Math and JSON objects in which all the methods of this object are static.
+JavaScript already provides `Object.keys()`, `Object.getOwnPropertyDescriptor()`, and `Array.isArray()` methods as classic refection features.
 
-Let\'s see the usage of Reflect API with below examples,
+ES6 introduces a new global object called `Reflect` that allows you to call methods, construct objects, get and set properties, manipulate and extend properties.
 
-1. **Creating objects using Reflect.construct();**
-
-The `construct()` method behaves like the regular new operator, but as a function. It is equivalent to calling new target(...args) with an option to specify a different prototype. The syntax looks like as below,
-
-```js
-Reflect.construct(target, args [, newTarget]);
-```
-
-The method has below parameters,
-
-1. target: The target function to call.
-2. argumentsList: An array-like object specifying the arguments with which target should be called.
-3. newTarget: The constructor whose prototype should be used. This is an optional parameter. i.e, If newTarget is not present, its value defaults to target.
-
-**Example:**
+**Example:** Creating objects using Reflect.construct()
 
 ```js
 class User {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-};
-let args = ['John', 'Emma'];
-let john = Reflect.construct(
-    User,
-    args
-);
-console.log(john instanceof User);
-console.log(john.fullName); // John Doe
-```
-
-2. **Calling a function using Reflect.apply():**
-
-Prior to ES6, you can invoke a function with a specified `this` value and arguments by using the `Function.prototype.apply()` method.
-
-For example, you can call `max()` static method of Math object,
-
-```js
-const max = Function.prototype.apply.call(Math.max, Math, [100, 200, 300]);
-console.log(max);
-```
-
-In ES6, Reflect.apply() provides the same features as Function.prototype.apply() but in a less verbose syntax.
-
-```js
-const max = Reflect.apply(Math.max, Math, [100, 200, 300]);
-console.log(max);
-```
-
-3. **Defining a property using Reflect.defineProperty():**
-
-The `Reflect.defineProperty()` method is similar to `Object.defineProperty()` but it returns a Boolean value indicating whether or not the property was defined successfully instead of throwing an exception.
-
-The syntax of this method looks like below,
-
-```js
-Reflect.defineProperty(target, propertyName, propertyDescriptor)
-```
-
-Let\'s define the age property on user object,
-
-```js
-class User {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-};
-let john = new User('John', 'Resig');
-if (Reflect.defineProperty(john, 'age', {
-        writable: true,
-        configurable: true,
-        enumerable: false,
-        value: 33,
-    })) {
-    console.log(john.age);
-} else {
-    console.log('Cannot define the age property on the user object.');
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
+let args = ["Abhilash", "Bhasin"];
+let abhilash = Reflect.construct(User, args);
+
+console.log(abhilash instanceof User); //true
+console.log(abhilash.fullName); // Abhilash Bhasin
 ```
 
-4. **Delete property using Reflect.deleteProperty():**
-
-The `Reflect.deleteProperty()` method is used to delete properties like the delete operator but as a function. It returns Boolean value indicating whether or not the property was successfully deleted.
+**Example:** Get property of an object using `Reflect.get()`
 
 ```js
 const user = {
-  name: 'John',
-  age: 33
+  name: 'Abhilash',
+  age: 28
 };
+console.log(Reflect.get(user, 'age')); // 33
+```
+
+**Example:** Calling a function using `Reflect.apply()`
+
+```js
+const max = Reflect.apply(Math.max, Math, [10, 20, 30]);
+
+console.log(max);
+```
+
+**Example:** Delete property using `Reflect.deleteProperty()`
+
+```js
+const user = {
+  name: 'Abhilash',
+  age: 28
+};
+
 console.log(Reflect.deleteProperty(user, 'age')); // true
 console.log(user.age); // undefined
 ```
 
-5. **Get property of an object using Reflect.get():**
-
-The `Reflect.get` method is used to get a property on an object like the property accessor syntax but as a function.
-
-```js
-const user = {
-  name: 'John',
-  age: 33
-};
-console.log(Reflect.get(user, 'age')); // 33
-```
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-reflect-e7euzj?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
