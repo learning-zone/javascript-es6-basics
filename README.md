@@ -2344,7 +2344,7 @@ console.log(String.fromCodePoint(134071));  // "𠮷"
 
 ## # 14.2. Proper Tail Calls
 
-**Proper tail call(PTC)** is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.
+**Proper tail call ( PTC )** is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.
 
 For example, the below classic or head recursion of factorial function relies on stack for each step. Each step need to be processed upto `n * factorial(n - 1)`
 
