@@ -2209,64 +2209,42 @@ console.log(str.includes('Script')); // true
 
 ## # 13.1. Proxies
 
-The Proxy object is used to create a proxy for another object, which can intercept and redefine fundamental operations for that object such as property lookup, assignment, enumeration, function invocation etc. These are used in many libraries and some browser frameworks.
+The `Proxy` object allows you to create an object that can be used in place of the original object, but which may redefine fundamental `Object` operations like getting, setting, and defining properties. Proxy objects are commonly used to log property accesses, validate, format, or sanitize inputs, and so on.
 
-The proxy object is created with two parameters with below syntax,
+The proxy object is created with two parameters:
 
 ```js
 let proxy = new Proxy(target, handler)
 ```
 
-1. **target:** Object on which you want to proxy
-2. **handler:** An object that defines which operations will be intercepted and how to redefine them.
+* **target:** the original object which you want to proxy
+* **handler:** an object that defines which operations will be intercepted and how to redefine intercepted operations.
 
-The property Lookup Behavior of a user proxied object will be as below,
+**Example:**
 
 ```js
-const target = {
-  name: "John",
-  age: 3
+const user = {
+  name: "Rishima Karpe",
+  email: "rishima.karpe@email.com"
 };
+
 const handler = {
-  get: function(target, prop) {
-    return prop in target ?
-        target[prop] :
-        `${prop} does not exist`;
+  get(target, property) {
+    console.log(`Property ${property}:`);
+    return target[property];
   }
 };
 
-const user = new Proxy(target, handler);
+const proxyUser = new Proxy(user, handler);
+console.log(proxyUser.name);
+console.log(proxyUser.email);
 
-console.log(user.name); // John
-console.log(user.age); // John
-console.log(user.gender); // gender does not exist
+// Output
+Property name: Rishima Karpe 
+Property email: rishima.karpe@email.com
 ```
 
-These proxies also enforce value validations. Let\'s take an example with set handler,
-
-```js
-let ageValidator = {
-  set: function(obj, prop, value) {
-    if (prop === 'age') {
-      if (!Number.isInteger(value)) {
-        throw new TypeError('The age is not an integer');
-      }
-      if (value > 200) {
-        throw new RangeError('Invalid age');
-      }
-    }
-    obj[prop] = value; // The default behavior to store the value
-    return true; // Indicate success
-  }
-};
-
-const person = new Proxy({}, validator);
-
-person.age = 30;
-console.log(person.age); // 30
-person.age = 'old';    // Throws an exception
-person.age = 200;        // Throws an exception
-```
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-proxies-u9tgie?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
