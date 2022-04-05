@@ -2258,7 +2258,7 @@ JavaScript already provides `Object.keys()`, `Object.getOwnPropertyDescriptor()`
 
 ES6 introduces a new global object called `Reflect` that allows you to call methods, construct objects, get and set properties, manipulate and extend properties.
 
-**Example:** Creating objects using Reflect.construct()
+**Example:** Creating objects using `Reflect.construct()`
 
 ```js
 class User {
