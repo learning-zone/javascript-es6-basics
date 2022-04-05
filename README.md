@@ -2349,37 +2349,35 @@ console.log(String.fromCodePoint(134071));  // "𠮷"
 For example, the below classic or head recursion of factorial function relies on stack for each step. Each step need to be processed upto `n * factorial(n - 1)`
 
 ```js
-  function factorial(n) {
-    if (n === 0) {
-      return 1
-    }
-    return n * factorial(n - 1)
+function factorial(n) {
+  if (n === 0) {
+    return 1
   }
-  console.log(factorial(5)); //120
+  return n * factorial(n - 1)
+}
+
+console.log(factorial(5)); //120
 ```
 
-But if you use Tail recursion functions, they keep passing all the necessary data it needs down the recursion without relying on the stack.
-
-```js
-  function factorial(n, acc = 1) {
-    if (n === 0) {
-      return acc
-    }
-    return factorial(n - 1, n * acc)
-  }
-  console.log(factorial(5)); //120
-```
-
-The above pattern returns the same output as first one. But the accumulator keeps track of total as an argument without using stack memory on recursive calls.
+But if you use **Tail recursion functions**, they keep passing all the necessary data it needs down the recursion without relying on the stack.
 
 The browsers which supports PTC do not generate stack overflow instead shows Infinity with below inputs,
 
 ```js
- console.log(factorial(10));
- console.log(factorial(100));
- console.log(factorial(1000));
- console.log(factorial(10000));
+function factorial(n, acc = 1) {
+  if (n === 0) {
+    return acc;
+  }
+  return factorial(n - 1, n * acc);
+}
+
+console.log(factorial(5)); //120
+console.log(factorial(10)); // 3628800
+console.log(factorial(100)); // 9.332621544394418e+157
+console.log(factorial(1000)); // Infinity
 ```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-proper-tail-calls-qmptbq?file=/src/index.js)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
