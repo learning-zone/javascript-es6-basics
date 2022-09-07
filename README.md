@@ -856,8 +856,8 @@ console.log(b);
 console.log(args);
 
 // Output
-100
-200
+10
+20
 { c: 30, d: 40, e: 50 }
 ```
 
