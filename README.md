@@ -6,9 +6,9 @@
 
 ## Related Interview Questions
 
-* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions/blob/master/README.md)
-* [JavaScript Design Patterns](https://github.com/learning-zone/JavaScript-Design-Patterns/blob/main/README.md)
-* [JavaScript Coding Practice](https://github.com/learning-zone/JavaScript-Coding-Practice/blob/main/README.md)
+* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions)
+* [JavaScript Design Patterns](https://github.com/learning-zone/JavaScript-Design-Patterns)
+* [JavaScript Coding Practice](https://github.com/learning-zone/JavaScript-Coding-Practice)
 
 <br/>
 
