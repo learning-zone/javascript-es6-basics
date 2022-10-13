@@ -1073,16 +1073,16 @@ console.log(anonymous); // Person {name: "Aryan Sarin"}
 Like a static method, a static property is shared by all instances of a class. To define static property, you use the static keyword followed by the property name like this:
 
 ```js
+/**
+ * Static Properties
+ */
 class Item {
   constructor(name, quantity) {
     this.name = name;
     this.quantity = quantity;
     this.constructor.count++;
   }
-  // Static Properties
   static count = 0;
-  
-  // Static Method
   static getCount() {
     return Item.count++;
   }
