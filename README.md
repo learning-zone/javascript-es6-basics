@@ -983,6 +983,9 @@ The accessor properties are methods that get or set the value of an object. For 
 * `set` - to define a setter method to set the property value
 
 ```js
+/**
+ * Getters and Setters
+ */
 class Person {
   constructor(name) {
     this.name = name;
@@ -990,22 +993,16 @@ class Person {
   get name() {
     return this._name;
   }
-  set name(newName) {
-    newName = newName.trim();
-    if (newName === "") {
-      throw "The name cannot be empty";
-    }
-    this._name = newName;
+  set name(name) {
+    this._name = name;
   }
 }
 
-let Object = new Person("Mala Amar");
-let name = Object.name;
-
-console.log(name); // "Mala Amar"
+let person = new Person("Mala Amar");
+console.log(person.name); // "Mala Amar"
 ```
 
-*Note: These setter and getter allow you to use the properties directly (without using the parenthesis)*
+*Note: These setter and getter allow you to use the properties directly ( without using the parenthesis )*
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-getters-and-setters-ugb9jx?file=/src/index.js)**
 
