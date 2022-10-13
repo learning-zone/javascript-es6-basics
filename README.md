@@ -1103,11 +1103,14 @@ console.log(Item.getCount()); // 2
   <b><a href="#">↥ back to top</a></b>
 </div>
 
-## # 5.6. Computed property
+## # 5.6. Computed Property
 
 ES6 "Computed Property" feature allows you to have an expression in brackets `[]` (a piece of code that results in a single value like a variable or function invocation) be computed as a property name on an object.
 
 ```js
+/**
+ * Computed Property
+ */
 let propName = "fullName";
 
 class Person {
@@ -1135,9 +1138,13 @@ Sharma Peri
 
 ## # 5.7. Inheritance
 
-To create a class inheritance, use the `extends` keyword. A class created with a class inheritance inherits all the methods from another class. The `super()` method in the constructor is used to access all parent’s properties and methods that are used by the derived class.
+To create a class inheritance, use the `extends` keyword. A class created with a class inheritance inherits all the methods from another class. The `super()` method in the constructor is used to access all parent\'s properties and methods that are used by the derived class.
 
 ```js
+/**
+ * Inheritance
+ */
+
 // Parent Class
 class Vehicle {
   constructor(name, type) {
