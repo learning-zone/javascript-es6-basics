@@ -1015,7 +1015,9 @@ console.log(person.name); // "Mala Amar"
 A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class\'s body. However, it can be accessed via the name property.
 
 ```js
-// Unnamed Class
+/**
+ * Unnamed Class
+ */
 let Person = class {
   constructor(name) {
     this.name = name;
@@ -1025,10 +1027,8 @@ let Person = class {
   }
 };
 
-let Object = new Person("Anjali Durga");
-let name = Object.getName();
-
-console.log(name); // "Anjali Durga"
+let person = new Person("Anjali Durga");
+console.log(person.getName()); // "Anjali Durga"
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-expressions-ofbg0i)**
