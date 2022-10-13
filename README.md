@@ -822,7 +822,7 @@ console.log(email); // dushyant.meena@email.com
 ```js
 const { q = 100, w = 200 } = { e: 500 };
 
-console.log(q); // 500
+console.log(q); // 100
 console.log(w); // 200
 ```
 
