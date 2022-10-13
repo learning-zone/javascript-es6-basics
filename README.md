@@ -357,6 +357,8 @@ The rest parameter is used to represent an indefinite number of arguments as an 
 
 This feature has been introduced to reduce the boilerplate code that was induced by the arguments.
 
+**Example:**
+
 ```js
 function sum(...args) {
   return args.reduce((previous, current) => {
@@ -952,6 +954,8 @@ import { export1 as alias1 } from "my-module";
 
 ES6 Classes formalize the common JavaScript pattern of simulating class-like inheritance hierarchies using functions and prototypes. It support prototype-based inheritance, constructors, super calls, instance and static methods.
 
+**Example:**
+
 ```js
 /**
  * ES6 Class
@@ -981,6 +985,8 @@ The accessor properties are methods that get or set the value of an object. For 
 
 * `get` - to define a getter method to get the property value
 * `set` - to define a setter method to set the property value
+
+**Example:**
 
 ```js
 /**
@@ -1014,6 +1020,8 @@ console.log(person.name); // "Mala Amar"
 
 A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class\'s body. However, it can be accessed via the name property.
 
+**Example:**
+
 ```js
 /**
  * Unnamed Class
@@ -1043,6 +1051,8 @@ The static keyword defines a static method or property for a class, or a class s
 
 Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
 
+**Example:**
+
 ```js
 /**
  * Static methods
@@ -1071,6 +1081,8 @@ console.log(anonymous); // Person {name: "Aryan Sarin"}
 ## # 5.5. Static Properties
 
 Like a static method, a static property is shared by all instances of a class. To define static property, you use the static keyword followed by the property name like this:
+
+**Example:**
 
 ```js
 /**
@@ -1107,6 +1119,8 @@ console.log(Item.getCount()); // 2
 
 ES6 "Computed Property" feature allows you to have an expression in brackets `[]` (a piece of code that results in a single value like a variable or function invocation) be computed as a property name on an object.
 
+**Example:**
+
 ```js
 /**
  * Computed Property
@@ -1139,6 +1153,8 @@ Sharma Peri
 ## # 5.7. Inheritance
 
 To create a class inheritance, use the `extends` keyword. A class created with a class inheritance inherits all the methods from another class. The `super()` method in the constructor is used to access all parent\'s properties and methods that are used by the derived class.
+
+**Example:**
 
 ```js
 /**
@@ -1185,6 +1201,8 @@ console.log(car.getType()); // car
 ## # 5.8. new.target
 
 The `new.target` pseudo-property lets you detect whether a function or constructor was called using the **new** operator. In constructors and functions invoked using the new operator, `new.target` returns a reference to the constructor or function. In normal function calls, `new.target` is undefined.
+
+**Example:**
 
 ```js
 /**
