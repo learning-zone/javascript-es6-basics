@@ -1082,7 +1082,10 @@ class Item {
     this.quantity = quantity;
     this.constructor.count++;
   }
+  // Static Properties
   static count = 0;
+
+  // Static Method
   static getCount() {
     return Item.count++;
   }
