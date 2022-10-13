@@ -953,6 +953,9 @@ import { export1 as alias1 } from "my-module";
 ES6 Classes formalize the common JavaScript pattern of simulating class-like inheritance hierarchies using functions and prototypes. It support prototype-based inheritance, constructors, super calls, instance and static methods.
 
 ```js
+/**
+ * ES6 Class
+ */
 class Person {
   constructor(name) {
     this.name = name;
@@ -962,10 +965,8 @@ class Person {
   }
 }
 
-let Object = new Person("Prasad Shashi");
-let name = Object.getName();
-
-console.log(name); // "Prasad Shashi"
+let person = new Person("Prasad Shashi");
+console.log(person.getName()); // "Prasad Shashi"
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-70hkd7)**
