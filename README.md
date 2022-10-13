@@ -1187,6 +1187,9 @@ console.log(car.getType()); // car
 The `new.target` pseudo-property lets you detect whether a function or constructor was called using the **new** operator. In constructors and functions invoked using the new operator, `new.target` returns a reference to the constructor or function. In normal function calls, `new.target` is undefined.
 
 ```js
+/**
+ * new.target
+ */
 class Person {
   constructor(name) {
     this.name = name;
@@ -1292,6 +1295,9 @@ In JavaScript an iterator is an object which defines a sequence and potentially 
 The following code creates a Sequence object that returns a list of numbers in the range of ( start, end) with an interval between subsequent numbers.
 
 ```js
+/**
+ * Iterators
+ */
 class Sequence {
   constructor(start = 0, end = Infinity, interval = 1) {
     this.start = start;
@@ -1345,6 +1351,9 @@ A generator is a function that can stop or suspend midway and then continue from
 This function returns an iterator object and this iterator\'s **next()** method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value.
 
 ```js
+/**
+ * Generators
+ */
 function* myGenerator(i) {
   yield i + 10;
   return i + 20;
@@ -1369,6 +1378,9 @@ The `yield` keyword allows you to pause and resume a generator function (`functi
 The `yield` keyword causes the call to the generator\'s `next()` method to return an `IteratorResult` object with two properties: `value` and `done`. The `value` property is the result of evaluating the `yield` expression, and `done` is `false`, indicating that the generator function has not fully completed.
 
 ```js
+/**
+ * Yield
+ */
 function* counter() {
   yield 1;
   yield 2;
@@ -1418,6 +1430,9 @@ The promise constructor accepts a callback function that typically performs an a
 In turn, the executor accepts two callback functions with the name `resolve` and `reject`.
 
 ```js
+/**
+ * Promise
+ */
 const promise = new Promise((resolve, reject) => {
   // contain an operation
   // ...
@@ -1527,6 +1542,9 @@ A common need is to execute two or more asynchronous operations back to back, wh
 **Example:**
 
 ```js
+/**
+ * Promise Chaining
+ */
 new Promise(function(resolve, reject) {
 
   setTimeout(() => resolve(1), 1000); // (*)
@@ -1585,18 +1603,23 @@ Promise.all(iterable);
 **Example:**
 
 ```js
+/**
+ * Promise.all()
+ */
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log("The first promise has resolved");
     resolve(10);
   }, 1 * 1000);
 });
+
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log("The second promise has resolved");
     resolve(20);
   }, 2 * 1000);
 });
+
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log("The third promise has resolved");
@@ -1631,6 +1654,9 @@ Promise.race(iterable)
 **Example:**
 
 ```js
+/**
+ * Promise.race()
+ */
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
     console.log("The first promise has resolved");
@@ -1779,6 +1805,9 @@ The `WeakSet` store a collection of objects. It adapts the same properties of th
 WeakSets have methods `add()`, `delete()`, and `has()`.
 
 ```js
+/**
+ * Weakset
+ */
 const weakSet = new WeakSet();
 
 let obj = {
@@ -1852,6 +1881,9 @@ userRoles.has(lily); // true
 **Iterate over map keys:**
 
 ```js
+/**
+ * Map
+ */
 let lalit = { name: 'Lalit Ranganathan' },
   jayesh = { name: 'Jayesh Ray' },
   sarvesh = { name: 'Sarvesh Tripathi' };
@@ -1885,6 +1917,9 @@ A `WeakMap` only has subset methods of a `Map` object:
 * delete(key)
 
 ```js
+/**
+ * Weakmap
+ */
 var weakMap = new WeakMap();
 var obj1 = {};
 var obj2 = {};
@@ -1926,6 +1961,10 @@ Array.of(element0, element1, /* ... ,*/ elementN)
 **Example:**
 
 ```js
+/**
+ * Array.of()
+ */
+
 // Array Method
 let number = Array(3);
 console.log(number.length); // 3
@@ -2230,6 +2269,9 @@ let proxy = new Proxy(target, handler)
 **Example:**
 
 ```js
+/**
+ * Proxy object
+ */
 const user = {
   name: "Rishima Karpe",
   email: "rishima.karpe@email.com"
@@ -2268,6 +2310,9 @@ ES6 introduces a new global object called `Reflect` that allows you to call meth
 **Example:** Creating objects using `Reflect.construct()`
 
 ```js
+/**
+ * Reflect
+ */
 class User {
   constructor(firstName, lastName) {
     this.firstName = firstName;
@@ -2326,7 +2371,12 @@ Prior to ES6, JavaScript strings are represented by 16-bit character encoding (U
 
 ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp flag **\u** mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
 
+**Example:**
+
 ```js
+/**
+ * Unicode
+ */
 let str = '𠮷';
 
 // new string form
