@@ -1044,12 +1044,14 @@ The static keyword defines a static method or property for a class, or a class s
 Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
 
 ```js
+/**
+ * Static methods
+ */
 class Person {
   constructor(name) {
     this.name = name;
   }
-  
-  // Static Method
+
   static staticMethod(gender) {
     let name = gender === "male" ? "Aryan Sarin" : "Manju Soni";
     return new Person(name);
@@ -1057,10 +1059,7 @@ class Person {
 }
 
 let anonymous = Person.staticMethod("male");
-console.log(anonymous);
-
-// Output
-Person {name: "Aryan Sarin", constructor: Object}
+console.log(anonymous); // Person {name: "Aryan Sarin"}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-static-methods-3tf3li?file=/src/index.js)**
