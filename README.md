@@ -14,68 +14,58 @@
 
 ## Table of Contents
 
-* [Introduction](#-1-introduction)
-* ES6 New Features
-    * [let](#-21-let)
-    * [let vs var](#-22-let-vs-var)
-    * [const](#-23-const)
-    * [Arrow Function](#-24-arrow-function)
-    * [Default Function Parameters](#-25-default-function-parameters)
-    * [Rest Parameter](#-26-rest-parameter)
-    * [Spread Operator](#-27-spread-operator)
-    * [for…of](#-28-forof)
-    * [Binary and Octal literals](#-29-binary-and-octal-literals)
-    * [Template literals](#-210-template-literals)
-    * [Enhanced Object literals](#-211-Enhanced-object-literals)
-* Destructuring
-    * [Array Destructuring](#-31-array-destructuring)
-    * [Object Destructuring](#-32-object-destructuring)
-* ES6 Modules
-    * [ES6 modules](#-4-es6-modules)
-* ES6 Classes
-    * [Classes](#-51-classes)
-    * [Getters and Setters](#-52-getters-and-setters)
-    * [Class Expression](#-53-class-expression)
-    * [Static methods](#-54-static-methods)
-    * [Static Properties](#-55-static-properties)
-    * [Computed property](#-56-computed-property)
-    * [Inheritance](#-57-inheritance)
-    * [new.target](#-58-newtarget)
-* Symbol
-    * [Symbol](#-6-symbol)
-* Iterators & Generators
-    * [Iterators](#-71-iterators)
-    * [Generators](#-72-generators)
-    * [yield](#-73-yield)
-* Promises
-    * [Promises](#-81-promises)
-    * [Promise chaining](#-82-promise-chaining)
-    * [Promise.all()](#-83-promiseall)
-    * [Promise.race()](#-84-promiserace)
-    * [Promise Error Handling](#-85-promise-error-handling)
-* ES6 Collections
-    * [Set](#-91-set)
-    * [Weakset](#-92-weakset)
-    * [Map](#-93-map)
-    * [Weakmap](#-94-weakmap)
-* Array Extensions
-    * [Array.of()](#-101-arrayof)
-    * [Array.from()](#-102-arrayfrom)
-    * [Array.find()](#-103-arrayfind)
-    * [Array.findIndex()](#-104-arrayfindindex)
-* Object Extensions
-    * [Object.assign()](#-111-objectassign)
-    * [Object.is()](#-112-objectis)
-* String Extensions
-    * [String.startsWith()](#-121-stringstartswith)
-    * [String.endsWith()](#-122-stringendswith)
-    * [String.includes()](#-123-stringincludes)
-* Proxy & Reflection
-    * [Proxy](#-131-proxies)
-    * [Reflection](#-132-reflect)
-* Miscellaneous Features
-    * [Unicode](#-141-unicode)
-    * [Proper Tail calls](#-142-proper-tail-calls)
+- [JavaScript ES6 Basics](#javascript-es6-basics)
+  - [Related Interview Questions](#related-interview-questions)
+  - [Table of Contents](#table-of-contents)
+  - [# 1. Introduction](#-1-introduction)
+  - [# 2.1. let](#-21-let)
+  - [# 2.2. let vs var](#-22-let-vs-var)
+  - [# 2.3. const](#-23-const)
+  - [# 2.4. Arrow Function](#-24-arrow-function)
+  - [# 2.5. Default Function Parameters](#-25-default-function-parameters)
+  - [# 2.6. Rest Parameter](#-26-rest-parameter)
+  - [# 2.7. Spread Operator](#-27-spread-operator)
+  - [# 2.8. For..of](#-28-forof)
+  - [# 2.9. Binary and Octal literals](#-29-binary-and-octal-literals)
+  - [# 2.10. Template literals](#-210-template-literals)
+  - [# 2.11. Enhanced Object literals](#-211-enhanced-object-literals)
+  - [# 3.1 Array Destructuring](#-31-array-destructuring)
+  - [# 3.2. Object Destructuring](#-32-object-destructuring)
+  - [# 4. ES6 modules](#-4-es6-modules)
+  - [# 5.1. Classes](#-51-classes)
+  - [# 5.2. Getters and Setters](#-52-getters-and-setters)
+  - [# 5.3. Class expressions](#-53-class-expressions)
+  - [# 5.4. Static methods](#-54-static-methods)
+  - [# 5.5. Static Properties](#-55-static-properties)
+  - [# 5.6. Computed Property](#-56-computed-property)
+  - [# 5.7. Inheritance](#-57-inheritance)
+  - [# 5.8. new.target](#-58-newtarget)
+  - [# 6. Symbol](#-6-symbol)
+  - [# 7.1. Iterators](#-71-iterators)
+  - [# 7.2. Generators](#-72-generators)
+  - [# 7.3. Yield](#-73-yield)
+  - [# 8.1. Promises](#-81-promises)
+  - [# 8.2. Promise Chaining](#-82-promise-chaining)
+  - [# 8.3. Promise.all()](#-83-promiseall)
+  - [# 8.4. Promise.race()](#-84-promiserace)
+  - [# 8.5. Promise Error Handling](#-85-promise-error-handling)
+  - [# 9.1. Set](#-91-set)
+  - [# 9.2. Weakset](#-92-weakset)
+  - [# 9.3. Map](#-93-map)
+  - [# 9.4. Weakmap](#-94-weakmap)
+  - [# 10.1. Array.of()](#-101-arrayof)
+  - [# 10.2. Array.from()](#-102-arrayfrom)
+  - [# 10.3. Array.find()](#-103-arrayfind)
+  - [# 10.4. Array.findIndex()](#-104-arrayfindindex)
+  - [# 11.1. Object.assign()](#-111-objectassign)
+  - [# 11.2. Object.is()](#-112-objectis)
+  - [# 12.1. String.startsWith()](#-121-stringstartswith)
+  - [12.2. String.endsWith()](#122-stringendswith)
+  - [12.3. String.includes()](#123-stringincludes)
+  - [# 13.1. Proxies](#-131-proxies)
+  - [# 13.2. Reflect](#-132-reflect)
+  - [# 14.1. Unicode](#-141-unicode)
+  - [# 14.2. Proper Tail Calls](#-142-proper-tail-calls)
 
 <br/>
 
@@ -556,7 +546,7 @@ console.log(num); // 8
 
 ## # 2.10. Template literals
 
-Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces (${expression}). These literals are enclosed by the backtick (` `) character instead of double or single quotes.
+Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces (${expression}). These literals are enclosed by the backtick (` `` `) character instead of double or single quotes.
 
 **Example:**
 
