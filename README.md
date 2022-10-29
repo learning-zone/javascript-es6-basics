@@ -132,7 +132,10 @@ The `var` variables belong to the global scope when you define them outside a fu
 function increase() {
     var counter = 10;
 }
-// cannot access the counter variable here
+console.log(counter); // cannot access the counter variable here
+
+// Output
+// ReferenceError: counter is not defined
 ```
 
 Here, the counter variable is local to the increase() function. It cannot be accessible outside of the function.
