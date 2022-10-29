@@ -821,20 +821,20 @@ console.log(email); // dushyant.meena@email.com
 **Object destructuring and default values:**
 
 ```js
-const { q = 100, w = 200 } = { e: 500 };
+const { q = 10, w = 20 } = { e: 30 };
 
-console.log(q); // 100
-console.log(w); // 200
+console.log(q); // 10
+console.log(w); // 20
 ```
 
 **Assigning new variable names:**
 
 ```js
-const number = { x: 100, y: 200 };
+const number = { x: 10, y: 20 };
 const { x: val1, y: val2 } = number;
 
-console.log(val1); // 100
-console.log(val2); // 200
+console.log(val1); // 10
+console.log(val2); // 20
 ```
 
 **Assignment without declaration:**
@@ -865,10 +865,10 @@ console.log(args);
 **Assigning new variable names and providing default values simultaneously:**
 
 ```js
-const { a: num1 = 100, b: num2 = 200 } = { a: 300 };
+const { a: num1 = 10, b: num2 = 20 } = { a: 30 };
 
-console.log(num1); //300
-console.log(num2); //200
+console.log(num1); // 30
+console.log(num2); // 20
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-destructuring-ecncqm?file=/src/index.js)**
