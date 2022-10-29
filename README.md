@@ -559,7 +559,7 @@ console.log(num); // 8
 
 ## # 2.10. Template literals
 
-Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces **${`expression`}**. These literals are enclosed by the backtick character instead of double or single quotes.
+Template literals allows you to work with strings in a new way compared to ES5. These are just string literals allowing embedded expressions denoted by the dollar sign and curly braces **${expression}**. These literals are enclosed by the backtick character instead of double or single quotes.
 
 **Example:**
 
