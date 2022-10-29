@@ -729,9 +729,7 @@ console.log(green); // three
 **Assignment separate from declaration:**
 
 ```js
-let a, b;
-
-[a, b] = [10, 20];
+const [a, b] = [10, 20];
 
 console.log(a); // 10
 console.log(b); // 20
@@ -740,9 +738,7 @@ console.log(b); // 20
 **Array destructuring and Default values:**
 
 ```js
-let x, y;
-
-[x = 10, y = 20] = [30];
+const [x = 10, y = 20] = [30];
 
 console.log(x); // 30
 console.log(y); // 20
