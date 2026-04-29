@@ -6,7 +6,7 @@
 
 ## Related Topics
 
-* [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions)
+* [JavaScript Basics](https://github.com/learning-zone/javascript-basics)
 * [JavaScript Design Patterns](https://github.com/learning-zone/JavaScript-Design-Patterns)
 * [JavaScript Coding Practice](https://github.com/learning-zone/JavaScript-Coding-Practice)
 
