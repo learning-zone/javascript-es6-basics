@@ -4,7 +4,7 @@
 
 <br/>
 
-## Related Interview Questions
+## Related Topics
 
 * [JavaScript Interview Questions](https://github.com/learning-zone/javascript-interview-questions)
 * [JavaScript Design Patterns](https://github.com/learning-zone/JavaScript-Design-Patterns)
