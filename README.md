@@ -6,9 +6,14 @@
 
 ## Related Topics
 
-* [JavaScript Basics](https://github.com/learning-zone/javascript-basics)
-* [JavaScript Design Patterns](https://github.com/learning-zone/JavaScript-Design-Patterns)
-* [JavaScript Coding Practice](https://github.com/learning-zone/JavaScript-Coding-Practice)
+* *[HTML Basics](https://github.com/learning-zone/html-basics)*
+* *[CSS Basics](https://github.com/learning-zone/css-basics)*
+* *[JavaScript Basics](https://github.com/learning-zone/javascript-basics)*
+* *[JavaScript ES6 Basics](https://github.com/learning-zone/javascript-es6-basics)*
+* *[JavaScript Unit Testing](https://github.com/learning-zone/javascript-unit-testing)*
+* *[JavaScript Coding Practice](https://github.com/learning-zone/javascript-coding-practice)*
+* *[JavaScript Design Patterns](https://github.com/learning-zone/javascript-design-patterns)*
+* *[Data Structure in JavaScript](https://github.com/learning-zone/javascript-data-structure)*
 
 <br/>
 
@@ -47,6 +52,7 @@
     * [Iterators](#-71-iterators)
     * [Generators](#-72-generators)
     * [yield](#-73-yield)
+    * [yield*](#-74-yield-1)
 * Promises
     * [Promises](#-81-promises)
     * [Promise chaining](#-82-promise-chaining)
@@ -63,19 +69,40 @@
     * [Array.from()](#-102-arrayfrom)
     * [Array.find()](#-103-arrayfind)
     * [Array.findIndex()](#-104-arrayfindindex)
+    * [Array.fill()](#-105-arrayfill)
+    * [Array.copyWithin()](#-106-arraycopywithin)
+    * [Array.keys()](#-107-arraykeys)
+    * [Array.values()](#-108-arrayvalues)
+    * [Array.entries()](#-109-arrayentries)
 * Object Extensions
     * [Object.assign()](#-111-objectassign)
     * [Object.is()](#-112-objectis)
+    * [Object.keys()](#-113-objectkeys)
+    * [Object.values()](#-114-objectvalues)
+    * [Object.entries()](#-115-objectentries)
+    * [Object.freeze()](#-116-objectfreeze)
+    * [Object.seal()](#-117-objectseal)
 * String Extensions
     * [String.startsWith()](#-121-stringstartswith)
     * [String.endsWith()](#-122-stringendswith)
     * [String.includes()](#-123-stringincludes)
+    * [String.repeat()](#-124-stringrepeat)
 * Proxy & Reflection
     * [Proxy](#-131-proxies)
     * [Reflection](#-132-reflect)
 * Miscellaneous Features
     * [Unicode](#-141-unicode)
     * [Proper Tail calls](#-142-proper-tail-calls)
+* Number Extensions
+    * [Number.isInteger()](#-151-numberisinteger)
+    * [Number.isFinite()](#-152-numberisfinite)
+    * [Number.isNaN()](#-153-numberisnan)
+    * [Number.EPSILON](#-154-numberepsilon)
+* Math Extensions
+    * [Math.sign()](#-161-mathsign)
+    * [Math.trunc()](#-162-mathtrunc)
+    * [Math.cbrt()](#-163-mathcbrt)
+    * [Math.hypot()](#-164-mathhypot)
 
 <br/>
 
@@ -929,7 +956,7 @@ The static import statement is used to import read only live bindings which are 
 There are many variations of import scenarios as below,
 
 ```js
-// 1. Import an entire module's contents
+// 1. Import an entire module\'s contents
 import * as name from "my-module";
 
 //2.Import a single export from a module
@@ -1048,7 +1075,7 @@ console.log(person.getName()); // "Anjali Durga"
 
 The static keyword defines a static method or property for a class, or a class static initialization block. Neither static methods nor static properties can be called on instances of the class. Instead, they\'re called on the class itself.
 
-Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
+Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don\'t need to be replicated across instances.
 
 **Example:**
 
@@ -1288,7 +1315,6 @@ console.log(person); // {name: 'Anjali Mistry', Symbol(id): 10}
 |-----------|------------------------|
 |for()      |Searches for existing symbols|
 |keyFor()   |Returns a shared symbol key from the global symbol registry.|
-|toSource() |Returns a string containing the source of the Symbol object|
 |toString() |Returns a string containing the description of the Symbol|
 |valueOf()  |Returns the primitive value of the Symbol object.|
 
@@ -1305,7 +1331,7 @@ Iterator is an object which allows us to access a collection of objects one at a
 In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination.Specifically, an iterator is any object which implements the Iterator protocol by having a `next()` method that returns an object with two properties:
 
 * `value`: The next value in the iteration sequence.
-* `done`: This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator's return value.
+* `done`: This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator\'s return value.
 
 **Example:**
 
@@ -1365,7 +1391,7 @@ for (const num of evenNumbers) {
 
 A generator is a function that can stop or suspend midway and then continue from where it stopped while maintaining the context(saved across re-entrances). It can be defined using a function keyword followed by an asterisk (`function* ()`).
 
-This function returns an iterator object and this iterator\'s **next()** method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value.
+This function returns an iterator object and this iterator\\'s **next()** method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value.
 
 ```js
 /**
@@ -1411,6 +1437,46 @@ console.log(count.next()); // {value: 1, done: false}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-zo5i9j?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 7.4. yield*
+
+The `yield*` expression delegates to another iterable object or generator function. It iterates over the operand and yields each value returned by it, allowing generators to compose and reuse other generators.
+
+**Example:**
+
+```js
+/**
+ * yield*
+ */
+function* inner() {
+  yield 'a';
+  yield 'b';
+  yield 'c';
+}
+
+function* outer() {
+  yield 1;
+  yield* inner();
+  yield 2;
+}
+
+for (const value of outer()) {
+  console.log(value);
+}
+
+// Output
+1
+a
+b
+c
+2
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-delegate-hxqpyz)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
@@ -1489,7 +1555,7 @@ promise.catch(onRejected);
 
 The `.finally()` method returns a Promise. When the promise is finally either fulfilled or rejected, the specified callback function is executed. This provides a way for code to be run whether the promise was fulfilled successfully, or instead rejected.
 
-This helps to avoid duplicating code in both the promise's `.then()` and `.catch()` handlers.
+This helps to avoid duplicating code in both the promise\'s `.then()` and `.catch()` handlers.
 
 ```js
 const render = () => {
@@ -2090,6 +2156,160 @@ console.log(index); // 2
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 10.5. Array.fill()
+
+The `fill()` method fills all or part of an array with a static value, from a start index to an end index (not inclusive). It modifies the original array and returns it.
+
+**Syntax:**
+
+```js
+Array.fill(value, start, end)
+```
+
+**Example:**
+
+```js
+/**
+ * Array.fill()
+ */
+
+// Fill the entire array
+const fruits = ['Apple', 'Banana', 'Mango', 'Orange'];
+console.log(fruits.fill('Kiwi')); // ['Kiwi', 'Kiwi', 'Kiwi', 'Kiwi']
+
+// Fill from index 2 to 4
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers.fill(0, 2, 4)); // [1, 2, 0, 0, 5]
+
+// Create and fill a new array
+const arr = new Array(5).fill(10);
+console.log(arr); // [10, 10, 10, 10, 10]
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-fill-xz3q9k)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.6. Array.copyWithin()
+
+The `copyWithin()` method shallow copies part of an array to another location in the same array and returns it without modifying its length.
+
+**Syntax:**
+
+```js
+Array.copyWithin(target, start, end)
+```
+
+**Example:**
+
+```js
+/**
+ * Array.copyWithin()
+ */
+const arr = [1, 2, 3, 4, 5];
+
+// Copy element at index 3 to index 0
+console.log(arr.copyWithin(0, 3));     // [4, 5, 3, 4, 5]
+
+// Copy elements from index 1 to 3, placed at index 0
+const arr2 = [1, 2, 3, 4, 5];
+console.log(arr2.copyWithin(0, 1, 3)); // [2, 3, 3, 4, 5]
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-copywithin-r5j2lp)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.7. Array.keys()
+
+The `keys()` method returns a new **Array Iterator** object that contains the index keys for each element in the array.
+
+**Example:**
+
+```js
+/**
+ * Array.keys()
+ */
+const fruits = ['Apple', 'Banana', 'Mango'];
+const iterator = fruits.keys();
+
+for (const key of iterator) {
+  console.log(key);
+}
+
+// Output
+0
+1
+2
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-keys-m5n8yw)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.8. Array.values()
+
+The `values()` method returns a new **Array Iterator** object that contains the values for each index in the array.
+
+**Example:**
+
+```js
+/**
+ * Array.values()
+ */
+const fruits = ['Apple', 'Banana', 'Mango'];
+const iterator = fruits.values();
+
+for (const value of iterator) {
+  console.log(value);
+}
+
+// Output
+Apple
+Banana
+Mango
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-values-k9p4mx)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 10.9. Array.entries()
+
+The `entries()` method returns a new **Array Iterator** object that contains `[index, value]` pairs for each element in the array.
+
+**Example:**
+
+```js
+/**
+ * Array.entries()
+ */
+const fruits = ['Apple', 'Banana', 'Mango'];
+
+for (const [index, value] of fruits.entries()) {
+  console.log(`${index}: ${value}`);
+}
+
+// Output
+0: Apple
+1: Banana
+2: Mango
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-entries-q7r3nz)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 11.1. Object.assign()
 
 The `Object.assign()` method copies **all enumerable own properties** from one or more source objects to a target object. It returns the modified target object.
@@ -2194,6 +2414,163 @@ console.log(Object.is(NaN, Number.NaN)); // true
   <b><a href="#">↥ back to top</a></b>
 </div>
 
+## # 11.3. Object.keys()
+
+The `Object.keys()` method returns an array of a given object\'s own enumerable property **names**, in the same order as a normal loop.
+
+**Example:**
+
+```js
+/**
+ * Object.keys()
+ */
+const person = { name: 'John', age: 30, city: 'New York' };
+
+console.log(Object.keys(person)); // ['name', 'age', 'city']
+
+Object.keys(person).forEach(key => {
+  console.log(`${key}: ${person[key]}`);
+});
+
+// Output
+name: John
+age: 30
+city: New York
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-keys-jb7r5w)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 11.4. Object.values()
+
+The `Object.values()` method returns an array of a given object\'s own enumerable property **values**, in the same order as a `for...in` loop.
+
+**Example:**
+
+```js
+/**
+ * Object.values()
+ */
+const person = { name: 'John', age: 30, city: 'New York' };
+
+console.log(Object.values(person)); // ['John', 30, 'New York']
+
+// Sum numeric values
+const scores = { math: 90, science: 85, english: 92 };
+const total = Object.values(scores).reduce((sum, score) => sum + score, 0);
+console.log(total); // 267
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-values-nk8t3q)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 11.5. Object.entries()
+
+The `Object.entries()` method returns an array of a given object\'s own enumerable `[key, value]` pairs, in the same order as a `for...in` loop.
+
+**Example:**
+
+```js
+/**
+ * Object.entries()
+ */
+const person = { name: 'John', age: 30, city: 'New York' };
+
+for (const [key, value] of Object.entries(person)) {
+  console.log(`${key}: ${value}`);
+}
+
+// Output
+name: John
+age: 30
+city: New York
+
+// Convert object to Map
+const personMap = new Map(Object.entries(person));
+console.log(personMap.get('name')); // John
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-entries-p3m7kz)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 11.6. Object.freeze()
+
+The `Object.freeze()` method **freezes** an object, preventing new properties from being added, existing properties from being removed, and the values of existing properties from being changed.
+
+**Example:**
+
+```js
+/**
+ * Object.freeze()
+ */
+const config = {
+  apiUrl: 'https://api.example.com',
+  timeout: 5000
+};
+
+Object.freeze(config);
+
+// Attempting to modify — silently fails in non-strict mode
+config.timeout = 10000;
+config.newProp  = 'value';
+
+console.log(config.timeout); // 5000
+console.log(config.newProp); // undefined
+console.log(Object.isFrozen(config)); // true
+```
+
+*Note: `Object.freeze()` is **shallow** — nested objects are not automatically frozen.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-freeze-y5c8nw)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 11.7. Object.seal()
+
+The `Object.seal()` method **seals** an object, preventing new properties from being added and marking all existing properties as non-configurable. Unlike `Object.freeze()`, existing property **values can still be changed**.
+
+| Feature | Object.seal() | Object.freeze() |
+|---------|:-------------:|:---------------:|
+| Add new properties | ✗ | ✗ |
+| Delete properties  | ✗ | ✗ |
+| Modify existing properties | ✓ | ✗ |
+
+**Example:**
+
+```js
+/**
+ * Object.seal()
+ */
+const user = { name: 'Alice', age: 25 };
+
+Object.seal(user);
+
+user.age  = 30;           // Allowed — modifying existing property
+user.city = 'New York';  // Silently fails — adding new property
+delete user.name;         // Silently fails — deleting not allowed
+
+console.log(user.age);  // 30
+console.log(user.city); // undefined
+console.log(Object.isSealed(user)); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-seal-d4k9nx)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## # 12.1. String.startsWith()
 
 The `startsWith()` method determines whether a string begins with the characters of a specified string, returning `true` or `false` as appropriate.
@@ -2265,6 +2642,41 @@ console.log(str.includes('Script')); // true
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-includes-ycwhqd?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 12.4. String.repeat()
+
+The `repeat()` method returns a new string with a specified number of copies of the original string concatenated together.
+
+**Syntax:**
+
+```js
+String.repeat(count)
+```
+
+**Example:**
+
+```js
+/**
+ * String.repeat()
+ */
+console.log('Hello'.repeat(3)); // HelloHelloHello
+console.log('-'.repeat(10));    // ----------
+console.log('abc'.repeat(0));   // ''
+
+// Practical use: left-padding
+function padLeft(str, length, char = ' ') {
+  return char.repeat(Math.max(0, length - str.length)) + str;
+}
+
+console.log(padLeft('5',   3, '0')); // 005
+console.log(padLeft('42',  5, '0')); // 00042
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-repeat-p8n3kw)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
@@ -2452,6 +2864,204 @@ console.log(factorial(1000)); // Infinity
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-proper-tail-calls-qmptbq?file=/src/index.js)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 15.1. Number.isInteger()
+
+The `Number.isInteger()` method determines whether the given value is an integer. Unlike the global `isInteger()` function, it does **not** convert the argument to a number first.
+
+**Example:**
+
+```js
+/**
+ * Number.isInteger()
+ */
+console.log(Number.isInteger(10));    // true
+console.log(Number.isInteger(10.0));  // true
+console.log(Number.isInteger(10.5));  // false
+console.log(Number.isInteger('10'));  // false
+console.log(Number.isInteger(NaN));   // false
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isinteger-b3w5kq)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 15.2. Number.isFinite()
+
+The `Number.isFinite()` method determines whether the given value is a finite number. Unlike the global `isFinite()` function, it does **not** convert the argument to a number first.
+
+**Example:**
+
+```js
+/**
+ * Number.isFinite()
+ */
+console.log(Number.isFinite(10));        // true
+console.log(Number.isFinite(Infinity));  // false
+console.log(Number.isFinite(-Infinity)); // false
+console.log(Number.isFinite(NaN));       // false
+console.log(Number.isFinite('10'));      // false (no type coercion)
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isfinite-p7m4kz)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 15.3. Number.isNaN()
+
+The `Number.isNaN()` method determines whether the given value is `NaN` and its type is `Number`. Unlike the global `isNaN()` function, it does **not** coerce the argument — it only returns `true` for actual `NaN` values of type Number.
+
+**Example:**
+
+```js
+/**
+ * Number.isNaN()
+ */
+console.log(Number.isNaN(NaN));        // true
+console.log(Number.isNaN(0 / 0));      // true
+console.log(Number.isNaN(undefined));  // false (unlike global isNaN)
+console.log(Number.isNaN('NaN'));      // false (unlike global isNaN)
+console.log(Number.isNaN(10));         // false
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isnan-r9k5mw)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 15.4. Number.EPSILON
+
+`Number.EPSILON` is the smallest interval between two representable numbers (approximately `2.22e-16`). It is useful for testing the equality of floating-point numbers, which suffer from precision issues.
+
+**Example:**
+
+```js
+/**
+ * Number.EPSILON
+ */
+console.log(Number.EPSILON); // 2.220446049250313e-16
+
+// Floating-point comparison issue
+console.log(0.1 + 0.2 === 0.3); // false
+
+// Reliable comparison using EPSILON
+function isEqual(a, b) {
+  return Math.abs(a - b) < Number.EPSILON;
+}
+
+console.log(isEqual(0.1 + 0.2, 0.3)); // true
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-epsilon-n6w4kx)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 16.1. Math.sign()
+
+The `Math.sign()` function returns `1` if the number is positive, `-1` if negative, or `0` if zero. It indicates the **sign** of the number passed as argument.
+
+**Example:**
+
+```js
+/**
+ * Math.sign()
+ */
+console.log(Math.sign(-10)); // -1
+console.log(Math.sign(0));   //  0
+console.log(Math.sign(10));  //  1
+console.log(Math.sign(-0));  // -0
+console.log(Math.sign(NaN)); // NaN
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-sign-k3p8qw)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 16.2. Math.trunc()
+
+The `Math.trunc()` method returns the **integer part** of a number by removing any fractional digits. Unlike `Math.floor()` or `Math.ceil()`, it simply truncates toward zero regardless of sign.
+
+**Example:**
+
+```js
+/**
+ * Math.trunc()
+ */
+console.log(Math.trunc(4.9));  //  4
+console.log(Math.trunc(4.2));  //  4
+console.log(Math.trunc(-4.2)); // -4
+console.log(Math.trunc(-4.9)); // -4
+console.log(Math.trunc(0.5));  //  0
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-trunc-w7n3kp)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 16.3. Math.cbrt()
+
+The `Math.cbrt()` method returns the **cube root** of a number.
+
+**Example:**
+
+```js
+/**
+ * Math.cbrt()
+ */
+console.log(Math.cbrt(27));   //  3
+console.log(Math.cbrt(64));   //  4
+console.log(Math.cbrt(-8));   // -2
+console.log(Math.cbrt(0));    //  0
+console.log(Math.cbrt(1000)); // 10
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-cbrt-j5n2kw)**
+
+<div align="right">
+  <b><a href="#">↥ back to top</a></b>
+</div>
+
+## # 16.4. Math.hypot()
+
+The `Math.hypot()` method returns the square root of the sum of squares of its arguments. It is typically used to compute the **hypotenuse** of a right triangle or Euclidean distance.
+
+**Syntax:**
+
+```js
+Math.hypot(value1, value2, ...rest)
+```
+
+**Example:**
+
+```js
+/**
+ * Math.hypot()
+ */
+// Hypotenuse of right triangles (Pythagorean triples)
+console.log(Math.hypot(3, 4));   // 5
+console.log(Math.hypot(5, 12));  // 13
+console.log(Math.hypot(8, 15));  // 17
+
+// 3D Euclidean distance from origin
+console.log(Math.hypot(2, 3, 6)); // 7
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-hypot-q4n8kz)**
 
 <div align="right">
   <b><a href="#">↥ back to top</a></b>
