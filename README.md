@@ -686,7 +686,7 @@ var obj = {
 console.log(obj);
 
 // Output
-{a: 1, b: 2, c: 3}
+// {a: 1, b: 2, c: 3}
 ```
 
 and it can be represented in a shorter syntax as below,
@@ -1405,7 +1405,7 @@ console.log(Node.isNode({}));          // false
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-
+## # 6. Symbol
 
 The JavaScript ES6 introduced a new primitive data type called Symbol. Symbols are immutable (cannot be changed) and are unique.
 Symbols are often used to add unique property keys to an object that won\'t collide with keys any other code might add to the object
