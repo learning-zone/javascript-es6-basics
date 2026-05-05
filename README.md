@@ -47,6 +47,7 @@
     * [Computed property](#-56-computed-property)
     * [Inheritance](#-57-inheritance)
     * [new.target](#-58-newtarget)
+    * [Private Class Fields and Methods](#-59-private-class-fields-and-methods)
 * Symbol
     * [Symbol](#-6-symbol)
 * Iterators & Generators
@@ -60,6 +61,10 @@
     * [Promise.all()](#-83-promiseall)
     * [Promise.race()](#-84-promiserace)
     * [Promise Error Handling](#-85-promise-error-handling)
+    * [async / await](#-86-async--await)
+    * [Promise.allSettled()](#-87-promiseallsettled)
+    * [Promise.any()](#-88-promiseany)
+    * [Promise.withResolvers()](#-89-promisewithresolvers)
 * ES6 Collections
     * [Set](#-91-set)
     * [Weakset](#-92-weakset)
@@ -75,6 +80,12 @@
     * [Array.keys()](#-107-arraykeys)
     * [Array.values()](#-108-arrayvalues)
     * [Array.entries()](#-109-arrayentries)
+    * [Array.flat()](#-1010-arrayflat)
+    * [Array.flatMap()](#-1011-arrayflatmap)
+    * [Array.at()](#-1012-arrayat)
+    * [Array.findLast()](#-1013-arrayfindlast)
+    * [Array.findLastIndex()](#-1014-arrayfindlastindex)
+    * [Array.toSorted(), toReversed(), toSpliced(), with()](#-1015-arraytoSorted-toReversed-toSpliced-with)
 * Object Extensions
     * [Object.assign()](#-111-objectassign)
     * [Object.is()](#-112-objectis)
@@ -83,11 +94,17 @@
     * [Object.entries()](#-115-objectentries)
     * [Object.freeze()](#-116-objectfreeze)
     * [Object.seal()](#-117-objectseal)
+    * [Object.fromEntries()](#-118-objectfromentries)
+    * [Object.hasOwn()](#-119-objecthasown)
 * String Extensions
     * [String.startsWith()](#-121-stringstartswith)
     * [String.endsWith()](#-122-stringendswith)
     * [String.includes()](#-123-stringincludes)
     * [String.repeat()](#-124-stringrepeat)
+    * [String.padStart() and String.padEnd()](#-125-stringpadstart-and-stringpadend)
+    * [String.trimStart() and String.trimEnd()](#-126-stringtrimstart-and-stringtrimend)
+    * [String.replaceAll()](#-127-stringreplaceall)
+    * [String.at()](#-128-stringat)
 * Proxy & Reflection
     * [Proxy](#-131-proxies)
     * [Reflection](#-132-reflect)
@@ -102,8 +119,11 @@
     * [Math.cbrt()](#-163-mathcbrt)
     * [Math.hypot()](#-164-mathhypot)
 * Miscellaneous Features
-    * [Unicode](#-141-unicode)
-    * [Proper Tail calls](#-142-proper-tail-calls)
+    * [Optional Chaining (?.)](#-141-optional-chaining-)
+    * [Nullish Coalescing (??)](#-142-nullish-coalescing-)
+    * [Logical Assignment Operators](#-143-logical-assignment-operators)
+    * [Unicode](#-144-unicode)
+    * [Proper Tail calls](#-145-proper-tail-calls)
 * ES2025 New Features
     * [Iterator Helpers](#-171-iterator-helpers)
     * [New Set Methods](#-172-new-set-methods)
@@ -111,12 +131,16 @@
     * [Import Attributes](#-174-import-attributes)
     * [RegExp Duplicate Named Capture Groups](#-175-regexp-duplicate-named-capture-groups)
     * [Float16Array](#-176-float16array)
+    * [RegExp.escape()](#-177-regexpescape)
+    * [Error.isError()](#-178-erroriserror)
+    * [Atomics.pause()](#-179-atomicspause)
 
 <br/>
 
+
 ## # 1. Introduction
 
-JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
+JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) was a major update to JavaScript introduced in 2015, bringing modern features like `let`/`const`, arrow functions, classes, modules, and more. Since ES6, ECMAScript has followed a yearly release schedule — with ES2016, ES2017, and so on — up to the latest **ECMAScript 2025 (ES16)**, finalized in June 2025.
 
 ECMAScript is the standard that JavaScript programming language uses. ECMAScript provides the specification on how JavaScript programming language should work.
 
@@ -1266,7 +1290,122 @@ let employee = new Employee("Aditya Kala", "Programmer"); // Employee
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 6. Symbol
+## # 5.9. Private Class Fields and Methods
+
+ES2022 introduced **private class fields and methods** using the `#` prefix. Private members are only accessible within the class body and cannot be read or modified from outside — not even from subclasses.
+
+**Private Field Syntax:**
+
+```js
+class ClassName {
+  #privateField = value;
+
+  #privateMethod() { ... }
+}
+```
+
+**Example 01:** Private fields
+
+```js
+/**
+ * Private Class Fields (ES2022)
+ */
+class BankAccount {
+  #balance = 0;   // private field
+
+  constructor(initialBalance) {
+    this.#balance = initialBalance;
+  }
+
+  deposit(amount) {
+    if (amount > 0) this.#balance += amount;
+  }
+
+  withdraw(amount) {
+    if (amount > this.#balance) throw new Error("Insufficient funds");
+    this.#balance -= amount;
+  }
+
+  get balance() {
+    return this.#balance;
+  }
+}
+
+const account = new BankAccount(100);
+account.deposit(50);
+console.log(account.balance); // 150
+
+// account.#balance; // SyntaxError: Private field '#balance' must be declared in an enclosing class
+```
+
+**Example 02:** Private methods
+
+```js
+/**
+ * Private Methods (ES2022)
+ */
+class PasswordManager {
+  #password;
+
+  constructor(password) {
+    this.#password = this.#hash(password);
+  }
+
+  #hash(value) {
+    // simplified hash for illustration
+    return value.split("").reverse().join("");
+  }
+
+  verify(input) {
+    return this.#hash(input) === this.#password;
+  }
+}
+
+const pm = new PasswordManager("secret");
+console.log(pm.verify("secret")); // true
+console.log(pm.verify("wrong"));  // false
+```
+
+**Example 03:** Static private fields
+
+```js
+/**
+ * Static Private Fields (ES2022)
+ */
+class IdGenerator {
+  static #nextId = 1;
+
+  static generate() {
+    return IdGenerator.#nextId++;
+  }
+}
+
+console.log(IdGenerator.generate()); // 1
+console.log(IdGenerator.generate()); // 2
+console.log(IdGenerator.generate()); // 3
+```
+
+**Checking private field existence with `in`:**
+
+```js
+class Node {
+  #value;
+  constructor(v) { this.#value = v; }
+
+  static isNode(obj) {
+    return #value in obj;  // ES2022 ergonomic brand check
+  }
+}
+
+console.log(Node.isNode(new Node(1))); // true
+console.log(Node.isNode({}));          // false
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+
 
 The JavaScript ES6 introduced a new primitive data type called Symbol. Symbols are immutable (cannot be changed) and are unique.
 Symbols are often used to add unique property keys to an object that won\'t collide with keys any other code might add to the object
@@ -1440,8 +1579,8 @@ function* counter() {
 let count = counter();
 
 console.log(count.next()); // {value: 1, done: false}
-console.log(count.next()); // {value: 1, done: false}
-console.log(count.next()); // {value: 1, done: false}
+console.log(count.next()); // {value: 2, done: false}
+console.log(count.next()); // {value: 3, done: false}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-zo5i9j?file=/src/index.js)**
@@ -1797,6 +1936,203 @@ An Error Occured!
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 8.6. async / await
+
+`async/await` (introduced in ES2017) is syntactic sugar over Promises that lets you write asynchronous code in a synchronous style. An `async` function always returns a Promise, and the `await` keyword pauses execution inside an `async` function until the Promise resolves or rejects.
+
+**Syntax:**
+
+```js
+async function functionName() {
+  const result = await somePromise;
+}
+```
+
+**Example 01:** Basic async/await
+
+```js
+/**
+ * async / await
+ */
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function greet() {
+  await delay(1000);
+  console.log("Hello after 1 second");
+}
+
+greet();
+// Output (after 1 second):
+// Hello after 1 second
+```
+
+**Example 02:** Fetching data with error handling
+
+```js
+async function getUser(id) {
+  try {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const user = await response.json();
+    console.log(user.name);
+  } catch (error) {
+    console.error("Failed to fetch user:", error.message);
+  }
+}
+
+getUser(1);
+```
+
+**Example 03:** Running multiple awaits in parallel with `Promise.all`
+
+```js
+async function fetchAll() {
+  const [users, posts] = await Promise.all([
+    fetch("https://jsonplaceholder.typicode.com/users").then(r => r.json()),
+    fetch("https://jsonplaceholder.typicode.com/posts").then(r => r.json())
+  ]);
+  console.log(users.length, posts.length); // 10 100
+}
+
+fetchAll();
+```
+
+*Note: Using `await` sequentially (one after another) is slower than running them in parallel with `Promise.all()`.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 8.7. Promise.allSettled()
+
+`Promise.allSettled()` (ES2020) accepts an iterable of promises and returns a promise that resolves once **all** input promises have settled — either fulfilled or rejected — with an array of result objects describing each outcome.
+
+Unlike `Promise.all()`, it **never short-circuits** on rejection.
+
+**Syntax:**
+
+```js
+Promise.allSettled(iterable)
+```
+
+**Each result object has:**
+- `{ status: "fulfilled", value }` for resolved promises
+- `{ status: "rejected", reason }` for rejected promises
+
+**Example:**
+
+```js
+/**
+ * Promise.allSettled()
+ */
+const p1 = Promise.resolve(10);
+const p2 = Promise.reject(new Error("Failed"));
+const p3 = Promise.resolve(30);
+
+Promise.allSettled([p1, p2, p3]).then(results => {
+  results.forEach(result => {
+    if (result.status === "fulfilled") {
+      console.log("Fulfilled:", result.value);
+    } else {
+      console.log("Rejected:", result.reason.message);
+    }
+  });
+});
+
+// Output:
+// Fulfilled: 10
+// Rejected: Failed
+// Fulfilled: 30
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 8.8. Promise.any()
+
+`Promise.any()` (ES2021) accepts an iterable of promises and returns a promise that resolves as soon as **any one** of the input promises fulfills. If **all** promises reject, it rejects with an `AggregateError`.
+
+It is the opposite of `Promise.all()` in terms of short-circuiting.
+
+**Syntax:**
+
+```js
+Promise.any(iterable)
+```
+
+**Example:**
+
+```js
+/**
+ * Promise.any()
+ */
+const p1 = Promise.reject(new Error("Error 1"));
+const p2 = Promise.resolve("First success");
+const p3 = Promise.resolve("Second success");
+
+Promise.any([p1, p2, p3])
+  .then(value => console.log(value))   // "First success"
+  .catch(err => console.error(err));
+
+// All rejected → AggregateError
+Promise.any([
+  Promise.reject(new Error("A")),
+  Promise.reject(new Error("B"))
+]).catch(err => {
+  console.log(err instanceof AggregateError); // true
+  console.log(err.errors.map(e => e.message)); // ["A", "B"]
+});
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 8.9. Promise.withResolvers()
+
+`Promise.withResolvers()` (ES2024) returns an object containing a new Promise together with its `resolve` and `reject` functions, making it easy to create promises whose resolution is controlled externally.
+
+**Syntax:**
+
+```js
+const { promise, resolve, reject } = Promise.withResolvers();
+```
+
+**Example:**
+
+```js
+/**
+ * Promise.withResolvers()
+ */
+const { promise, resolve, reject } = Promise.withResolvers();
+
+// Resolve from outside the Promise constructor
+setTimeout(() => resolve("Done!"), 1000);
+
+promise.then(value => console.log(value)); // "Done!" (after 1s)
+```
+
+**Practical example:** Wrapping a callback-based API
+
+```js
+function readFileAsync(path) {
+  const { promise, resolve, reject } = Promise.withResolvers();
+  fs.readFile(path, "utf8", (err, data) => {
+    if (err) reject(err);
+    else resolve(data);
+  });
+  return promise;
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 
 ## # 9.1. Set
 
@@ -2318,7 +2654,195 @@ for (const [index, value] of fruits.entries()) {
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 11.1. Object.assign()
+## # 10.10. Array.flat()
+
+The `flat()` method (ES2019) creates a new array by **flattening** nested arrays up to the specified depth. The default depth is `1`.
+
+**Syntax:**
+
+```js
+array.flat(depth)
+```
+
+**Example:**
+
+```js
+/**
+ * Array.flat()
+ */
+const nested = [1, [2, 3], [4, [5, 6]]];
+
+console.log(nested.flat());    // [1, 2, 3, 4, [5, 6]]  (depth 1)
+console.log(nested.flat(2));   // [1, 2, 3, 4, 5, 6]    (depth 2)
+console.log(nested.flat(Infinity)); // [1, 2, 3, 4, 5, 6] (all depths)
+
+// Removes empty slots
+const sparse = [1, , 3, [4, , 6]];
+console.log(sparse.flat()); // [1, 3, 4, 6]
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 10.11. Array.flatMap()
+
+The `flatMap()` method (ES2019) maps each element using a mapping function and then flattens the result by **one level**. It is equivalent to `array.map(...).flat()` but more efficient.
+
+**Syntax:**
+
+```js
+array.flatMap(callback(element, index, array))
+```
+
+**Example:**
+
+```js
+/**
+ * Array.flatMap()
+ */
+const sentences = ["Hello World", "ES2019 is great"];
+
+// Split each sentence into words
+const words = sentences.flatMap(s => s.split(" "));
+console.log(words);
+// ['Hello', 'World', 'ES2019', 'is', 'great']
+
+// Expand items conditionally
+const numbers = [1, 2, 3, 4];
+const result = numbers.flatMap(n => n % 2 === 0 ? [n, n * 10] : [n]);
+console.log(result);
+// [1, 2, 20, 3, 4, 40]
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 10.12. Array.at()
+
+The `at()` method (ES2022) returns the element at a given index. Negative indices count from the **end** of the array, making it easy to access the last elements without using `length - 1`.
+
+**Syntax:**
+
+```js
+array.at(index)
+```
+
+**Example:**
+
+```js
+/**
+ * Array.at()
+ */
+const fruits = ['Apple', 'Banana', 'Mango', 'Orange'];
+
+console.log(fruits.at(0));   // 'Apple'
+console.log(fruits.at(1));   // 'Banana'
+console.log(fruits.at(-1));  // 'Orange'   (last element)
+console.log(fruits.at(-2));  // 'Mango'    (second to last)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 10.13. Array.findLast()
+
+The `findLast()` method (ES2023) iterates the array in **reverse order** and returns the value of the first element that satisfies the provided testing function. Returns `undefined` if no element matches.
+
+**Syntax:**
+
+```js
+array.findLast(callback(element, index, array))
+```
+
+**Example:**
+
+```js
+/**
+ * Array.findLast()
+ */
+const numbers = [1, 2, 3, 4, 5, 4, 3];
+
+console.log(numbers.findLast(n => n === 4)); // 4 (last occurrence)
+console.log(numbers.findLast(n => n > 3));   // 4 (last element > 3)
+console.log(numbers.findLast(n => n > 10));  // undefined
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 10.14. Array.findLastIndex()
+
+The `findLastIndex()` method (ES2023) iterates in **reverse order** and returns the **index** of the last element that satisfies the testing function, or `-1` if none match.
+
+**Syntax:**
+
+```js
+array.findLastIndex(callback(element, index, array))
+```
+
+**Example:**
+
+```js
+/**
+ * Array.findLastIndex()
+ */
+const numbers = [1, 2, 3, 4, 5, 4, 3];
+
+console.log(numbers.findLastIndex(n => n === 4)); // 5
+console.log(numbers.findLastIndex(n => n > 3));   // 5
+console.log(numbers.findLastIndex(n => n > 10));  // -1
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 10.15. Array.toSorted(), toReversed(), toSpliced(), with()
+
+ES2023 introduced four **non-mutating** array methods that return a **new array** instead of modifying the original, making them safer for immutable data patterns (e.g., React state).
+
+| Method | Mutating equivalent | Description |
+|---|---|---|
+| `toSorted(fn?)` | `sort()` | Returns a sorted copy |
+| `toReversed()` | `reverse()` | Returns a reversed copy |
+| `toSpliced(start, del, ...items)` | `splice()` | Returns a copy with elements replaced/inserted/deleted |
+| `with(index, value)` | `arr[index] = value` | Returns a copy with one element replaced |
+
+**Example:**
+
+```js
+/**
+ * Non-mutating Array methods (ES2023)
+ */
+const nums = [3, 1, 4, 1, 5, 9];
+
+// toSorted
+const sorted = nums.toSorted((a, b) => a - b);
+console.log(sorted); // [1, 1, 3, 4, 5, 9]
+console.log(nums);   // [3, 1, 4, 1, 5, 9]  — unchanged
+
+// toReversed
+const reversed = nums.toReversed();
+console.log(reversed); // [9, 5, 1, 4, 1, 3]
+
+// toSpliced
+const spliced = nums.toSpliced(1, 2, 99, 100);
+console.log(spliced); // [3, 99, 100, 1, 5, 9]
+
+// with
+const replaced = nums.with(2, 42);
+console.log(replaced); // [3, 1, 42, 1, 5, 9]
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+
 
 The `Object.assign()` method copies **all enumerable own properties** from one or more source objects to a target object. It returns the modified target object.
 
@@ -2579,7 +3103,88 @@ console.log(Object.isSealed(user)); // true
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 12.1. String.startsWith()
+## # 11.8. Object.fromEntries()
+
+`Object.fromEntries()` (ES2019) transforms a list of **key-value pairs** (such as a `Map` or an array of `[key, value]` arrays) into an object. It is the inverse of `Object.entries()`.
+
+**Syntax:**
+
+```js
+Object.fromEntries(iterable)
+```
+
+**Example 01:** From an array of entries
+
+```js
+/**
+ * Object.fromEntries()
+ */
+const entries = [['name', 'Alice'], ['age', 30], ['city', 'NYC']];
+const obj = Object.fromEntries(entries);
+
+console.log(obj); // { name: 'Alice', age: 30, city: 'NYC' }
+```
+
+**Example 02:** From a Map
+
+```js
+const map = new Map([['a', 1], ['b', 2], ['c', 3]]);
+const obj = Object.fromEntries(map);
+
+console.log(obj); // { a: 1, b: 2, c: 3 }
+```
+
+**Example 03:** Transform object values using entries pipeline
+
+```js
+const prices = { apple: 1.5, banana: 0.9, mango: 2.0 };
+
+// Double all prices
+const doubled = Object.fromEntries(
+  Object.entries(prices).map(([key, val]) => [key, val * 2])
+);
+
+console.log(doubled); // { apple: 3, banana: 1.8, mango: 4 }
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 11.9. Object.hasOwn()
+
+`Object.hasOwn()` (ES2022) returns `true` if the specified object has the indicated property as its **own** (non-inherited) property. It is a cleaner, more reliable replacement for `Object.prototype.hasOwnProperty.call()`.
+
+**Syntax:**
+
+```js
+Object.hasOwn(object, propertyKey)
+```
+
+**Example:**
+
+```js
+/**
+ * Object.hasOwn()
+ */
+const person = { name: 'Alice', age: 30 };
+
+console.log(Object.hasOwn(person, 'name'));     // true
+console.log(Object.hasOwn(person, 'toString')); // false (inherited)
+console.log(Object.hasOwn(person, 'salary'));   // false
+
+// Works on null-prototype objects where hasOwnProperty is unavailable
+const obj = Object.create(null);
+obj.x = 42;
+console.log(Object.hasOwn(obj, 'x')); // true
+// obj.hasOwnProperty('x') → TypeError (no method)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+
 
 The `startsWith()` method determines whether a string begins with the characters of a specified string, returning `true` or `false` as appropriate.
 
@@ -2690,7 +3295,125 @@ console.log(padLeft('42',  5, '0')); // 00042
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 13.1. Proxies
+## # 12.5. String.padStart() and String.padEnd()
+
+`padStart()` and `padEnd()` (ES2017) pad the current string with another string (repeated if needed) until the resulting string reaches the given length. Padding is applied to the **start** or **end** respectively.
+
+**Syntax:**
+
+```js
+String.padStart(targetLength, padString)
+String.padEnd(targetLength, padString)
+```
+
+**Example:**
+
+```js
+/**
+ * String.padStart() and String.padEnd()
+ */
+// Zero-padding numbers
+console.log("5".padStart(3, "0"));   // "005"
+console.log("42".padStart(5, "0"));  // "00042"
+
+// Aligning output
+console.log("1".padStart(4));    // "   1"
+console.log("100".padStart(4));  // " 100"
+
+// padEnd for trailing fill
+console.log("Hello".padEnd(10, "."));  // "Hello....."
+console.log("7".padEnd(4, "0"));       // "7000"
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 12.6. String.trimStart() and String.trimEnd()
+
+`trimStart()` (alias `trimLeft()`) and `trimEnd()` (alias `trimRight()`) (ES2019) remove leading or trailing whitespace respectively. They complement the existing `trim()` method which removes both sides.
+
+**Example:**
+
+```js
+/**
+ * String.trimStart() and String.trimEnd()
+ */
+const str = "   Hello World   ";
+
+console.log(str.trim());       // "Hello World"
+console.log(str.trimStart());  // "Hello World   "
+console.log(str.trimEnd());    // "   Hello World"
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 12.7. String.replaceAll()
+
+`replaceAll()` (ES2021) returns a new string with **all occurrences** of a pattern replaced. Unlike `replace()`, which only replaces the first occurrence when passed a string pattern, `replaceAll()` replaces every match.
+
+**Syntax:**
+
+```js
+String.replaceAll(searchValue, replaceValue)
+```
+
+**Example:**
+
+```js
+/**
+ * String.replaceAll()
+ */
+const str = "I love cats. Cats are great. cats are cute.";
+
+// replace() only replaces first match
+console.log(str.replace("cats", "dogs"));
+// "I love dogs. Cats are great. cats are cute."
+
+// replaceAll() replaces all occurrences (case-sensitive)
+console.log(str.replaceAll("cats", "dogs"));
+// "I love dogs. Cats are great. dogs are cute."
+
+// Using regex (must include 'g' flag)
+console.log(str.replaceAll(/cats/gi, "dogs"));
+// "I love dogs. dogs are great. dogs are cute."
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 12.8. String.at()
+
+The `at()` method (ES2022) returns the character at a given index. **Negative indices** count from the end of the string, making it easier to access the last characters.
+
+**Syntax:**
+
+```js
+String.at(index)
+```
+
+**Example:**
+
+```js
+/**
+ * String.at()
+ */
+const str = "JavaScript";
+
+console.log(str.at(0));   // "J"
+console.log(str.at(4));   // "S"
+console.log(str.at(-1));  // "t"  (last character)
+console.log(str.at(-3));  // "i"  (third from last)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+
 
 The `Proxy` object allows you to create an object that can be used in place of the original object, but which may redefine fundamental `Object` operations like getting, setting, and defining properties. Proxy objects are commonly used to log property accesses, validate, format, or sanitize inputs, and so on.
 
@@ -2773,7 +3496,7 @@ const user = {
   name: 'Abhilash',
   age: 28
 };
-console.log(Reflect.get(user, 'age')); // 33
+console.log(Reflect.get(user, 'age')); // 28
 ```
 
 **Example:** Calling a function using `Reflect.apply()`
@@ -2802,13 +3525,159 @@ console.log(user.age); // undefined
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 14.1. Unicode
+## # 14.1. Optional Chaining (?.)
+
+The **optional chaining** operator `?.` (ES2020) allows you to safely access deeply nested object properties or call methods without throwing an error if an intermediate reference is `null` or `undefined`. Instead of throwing, it short-circuits and returns `undefined`.
+
+**Syntax:**
+
+```js
+obj?.property
+obj?.method()
+arr?.[index]
+```
+
+**Example 01:** Accessing nested properties
+
+```js
+/**
+ * Optional Chaining (?.)
+ */
+const user = {
+  name: 'Alice',
+  address: {
+    city: 'New York',
+    zip: '10001'
+  }
+};
+
+console.log(user?.address?.city);      // "New York"
+console.log(user?.profile?.avatar);   // undefined (no error)
+console.log(user?.address?.zip);       // "10001"
+```
+
+**Example 02:** Optional method calls
+
+```js
+const obj = {
+  greet() { return "Hello!"; }
+};
+
+console.log(obj.greet?.());     // "Hello!"
+console.log(obj.farewell?.());  // undefined (no error)
+```
+
+**Example 03:** Optional array indexing
+
+```js
+const arr = [1, 2, 3];
+console.log(arr?.[0]);  // 1
+console.log(null?.[0]); // undefined
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 14.2. Nullish Coalescing (??)
+
+The **nullish coalescing** operator `??` (ES2020) returns the **right-hand side** operand when the left-hand side is `null` or `undefined`. Unlike the `||` operator, it does **not** treat falsy values like `0`, `""`, or `false` as nullish.
+
+**Syntax:**
+
+```js
+leftExpr ?? rightExpr
+```
+
+**Example:**
+
+```js
+/**
+ * Nullish Coalescing (??)
+ */
+const name = null ?? "Anonymous";
+console.log(name); // "Anonymous"
+
+const count = 0 ?? 42;
+console.log(count); // 0  (0 is not null/undefined, so left side is used)
+
+const enabled = false ?? true;
+console.log(enabled); // false  (false is not null/undefined)
+
+// Contrast with ||
+console.log(0 || 42);     // 42  (0 is falsy → fallback)
+console.log(0 ?? 42);     // 0   (0 is not nullish → no fallback)
+```
+
+**Combined with optional chaining:**
+
+```js
+const user = { settings: null };
+const theme = user?.settings?.theme ?? "light";
+console.log(theme); // "light"
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 14.3. Logical Assignment Operators
+
+ES2021 introduced three **logical assignment operators** that combine a logical operation with assignment. They are short-circuit assignments: the right-hand side is only evaluated and assigned if the left-hand side value satisfies the logical condition.
+
+| Operator | Equivalent | Assigns when... |
+|---|---|---|
+| `x \|\|= y` | `x \|\| (x = y)` | `x` is falsy |
+| `x &&= y` | `x && (x = y)` | `x` is truthy |
+| `x ??= y` | `x ?? (x = y)` | `x` is `null` or `undefined` |
+
+**Example:**
+
+```js
+/**
+ * Logical Assignment Operators (ES2021)
+ */
+
+// ||= (OR assignment): assign if falsy
+let a = 0;
+a ||= 10;
+console.log(a); // 10  (0 is falsy)
+
+let b = 5;
+b ||= 10;
+console.log(b); // 5   (5 is truthy, no assignment)
+
+// &&= (AND assignment): assign if truthy
+let c = 5;
+c &&= 20;
+console.log(c); // 20  (5 is truthy, so assign)
+
+let d = 0;
+d &&= 20;
+console.log(d); // 0   (0 is falsy, no assignment)
+
+// ??= (nullish assignment): assign if null/undefined
+let e = null;
+e ??= "default";
+console.log(e); // "default"
+
+let f = 0;
+f ??= "default";
+console.log(f); // 0   (0 is not null/undefined, no assignment)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 14.4. Unicode
 
 Prior to ES6, JavaScript strings are represented by 16-bit character encoding (UTF-16). Each character is represented by 16-bit sequence known as code unit.
 
 ECMAScript 6 added full support for UTF-16 within strings and regular expressions. It introduces new Unicode literal form in strings and new RegExp flag **\u** mode to handle code points, as well as new APIs(codePointAt, fromCodePoint) to process strings.
 
 **Example:**
+
 
 ```js
 /**
@@ -2836,7 +3705,7 @@ console.log(String.fromCodePoint(134071));  // "𠮷"
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## # 14.2. Proper Tail Calls
+## # 14.5. Proper Tail Calls
 
 **Proper tail call ( PTC )** is a technique where the program or code will not create additional stack frames for a recursion when the function call is a tail call.
 
@@ -3419,6 +4288,146 @@ console.log(f16.byteLength); // 2000
 console.log(f32.byteLength); // 4000
 console.log(f64.byteLength); // 8000
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.7. RegExp.escape()
+
+`RegExp.escape()` (ES2025) escapes all special regular expression characters in a string, returning a new string that can be safely used as a literal pattern inside a `RegExp`. This eliminates the need for a manual escaping utility.
+
+**Syntax:**
+
+```js
+RegExp.escape(string)
+```
+
+**Example 01:** Basic usage
+
+```js
+/**
+ * RegExp.escape()
+ */
+console.log(RegExp.escape("1 + 1 = 2"));
+// "1 \+ 1 \= 2"
+
+console.log(RegExp.escape("Hello (World)!"));
+// "Hello \(World\)\!"
+
+console.log(RegExp.escape("price: $9.99"));
+// "price: \$9\.99"
+```
+
+**Example 02:** Safe dynamic pattern matching
+
+```js
+/**
+ * RegExp.escape() - dynamic search
+ */
+function highlight(text, searchTerm) {
+  const escaped = RegExp.escape(searchTerm);
+  const re = new RegExp(escaped, "gi");
+  return text.replace(re, match => `**${match}**`);
+}
+
+console.log(highlight("Discount: 10% off (today only)!", "10% off"));
+// "Discount: **10% off** (today only)!"
+
+// Without RegExp.escape(), the % and parens would cause regex issues
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.8. Error.isError()
+
+`Error.isError()` (ES2025) provides a reliable way to determine whether a value is an `Error` object, including across different JavaScript realms (iframes, workers, vm contexts) where `instanceof Error` can return `false` even for genuine errors.
+
+**Syntax:**
+
+```js
+Error.isError(value)
+```
+
+**Example 01:** Basic usage
+
+```js
+/**
+ * Error.isError()
+ */
+console.log(Error.isError(new Error("oops")));        // true
+console.log(Error.isError(new TypeError("bad type"))); // true
+console.log(Error.isError(new RangeError("out")));     // true
+
+console.log(Error.isError("error string")); // false
+console.log(Error.isError({ message: "fake error" })); // false
+console.log(Error.isError(null));           // false
+```
+
+**Example 02:** Cross-realm scenario
+
+```js
+/**
+ * Error.isError() - cross-realm check
+ */
+// In an iframe or vm context, instanceof can fail:
+// iframeError instanceof Error  →  false  (different Error constructor)
+// Error.isError(iframeError)    →  true   (checks the internal slot)
+
+function handleError(err) {
+  if (Error.isError(err)) {
+    console.error("Caught error:", err.message);
+  } else {
+    console.warn("Unknown thrown value:", err);
+  }
+}
+
+handleError(new Error("network failure")); // Caught error: network failure
+handleError("something went wrong");       // Unknown thrown value: something went wrong
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.9. Atomics.pause()
+
+`Atomics.pause()` (ES2025) is a hint to the CPU to reduce power consumption and improve overall throughput during **spin-wait loops** in shared memory concurrency. It is typically called inside a tight busy-wait loop to signal that the thread is in a spin-wait state.
+
+**Syntax:**
+
+```js
+Atomics.pause(iterationCount?)
+```
+
+The optional `iterationCount` is a non-negative integer hint for how many iterations the spin-wait has been running (the engine may use this to scale the pause duration).
+
+**Example:**
+
+```js
+/**
+ * Atomics.pause()
+ */
+// Shared buffer between a Worker and main thread
+const sab = new SharedArrayBuffer(4);
+const flag = new Int32Array(sab);
+
+// In a Worker:
+function spinWaitUntilReady() {
+  let i = 0;
+  while (Atomics.load(flag, 0) === 0) {
+    Atomics.pause(i++); // hint CPU to back off; reduces power & contention
+  }
+  console.log("Flag is set — proceeding");
+}
+
+// In main thread:
+// Atomics.store(flag, 0, 1); // sets the flag, waking the worker
+```
+
+*Note: `Atomics.pause()` has no observable effect on program correctness — it is purely a performance optimization hint.*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
