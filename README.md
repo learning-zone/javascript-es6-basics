@@ -91,9 +91,6 @@
 * Proxy & Reflection
     * [Proxy](#-131-proxies)
     * [Reflection](#-132-reflect)
-* Miscellaneous Features
-    * [Unicode](#-141-unicode)
-    * [Proper Tail calls](#-142-proper-tail-calls)
 * Number Extensions
     * [Number.isInteger()](#-151-numberisinteger)
     * [Number.isFinite()](#-152-numberisfinite)
@@ -104,6 +101,16 @@
     * [Math.trunc()](#-162-mathtrunc)
     * [Math.cbrt()](#-163-mathcbrt)
     * [Math.hypot()](#-164-mathhypot)
+* Miscellaneous Features
+    * [Unicode](#-141-unicode)
+    * [Proper Tail calls](#-142-proper-tail-calls)
+* ES2025 New Features
+    * [Iterator Helpers](#-171-iterator-helpers)
+    * [New Set Methods](#-172-new-set-methods)
+    * [Promise.try()](#-173-promisetry)
+    * [Import Attributes](#-174-import-attributes)
+    * [RegExp Duplicate Named Capture Groups](#-175-regexp-duplicate-named-capture-groups)
+    * [Float16Array](#-176-float16array)
 
 <br/>
 
@@ -114,7 +121,7 @@ JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer vers
 ECMAScript is the standard that JavaScript programming language uses. ECMAScript provides the specification on how JavaScript programming language should work.
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.1. let
@@ -149,7 +156,7 @@ Because the `let` keyword declares a block-scoped variable, the `x` variable ins
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-let-zikqqb?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.2. let vs var
@@ -208,7 +215,7 @@ Here, the variable **i** is blocked scope. It means that the variable **i** only
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-let-vs-var-yvu11z)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.3. const
@@ -256,7 +263,7 @@ person.age = 30; // TypeError
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-const-prej6w)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.4. Arrow Function
@@ -336,7 +343,7 @@ console.log(result); // 314
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-arrow-function-yl7oqo?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.5. Default Function Parameters
@@ -379,7 +386,7 @@ console.log(sum(20, 30)); // 50
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-default-parameters-8uu0m8?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.6. Rest Parameter
@@ -405,7 +412,7 @@ console.log(sum(10, 20, 30)); // 60
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-rest-parameters-w8zy28?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.7. Spread Operator
@@ -456,7 +463,7 @@ console.log(copiedScores); // [80, 70, 90]
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-spread-operator-0jh98u)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.8. For..of
@@ -538,7 +545,7 @@ for (const value of iterable) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-for-of-ltt89x?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.9. Binary and Octal literals
@@ -582,7 +589,7 @@ console.log(num); // 8
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-binary-literals-mllutq?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.10. Template literals
@@ -630,7 +637,7 @@ Hello World
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-template-literals-d005t4?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 2.11. Enhanced Object literals
@@ -736,7 +743,7 @@ console.log(computedObj.one);
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-literals-byphgz?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 3.1 Array Destructuring
@@ -808,7 +815,7 @@ console.log(sum, difference, multiplication); // 30, 10, 200
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-destructuring-0k5c35?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 3.2. Object Destructuring
@@ -902,7 +909,7 @@ console.log(num2); // 20
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-destructuring-ecncqm?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 4. ES6 modules
@@ -974,7 +981,7 @@ import { export1 as alias1 } from "my-module";
 ```
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.1. Classes
@@ -1003,7 +1010,7 @@ console.log(person.getName()); // "Prasad Shashi"
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-70hkd7)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.2. Getters and Setters
@@ -1040,7 +1047,7 @@ console.log(person.name); // "Mala Amar"
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-getters-and-setters-ugb9jx?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.3. Class expressions
@@ -1069,7 +1076,7 @@ console.log(person.getName()); // "Anjali Durga"
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-class-expressions-ofbg0i)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.4. Static methods
@@ -1102,7 +1109,7 @@ console.log(anonymous); // Person {name: "Aryan Sarin"}
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-static-methods-3tf3li?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.5. Static Properties
@@ -1139,7 +1146,7 @@ console.log(Item.getCount()); // 2
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-static-properties-xc03d4)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.6. Computed Property
@@ -1174,7 +1181,7 @@ Sharma Peri
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-computed-property-ns52qr?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.7. Inheritance
@@ -1222,7 +1229,7 @@ console.log(car.getType()); // car
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-inheritance-vposow)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 5.8. new.target
@@ -1256,7 +1263,7 @@ let employee = new Employee("Aditya Kala", "Programmer"); // Employee
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-new-target-dzurzb?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 6. Symbol
@@ -1322,7 +1329,7 @@ console.log(person); // {name: 'Anjali Mistry', Symbol(id): 10}
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-symbol-xweo3x?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7.1. Iterators
@@ -1385,7 +1392,7 @@ for (const num of evenNumbers) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-iterators-jx1led?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7.2. Generators
@@ -1412,7 +1419,7 @@ console.log(myGenObj.next().value); // undefined
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/compassionate-lederberg-dxi5kw?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7.3. Yield
@@ -1440,7 +1447,7 @@ console.log(count.next()); // {value: 1, done: false}
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-zo5i9j?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 7.4. yield*
@@ -1480,7 +1487,7 @@ c
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-yield-delegate-hxqpyz)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8.1. Promises
@@ -1616,7 +1623,7 @@ let promise = new Promise((resolve, reject) => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-pqn0xf?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8.2. Promise Chaining
@@ -1669,7 +1676,7 @@ As the result is passed along the chain of handlers, we can see a sequence of al
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-chaining-zmxbb5?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8.3. Promise.all()
@@ -1722,7 +1729,7 @@ Promise.all([p1, p2, p3]).then((results) => {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8.4. Promise.race()
@@ -1763,7 +1770,7 @@ Promise.race([p1, p2])
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-all-e34qsj?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 8.5. Promise Error Handling
@@ -1788,7 +1795,7 @@ An Error Occured!
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-promise-error-handling-leq6gc?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9.1. Set
@@ -1877,7 +1884,7 @@ for (let number of numbers) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-set-dho0q8?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9.2. Weakset
@@ -1915,7 +1922,7 @@ console.log(weakSet); // WeakSet {}
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-weakset-cg86e3?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9.3. Map
@@ -1986,7 +1993,7 @@ for (const user of userRoles.keys()) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-map-w6i921?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 9.4. Weakmap
@@ -2027,7 +2034,7 @@ console.log(weakMap.get(obj1)); //undefined
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-weakmap-mexzxg?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.1. Array.of()
@@ -2064,7 +2071,7 @@ console.log(numbers[0]); // 3
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-of-7xgzm6?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.2. Array.from()
@@ -2101,7 +2108,7 @@ console.log(addOne(10, 20, 30));
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-from-qxefm7?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.3. Array.find()
@@ -2128,7 +2135,7 @@ console.log(arr.find(findFirstOdd)); // 5
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-find-iou6gi?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.4. Array.findIndex()
@@ -2154,7 +2161,7 @@ console.log(index); // 2
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-findindex-meiqpf?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.5. Array.fill()
@@ -2190,7 +2197,7 @@ console.log(arr); // [10, 10, 10, 10, 10]
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-fill-xz3q9k)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.6. Array.copyWithin()
@@ -2222,7 +2229,7 @@ console.log(arr2.copyWithin(0, 1, 3)); // [2, 3, 3, 4, 5]
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-copywithin-r5j2lp)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.7. Array.keys()
@@ -2251,7 +2258,7 @@ for (const key of iterator) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-keys-m5n8yw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.8. Array.values()
@@ -2280,7 +2287,7 @@ Mango
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-values-k9p4mx)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 10.9. Array.entries()
@@ -2308,7 +2315,7 @@ for (const [index, value] of fruits.entries()) {
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-array-entries-q7r3nz)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.1. Object.assign()
@@ -2359,7 +2366,7 @@ console.log(styleBox);
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-assign-0ot7bs?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.2. Object.is()
@@ -2412,7 +2419,7 @@ console.log(Object.is(NaN, Number.NaN)); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-is-ck2h8y?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.3. Object.keys()
@@ -2442,7 +2449,7 @@ city: New York
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-keys-jb7r5w)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.4. Object.values()
@@ -2468,7 +2475,7 @@ console.log(total); // 267
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-values-nk8t3q)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.5. Object.entries()
@@ -2500,7 +2507,7 @@ console.log(personMap.get('name')); // John
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-entries-p3m7kz)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.6. Object.freeze()
@@ -2534,7 +2541,7 @@ console.log(Object.isFrozen(config)); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-freeze-y5c8nw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 11.7. Object.seal()
@@ -2569,7 +2576,7 @@ console.log(Object.isSealed(user)); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-object-seal-d4k9nx)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 12.1. String.startsWith()
@@ -2594,7 +2601,7 @@ console.log(isTrue); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-startswith-wxbrtw?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## 12.2. String.endsWith()
@@ -2619,7 +2626,7 @@ console.log(isTrue); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-endswith-1huuuu?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## 12.3. String.includes()
@@ -2645,7 +2652,7 @@ console.log(str.includes('Script')); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-includes-ycwhqd?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 12.4. String.repeat()
@@ -2680,7 +2687,7 @@ console.log(padLeft('42',  5, '0')); // 00042
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-string-repeat-p8n3kw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 13.1. Proxies
@@ -2726,7 +2733,7 @@ Property email: rishima.karpe@email.com
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-proxies-u9tgie?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 13.2. Reflect
@@ -2792,7 +2799,7 @@ console.log(user.age); // undefined
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-reflect-e7euzj?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 14.1. Unicode
@@ -2826,7 +2833,7 @@ console.log(String.fromCodePoint(134071));  // "𠮷"
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-unicode-ve845j?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 14.2. Proper Tail Calls
@@ -2867,7 +2874,7 @@ console.log(factorial(1000)); // Infinity
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-proper-tail-calls-qmptbq?file=/src/index.js)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 15.1. Number.isInteger()
@@ -2890,7 +2897,7 @@ console.log(Number.isInteger(NaN));   // false
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isinteger-b3w5kq)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 15.2. Number.isFinite()
@@ -2913,7 +2920,7 @@ console.log(Number.isFinite('10'));      // false (no type coercion)
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isfinite-p7m4kz)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 15.3. Number.isNaN()
@@ -2936,7 +2943,7 @@ console.log(Number.isNaN(10));         // false
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-isnan-r9k5mw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 15.4. Number.EPSILON
@@ -2965,7 +2972,7 @@ console.log(isEqual(0.1 + 0.2, 0.3)); // true
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-number-epsilon-n6w4kx)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 16.1. Math.sign()
@@ -2988,7 +2995,7 @@ console.log(Math.sign(NaN)); // NaN
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-sign-k3p8qw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 16.2. Math.trunc()
@@ -3011,7 +3018,7 @@ console.log(Math.trunc(0.5));  //  0
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-trunc-w7n3kp)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 16.3. Math.cbrt()
@@ -3034,7 +3041,7 @@ console.log(Math.cbrt(1000)); // 10
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-cbrt-j5n2kw)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
 ## # 16.4. Math.hypot()
@@ -3065,5 +3072,354 @@ console.log(Math.hypot(2, 3, 6)); // 7
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/es6-math-hypot-q4n8kz)**
 
 <div align="right">
-  <b><a href="#">↥ back to top</a></b>
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.1. Iterator Helpers
+
+ES2025 introduces a set of built-in helper methods directly on iterators (via `Iterator.prototype`), eliminating the need to convert to arrays just to use `map`, `filter`, `reduce`, and similar operations. These are **lazy** — they only process elements on demand.
+
+**Available methods:**
+
+| Method | Description |
+|---|---|
+| `.map(fn)` | Transforms each value |
+| `.filter(fn)` | Keeps values where `fn` returns truthy |
+| `.take(n)` | Takes the first `n` values |
+| `.drop(n)` | Skips the first `n` values |
+| `.flatMap(fn)` | Maps and flattens one level |
+| `.reduce(fn, init)` | Reduces to a single value |
+| `.toArray()` | Collects all values into an array |
+| `.forEach(fn)` | Runs a side-effect for each value |
+| `.some(fn)` | Returns `true` if any value matches |
+| `.every(fn)` | Returns `true` if all values match |
+| `.find(fn)` | Returns the first matching value |
+
+**Example 01:** `map()` and `filter()` on a generator
+
+```js
+/**
+ * Iterator Helpers - map & filter
+ */
+function* range(start, end) {
+  for (let i = start; i <= end; i++) yield i;
+}
+
+const result = range(1, 10)
+  .filter(n => n % 2 === 0)
+  .map(n => n * n)
+  .toArray();
+
+console.log(result); // [4, 16, 36, 64, 100]
+```
+
+**Example 02:** `take()` and `drop()`
+
+```js
+/**
+ * Iterator Helpers - take & drop
+ */
+function* naturals() {
+  let n = 1;
+  while (true) yield n++;
+}
+
+const sliced = naturals().drop(4).take(5).toArray();
+console.log(sliced); // [5, 6, 7, 8, 9]
+```
+
+**Example 03:** `reduce()` and `toArray()`
+
+```js
+/**
+ * Iterator Helpers - reduce
+ */
+function* range(start, end) {
+  for (let i = start; i <= end; i++) yield i;
+}
+
+const sum = range(1, 5).reduce((acc, n) => acc + n, 0);
+console.log(sum); // 15
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.2. New Set Methods
+
+ES2025 adds six new methods to `Set.prototype` for set-theory operations, making it easy to compare and combine sets without writing manual loops.
+
+**New methods:**
+
+| Method | Description |
+|---|---|
+| `union(other)` | Returns elements in either set |
+| `intersection(other)` | Returns elements in both sets |
+| `difference(other)` | Returns elements in this set but not `other` |
+| `symmetricDifference(other)` | Returns elements in exactly one of the sets |
+| `isSubsetOf(other)` | Returns `true` if all elements are in `other` |
+| `isSupersetOf(other)` | Returns `true` if `other`'s elements are all in this set |
+| `isDisjointFrom(other)` | Returns `true` if the sets share no elements |
+
+**Example:**
+
+```js
+/**
+ * New Set Methods (ES2025)
+ */
+const a = new Set([1, 2, 3, 4]);
+const b = new Set([3, 4, 5, 6]);
+
+console.log(a.union(b));
+// Set(6) {1, 2, 3, 4, 5, 6}
+
+console.log(a.intersection(b));
+// Set(2) {3, 4}
+
+console.log(a.difference(b));
+// Set(2) {1, 2}
+
+console.log(a.symmetricDifference(b));
+// Set(4) {1, 2, 5, 6}
+
+const c = new Set([1, 2]);
+console.log(c.isSubsetOf(a));   // true
+console.log(a.isSupersetOf(c)); // true
+
+const d = new Set([10, 20]);
+console.log(a.isDisjointFrom(d)); // true
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.3. Promise.try()
+
+`Promise.try(fn)` is a convenience method introduced in ES2025 that wraps a function — whether it is synchronous, asynchronous, or throws — into a promise. It avoids the common pattern of wrapping everything in a `new Promise()` constructor just to catch synchronous errors.
+
+**Syntax:**
+
+```js
+Promise.try(fn)
+```
+
+**Example 01:** Synchronous function that throws
+
+```js
+/**
+ * Promise.try() - sync throw
+ */
+function getUser(id) {
+  if (!id) throw new Error("ID is required");
+  return { id, name: "Alice" };
+}
+
+Promise.try(() => getUser(null))
+  .catch(err => console.error(err.message));
+// Error: ID is required
+```
+
+**Example 02:** Async function works the same way
+
+```js
+/**
+ * Promise.try() - async function
+ */
+async function fetchData(url) {
+  const res = await fetch(url);
+  return res.json();
+}
+
+Promise.try(() => fetchData("https://api.example.com/data"))
+  .then(data => console.log(data))
+  .catch(err => console.error("Failed:", err.message));
+```
+
+**Example 03:** Uniform error handling for mixed sync/async code
+
+```js
+/**
+ * Promise.try() - mixed sync/async
+ */
+function process(value) {
+  if (value < 0) throw new RangeError("Negative value");
+  return Promise.resolve(value * 2);
+}
+
+Promise.try(() => process(-1))
+  .catch(err => console.error(err.message));
+// RangeError: Negative value
+
+Promise.try(() => process(5))
+  .then(result => console.log(result)); // 10
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.4. Import Attributes
+
+Import Attributes (previously called Import Assertions) allow you to pass extra metadata alongside an `import` statement. The primary use case is importing **JSON modules** and **CSS modules** safely by declaring the expected module type using the `with` keyword.
+
+**Syntax:**
+
+```js
+import data from "./file.json" with { type: "json" };
+```
+
+**Example 01:** Importing a JSON module
+
+```js
+/**
+ * Import Attributes - JSON
+ */
+import config from "./config.json" with { type: "json" };
+
+console.log(config.version); // e.g. "1.0.0"
+```
+
+**Example 02:** Dynamic import with attributes
+
+```js
+/**
+ * Import Attributes - dynamic import
+ */
+const data = await import("./data.json", {
+  with: { type: "json" }
+});
+
+console.log(data.default);
+```
+
+**Example 03:** CSS module (supported in some environments)
+
+```js
+/**
+ * Import Attributes - CSS module
+ */
+import styles from "./app.css" with { type: "css" };
+
+document.adoptedStyleSheets = [styles];
+```
+
+*Note: Without the `with { type: "json" }` attribute, a browser or bundler may refuse to load a JSON file as a module for security reasons.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.5. RegExp Duplicate Named Capture Groups
+
+ES2025 allows the same capture group name to appear in **different alternatives** (`|`) of a regular expression. Previously, duplicate group names caused a syntax error even when only one alternative could match at a time.
+
+**Syntax:**
+
+```js
+/(?<name>pattern1)|(?<name>pattern2)/v
+```
+
+**Example 01:** Date parsing with multiple formats
+
+```js
+/**
+ * RegExp Duplicate Named Capture Groups
+ */
+const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})|(?<day>\d{2})\/(?<month>\d{2})\/(?<year>\d{4})/v;
+
+const match1 = "2025-05-15".match(re);
+console.log(match1.groups.year);  // "2025"
+console.log(match1.groups.month); // "05"
+console.log(match1.groups.day);   // "15"
+
+const match2 = "15/05/2025".match(re);
+console.log(match2.groups.year);  // "2025"
+console.log(match2.groups.month); // "05"
+console.log(match2.groups.day);   // "15"
+```
+
+**Example 02:** Matching different word forms
+
+```js
+/**
+ * RegExp Duplicate Named Capture Groups - word forms
+ */
+const colorRe = /(?<color>red|blue)|(?<color>rouge|bleu)/v;
+
+const m1 = "I see red".match(colorRe);
+console.log(m1.groups.color); // "red"
+
+const m2 = "Je vois rouge".match(colorRe);
+console.log(m2.groups.color); // "rouge"
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17.6. Float16Array
+
+ES2025 introduces `Float16Array`, a new **TypedArray** that stores 16-bit (half-precision) floating-point numbers. It also adds the companion utility method `Math.f16round()` to round a number to the nearest 16-bit float value.
+
+Half-precision floats use less memory than `Float32Array` or `Float64Array` and are commonly used in graphics (WebGPU), machine learning (model weights), and network protocols.
+
+**Syntax:**
+
+```js
+new Float16Array(length)
+new Float16Array(typedArray)
+new Float16Array(buffer, byteOffset, length)
+```
+
+**Example 01:** Creating a `Float16Array`
+
+```js
+/**
+ * Float16Array
+ */
+const f16 = new Float16Array(4);
+f16[0] = 1.5;
+f16[1] = 3.14159;
+f16[2] = -0.5;
+f16[3] = 65504; // max finite value in float16
+
+console.log(f16[0]); // 1.5
+console.log(f16[1]); // 3.140625  (rounded to nearest float16)
+console.log(f16[2]); // -0.5
+console.log(f16[3]); // 65504
+```
+
+**Example 02:** `Math.f16round()`
+
+```js
+/**
+ * Math.f16round()
+ */
+console.log(Math.f16round(3.14159)); // 3.140625
+console.log(Math.f16round(0.1));     // 0.099975586
+console.log(Math.f16round(65600));   // Infinity  (exceeds max float16)
+console.log(Math.f16round(-1.337));  // -1.3369141
+```
+
+**Example 03:** Memory comparison
+
+```js
+/**
+ * Float16Array - memory usage
+ */
+const length = 1000;
+
+const f16 = new Float16Array(length); // 2 bytes each → 2 KB
+const f32 = new Float32Array(length); // 4 bytes each → 4 KB
+const f64 = new Float64Array(length); // 8 bytes each → 8 KB
+
+console.log(f16.byteLength); // 2000
+console.log(f32.byteLength); // 4000
+console.log(f64.byteLength); // 8000
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
