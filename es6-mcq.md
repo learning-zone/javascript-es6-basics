@@ -235,6 +235,18 @@ for (var i = 0; i < 3; i++) {
 
 > When a block is entered, `let` and `const` bindings are created but remain uninitialised until the declaration line is reached. Accessing them before that line results in a `ReferenceError`. This zone is called the Temporal Dead Zone.
 
+**Example**
+
+```js
+{
+    // --- Start of TDZ for 'myVar' ---
+    console.log(myVar); // ❌ ReferenceError: Cannot access 'myVar' before initialization
+    
+    let myVar = "Hello!"; // --- End of TDZ for 'myVar' ---
+    console.log(myVar); // ✅ "Hello!"
+}
+```
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
@@ -283,6 +295,31 @@ console.log(counter.getCount());
 **Answer: B) Use a closure to encapsulate the variable inside a function**
 
 > Closures are the classic ES5/ES6 way to simulate private state. A variable declared inside a factory function is inaccessible from outside but can be read or mutated through the returned functions that close over it.
+
+**Example:**
+
+```js
+function createCounter() {
+  // This variable is private; it cannot be accessed directly from outside
+  let count = 0; 
+
+  return {
+    increment: function() {
+      count++;
+      return count;
+    },
+    getCount: function() {
+      return count;
+    }
+  };
+}
+
+const counter = createCounter();
+
+console.log(counter.increment()); // 1
+console.log(counter.getCount());  // 1
+console.log(counter.count);       // undefined (Privacy confirmed!)
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2843,6 +2880,59 @@ run();
 
 > Async generators are ideal for lazy, on-demand asynchronous data streams. Each `yield` suspends the generator; the next value is only fetched when the consumer calls `next()` (or the `for await...of` loop advances). This avoids loading all pages into memory at once and gives the consumer control over pacing.
 
+**Example:**
+
+```js
+// Simulated API call — returns one page of results
+async function fetchPage(page) {
+  // Replace with a real fetch, e.g. fetch(`/api/items?page=${page}`)
+  const data = {
+    1: { items: ["Alice", "Bob"], hasNext: true },
+    2: { items: ["Charlie", "Diana"], hasNext: true },
+    3: { items: ["Eve"], hasNext: false },
+  };
+  return data[page] ?? { items: [], hasNext: false };
+}
+
+// Async generator: fetches the next page only when the consumer asks for it
+async function* paginate() {
+  let page = 1;
+  while (true) {
+    const { items, hasNext } = await fetchPage(page);
+    yield items; // pause here; next page is NOT fetched until consumer advances
+    if (!hasNext) break;
+    page++;
+  }
+}
+
+// Consumer — stops early after finding a target, saving unnecessary API calls
+async function findUser(target) {
+  for await (const items of paginate()) {
+    console.log("Fetched page with:", items);
+    if (items.includes(target)) {
+      console.log(`Found "${target}"!`);
+      return; // generator is abandoned here — no further pages are fetched
+    }
+  }
+  console.log(`"${target}" not found.`);
+}
+
+findUser("Charlie");
+
+// Output:
+// Fetched page with: ["Alice", "Bob"]
+// Fetched page with: ["Charlie", "Diana"]
+// Found "Charlie"!
+```
+
+**Why not the other options?**
+
+| Option | Problem |
+|--------|---------|
+| `Promise.all` (A) | Fetches **all** pages upfront — wastes bandwidth and memory |
+| Regular generator (C) | `fetch` is async; a synchronous generator can\'t `await` — yields `Promise` objects instead of resolved data |
+| `setTimeout` (D) | Adds arbitrary delays with no control over when data is actually ready |
+
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
@@ -3665,7 +3755,7 @@ console.log(result);
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What does the following `once` higher-order function output? (L2 — Exercism style)
+## Q. What does the following `once` higher-order function output?
 
 ```js
 function once(fn) {
@@ -4129,7 +4219,7 @@ console.log(countVowels("rhythm"));
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What does the following Caesar cipher return? (L2 — Exercism style)
+## Q. What does the following Caesar cipher return?
 
 ```js
 function caesarCipher(str, shift) {
@@ -4316,7 +4406,7 @@ console.log(obj);
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the output of the following builder pattern using ES6? (L2 — Exercism/Frontend Mentor style)
+## Q. What is the output of the following builder pattern using ES6?
 
 ```js
 class QueryBuilder {
@@ -4539,7 +4629,7 @@ const strB = parts.join("");
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the output and what pattern does the following `debounce` implementation demonstrate? (L3 — Frontend Mentor style)
+## Q. What is the output and what pattern does the following `debounce` implementation demonstrate?
 
 ```js
 function debounce(fn, delay) {
