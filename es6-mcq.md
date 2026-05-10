@@ -1,6 +1,6 @@
-# JavaScript ES6 Scenario-Based MCQ
+# ECMAScript 6 Scenario-Based MCQ
 
-> Scenario-based multiple choice questions covering JavaScript ES6 topics.
+> Scenario-based multiple choice questions covering ECMAScript 6 topics.
 
 <br>
 
@@ -58,12 +58,79 @@
 * [String Algorithm Problems](#-38-string-algorithm-problems)
 * [Object Patterns & Immutability](#-39-object-patterns--immutability)
 * [Performance & Best Practices](#-40-performance--best-practices)
+* [Miscellaneous](#-41-miscellaneous)
 
 <br>
 
 ## # 1. VARIABLES
 
 <br>
+
+## Q. What will be the output of the following ES6 code? 
+
+```js
+var $x1 = 12;
+
+function display() {
+  var $x1 = 65;
+  console.log("Inside function  = " +$x1);
+}
+console.log("Outside the function = " +$x1);
+display();
+```
+
+- A) Outside the function = 12
+     Inside the function = 12
+- B) Outside the function = 12
+     Inside the function = 65
+- C) Outside the function = 65
+     Inside the function = 65
+- D) Outside the function = 65
+     Inside the function = 12
+
+**Answer: B) Outside the function = 12, Inside the function = 65**
+
+> `var $x1 = 12` declares a global variable. Inside `display()`, `var $x1 = 65` declares a **local** variable that shadows the global one. The `console.log` outside the function accesses the global `$x1` (12), while the one inside `display()` accesses the local `$x1` (65). This demonstrates function-scoped variable shadowing with `var`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What will be the output of the following ES6 code? 
+
+```js
+let a = 23;
+let a = 54
+console.log(a);
+```
+
+- A) It will display "23"
+- B) It will display "54"
+- C) It will give the compile-time error "Identifier" 'a' has already been declare
+- D) It will give the runtime error "Identifier" 'a' has already been declared.
+
+**Answer: C)**
+
+`let` does not allow re-declaration in the same scope. The JavaScript engine detects the duplicate `let a` at parse time and throws a `SyntaxError: Identifier 'a' has already been declared` before any code executes, making it a compile-time (parse-time) error, not a runtime error.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. While working on a Node.js application, you want to declare a variable using the let keyword. Which statement is true regarding the use of the let keyword in Node.js ES6? 
+
+- A) The let keyword is used to declare constants
+- B) The let keyword is used to declare variables that can be reassigned.
+- C) The let keyword is used to declare variables with global scope.
+- D) The let keyword is used to declare function-level variables.
+
+**Answer: B)**
+
+`let` declares block-scoped variables that can be reassigned after declaration. It is not for constants (that\'s `const`), not global-scoped (that\'s `var` at the top level), and not function-scoped like `var`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. A developer declares three variables using `var`, `let`, and `const` inside a block. What will be the output of the following code?
 
@@ -428,6 +495,21 @@ console.log(`Sum: ${a + b}, Product: ${a * b}`);
 
 <br>
 
+## Q. You are optimizing a high-performance ES6 web application where rendering performance ES6 web application where rendering performance is critical. The codebase uses multiple arrow functions, some of which capture unnecessary outer context. What would be your approach to avoid unnecessary memory overhead?
+
+- A) Replace all arrow functions with regular functions to avoid capturing outer scope.
+- B) Identify and replace arrow functions where outer context capture is unnecessary.
+- C) Use closures instead of arrow functions to manage memory consumption.
+- D) Implement event delegation to minimize the number of arrow functions used.
+
+**Answer: B)**
+
+The targeted approach is to audit arrow functions and replace only those that unnecessarily capture outer context (e.g., `this`, outer variables) with regular functions. Replacing all arrow functions (A) is over-engineering and loses the benefits of lexical `this` where it is needed. Closures (C) also capture scope, so they don\'t reduce memory overhead. Event delegation (D) addresses event listener count, not closure scope overhead.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. A developer replaces a regular function with an arrow function inside an object method. What will be the output?
 
 ```js
@@ -499,6 +581,66 @@ After 3 seconds, what is the value of `t.seconds`?
 ## # 6. CLASSES & INHERITANCE
 
 <br>
+
+## Q. What will be the output of the following ES6 code?
+
+```js
+'use strict';
+class Computer {
+  display() {
+    console.log("Display the details of Computer");
+  }
+}
+
+class Storage extends Computer {
+  display() {
+    console.log("Display the details of storage devices");
+  }
+}
+
+var obj = new Storage();
+obj.display();
+```
+
+- A) Displaying the details of Computer
+- B) Displaying the details of storage devices
+- C) Displaying the details of Computer
+     Displaying the details of storage devices
+- D) Error: Function name resolution
+
+**Answer: B) Displaying the details of storage devices**
+
+> `Storage` extends `Computer` and **overrides** the `display()` method. When `obj.display()` is called on a `Storage` instance, JavaScript uses the overriding method in the child class, printing `"Display the details of storage devices"`. The parent\'s `display()` is not called unless explicitly invoked via `super.display()`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What does the following ES6 code do?
+
+```js
+class Student {
+  constructor(id){
+    this.id = id;
+  }
+  getId() {}
+}
+Student s1 = new Student('100');
+s1.getId();
+```
+
+- A) It creates an "S1" object for the "Student" class with the id=100 property
+- B) It creates the Student class with the id = 100 property
+- C) It creates an s1 variable for the Student class with the id=100 property
+- D) It creates 100 objects for the Student class.
+
+**Answer: C)**
+
+`new Student('100')` instantiates the `Student` class and assigns the resulting object to the variable `s1`, setting `this.id = '100'`. Note: the syntax `Student s1 = ...` is not valid JavaScript — it would need to be `const s1 = new Student('100')`, but the intent of the question describes option C.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What will the following code output?
 
@@ -673,6 +815,41 @@ display({ title: "ES6 Guide" });
 ## # 8. SPREAD & REST OPERATORS
 
 <br>
+
+## Q. You want to copy one array into another such that whenever you insert a new element into the copied new array, it should not affect the original array. Which ES6 code will help meet the requirement?
+
+- A) 
+```js
+let a1 = ['1', '2'];
+let a2 = a1;
+a2.push('3');
+```
+- B)
+```js
+let a1 = ['1', '2'];
+let a2 = [a1];
+a2.push('3');
+```
+- C) 
+```js
+let a1 = ['1', '2'];
+var a2 = [...a1];
+a2.push('3');
+```
+- D) 
+```js
+let a1 = ['1', '2'];
+let a2 = [...a1];
+a2.push('3');
+```
+
+**Answer: D)**
+
+The spread operator `[...a1]` creates a shallow copy of `a1` into a new array, so `a2.push('3')` does not affect `a1`. Option C also works functionally, but uses `var` which is pre-ES6 style. Option A (`a2 = a1`) is a reference copy — both variables point to the same array. Option B (`[a1]`) wraps `a1` as a nested element, not a flat copy.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What is the output of the following code?
 
@@ -963,6 +1140,57 @@ console.log(arr.at(-2));
 
 <br>
 
+## Q. What will be the output of the following code?
+
+```html
+<!Doctype html>
+<html>
+  <body>
+    <h2>Student database</h2>
+    <p> Add Student id:</p>
+
+    <p id="demo"></p>
+  <script>
+    //Create a Set
+    const id = new Set();
+
+    // Add values to the set
+    id.add("103");
+    id.add("256");
+    id.add("890");
+
+  // Display set.size
+  document.getElementById("demo").innerHTML = id.size;
+  </script>
+</html>
+```
+
+- A) Student database
+Add student id:
+3
+- B) Add student id:
+103
+256
+890
+- C) Student database
+Add student id:
+id(103
+id(256)
+id(890)
+- D) None of the above
+
+**Answer: A)**
+
+`id.size` returns `3` since the Set contains three unique values. The page displays the static HTML headings followed by `3` in the `<p id="demo">` element.
+
+**Answer: C) `4`**
+
+> A `Set` stores only unique values. The initial array `[1, 2, 3, 2, 1]` produces `{1, 2, 3}`. Adding `4` gives `{1, 2, 3, 4}`. Adding `2` again is a no-op since `2` already exists, so the final size is `4`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What is the size of the Set after the following operations?
 
 ```js
@@ -1132,6 +1360,21 @@ button.addEventListener("click", async () => {
 ## # 13. ITERATORS & GENERATORS
 
 <br>
+
+## Q. You are tasked with implementing a library using ES6 that must handle large infrequently updated datasets while minimizing memory usage. What would be the most effective ES6 feature for lazy initialization and memory optimization?
+
+- A) Use ES6 class with static methods for efficient memory usage.
+- B) Use let and const to scope variables tightly.
+- C) Implement ES6 WeakSet to store data that will be garbage-collected when not used.
+- D) Use ES6 generators to lazily initialize data and defer execution until needed.
+
+**Answer: D) Use ES6 generators to lazily initialize data and defer execution until needed.**
+
+> ES6 **generators** (`function*`) are ideal for handling large, infrequently updated datasets with minimal memory usage. They use **lazy evaluation** — values are computed only when requested via `.next()` — so the entire dataset is never materialized in memory at once. Execution pauses at each `yield`, deferring computation until needed. This makes generators far more memory-efficient than eagerly loading data. `WeakSet` (option C) allows garbage collection of unreferenced objects but does not provide lazy initialization. `let`/`const` (option B) tighten scoping but do not defer computation. Static class methods (option A) affect code organization, not memory allocation.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What will the following generator function produce?
 
@@ -1470,6 +1713,51 @@ p.then(() => console.log("done"));
 ## # 17. ASYNC & AWAIT
 
 <br>
+
+## Q. You are optimizing an ES6 application for performance. A loop runs over a large dataset, using forEach. How would you refactor this to minimize performance bottlenecks while ensuing consistent asynchronous behavior?
+
+- A) Use for...of with await for async operations to improve performance.
+- B) Replace forEach with map() for synchronous behavior over large datasets.
+- C) Use Promise.all() with map() to handle multiple async calls at once.
+- D) Refactor to forEach with setTimeout() to prevent blocking.
+
+**Answer: C) Use Promise.all() with map() to handle multiple async calls at once.**
+
+> `forEach` does not handle `async/await` — it ignores returned Promises, so async operations run uncontrolled. Using `map()` to create an array of Promises and passing it to `Promise.all()` allows all async operations to run **concurrently**, dramatically improving performance on large datasets. `for...of` with `await` (A) runs operations **sequentially**, which is slower. `map()` alone (B) is synchronous and doesn't address async behavior. `setTimeout()` (D) does not coordinate async results reliably.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer\'s understanding of ECMAScript 2015 advanced topics must be assessed. Which approach should be used to evaluate their ability to implement new features effectively in a real-world scenario?
+
+- A) Conduct a practical test focusing on implementing Generators for asynchronous programming
+- B) Evaluate their knowledge by asking theoretical questions about Symbols and their applications
+- C) Assess their skill through a coding challenge involving class and module features.
+- D) Review their ability to use Promises to handle complex asynchronous workflows
+
+**Answer: A) Conduct a practical test focusing on implementing Generators for asynchronous programming.**
+
+> Generators (`function*`) are one of the most advanced and distinctive features introduced in ES6. A **practical test** on implementing generators for async programming directly evaluates a developer\'s ability to apply advanced concepts in real-world scenarios — far more effectively than theoretical questions (B). While classes/modules (C) and Promises (D) are important ES6 features, they are more commonly understood and less indicative of mastery over ECMAScript 2015 advanced topics.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. In a highly concurrent system handling sensitive data, you must ensure data security while using asynchronous ES6 features. Which ES6 approach would you adopt to safely handle the execution of asynchronous code and avoid exposing sensitive data?
+
+- A) Use let and const for variable declarations to prevent data leakage.
+- B) Utilize async/await for better control over asynchronous flows.
+- C) Use eval() to dynamically execute strings containing code.
+- D) Implement synchronous code execution to minimize risks.
+
+**Answer: B)**
+
+`async/await` provides structured control over asynchronous flows, enabling proper `try/catch` error handling to prevent sensitive data from leaking through unhandled rejections. `eval()` (C) is a critical security risk. `let`/`const` (A) address scoping, not async safety. Synchronous execution (D) defeats concurrency requirements.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What is the return type of an `async` function?
 
@@ -2592,6 +2880,21 @@ obj = null; // original object now unreachable
 
 <br>
 
+## Q. Suppose you must create a class that includes a private property that should not be accessible outside the class methods. Which ECMAScript 2025 feature will help you achieve this?  
+
+- A) Use Object.defineProperty to create a private property
+- B) Implement private fields using the `#` syntax within the class definition.
+- C) Utilize closures to create private variables in the class
+- D) Use Symbol to create properties in the class.
+
+**Answer: B)**
+
+Private class fields declared with `#` are truly private and enforced at the language level — any attempt to access them outside the class body results in a `SyntaxError`. `Object.defineProperty` (A) only controls enumerability/configurability, not true privacy. Closures (C) work but are not an ES class feature. Symbols (D) can still be accessed via `Object.getOwnPropertySymbols()`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
 ## Q. What is the output of the following code using private class fields? 
 
 ```js
@@ -2708,6 +3011,21 @@ console.log(t.fahrenheit);
 ## # 28. PROXY & REFLECT
 
 <br>
+
+## Q. During code review, you notice that certain functions are being repeatedly called with the same parameters. Which ECMAScript feature can help you optimize this by caching the results of these function calls?
+
+- A) Use Promises to handle asynchronous operations more effectively.
+- B) Implement WeakMaps to store and retrieve function returns based on input parameters. 
+- C) Apply Proxy objects to intercept and cache function call dynamically.
+- D) Utilize Symbol to create unique identifiers for each function execution.
+
+**Answer: C)**
+
+`Proxy` objects can intercept function calls (`apply` trap) and dynamically cache results based on input parameters — this is the standard memoization pattern using ES6 Proxies. `WeakMap` (B) can be part of a caching implementation but requires keys to be objects, making it unsuitable for primitive parameters. Promises (A) are for async operations. Symbols (D) create unique keys but don\'t cache results.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
 
 ## Q. What is the output of the following Proxy with a `get` trap? 
 
@@ -4656,6 +4974,40 @@ log("third");
 **Answer: B) Only `"third"` is logged after 100ms**
 
 > `debounce` resets the timer on every call. Rapid successive calls (`"first"`, `"second"`, `"third"`) each cancel the previous pending timer. Only the **last** call\'s timer survives the delay and executes. This pattern is essential for performance-sensitive event handlers like search inputs, window resize, and scroll events.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 41. MISCELLANEOUS
+
+<br>
+
+## Q. Given a scenario where an ECMAScript 2015 application needs to integrate with various third-party libraries for advanced functionality, what approach would be most effective to ensure compatibility and maintainability across different library versions?
+
+- A) Use npm to manage dependencies and lock library version for consistent behavior.
+- B) Implement a custom polyfill to handle inconsistencies across different library versions.
+- C) Employ a module bundler like Webpack to bundle and manage library dependencies efficiently.
+- D) Leverage Babel to transpile code and ensure compatibility with different library versions.
+
+**Answer: A) Use npm to manage dependencies and lock library version for consistent behavior.**
+
+> npm (with `package-lock.json` or `yarn.lock`) is the standard tool for managing third-party library dependencies in ES6 applications. Locking versions ensures every environment installs identical dependency trees, preventing unexpected breakages from upstream updates. Custom polyfills (B) address browser API gaps, not library versioning. Webpack (C) bundles code but doesn\'t manage version compatibility. Babel (D) transpiles ES6+ syntax to older JS but doesn\'t resolve library version inconsistencies.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. A developer\'s understanding of ECMAScript 2015 advanced topics must be assessed. Which approach should be used to evaluate their ability to implement new features effectively in a real-world scenario?
+
+- A) Conduct a practical test focusing on implementing Generators for asynchronous programming.
+- B) Evaluate their knowledge by asking theoretical questions about Symbols and their applications
+- C) Assess their skill through a coding challenge involving class and module features.
+- D) Review their ability to use Promise to handle complex asynchronous workflows.
+
+**Answer: D) Review their ability to use Promise to handle complex asynchronous workflows.**
+
+> Promises are central to modern JavaScript and ES6\'s most impactful feature for real-world development. Evaluating a developer\'s ability to implement complex async workflows with Promises — including chaining, error handling, `Promise.all`, and `Promise.race` — directly tests practical implementation skill. Generators (A) have been largely superseded by `async/await`, theoretical Symbol questions (B) test recall not implementation, and a class/module challenge (C) is narrower in scope.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
