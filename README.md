@@ -1,4 +1,4 @@
-# ECMAScript-6 Basics
+# ECMAScript 6 Basics
 
 > *Click &#9733; if you like the project. Your contributions are heartily ♡ welcome.*
 
